@@ -8,6 +8,7 @@ namespace States
                 None,
                 Title,
                 Game,
+                Pause,
         };
 }
 

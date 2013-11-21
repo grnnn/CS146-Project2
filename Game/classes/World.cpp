@@ -39,7 +39,7 @@ void World::loadTextures()
 
         //Tried to add background, I don't know how to add background to Texture namespace
 
-       // mTextures.load(Textures::Background, "Media/background.png");
+       mTextures.load(Textures::Background, "Media/background.png");
 }
 
 void World::buildScene()
@@ -54,7 +54,13 @@ void World::buildScene()
         }
 
         //prepare background sprite
+        sf::Texture& texture = mTextures.get(Textures::Background);
         sf::IntRect backTextureRect(mWorldBounds);
+
+        // Add Background
+        std::unique_ptr<SpriteNode> backgroundSprite(new SpriteNode(texture, backTextureRect));
+        backgroundSprite->setPosition(mWorldBounds.left, mWorldBounds.top);
+        mSceneLayers[Background]->attachChild(std::move(backgroundSprite));
 
         // Add player
         std::unique_ptr<Player> player(new Player(mTextures));

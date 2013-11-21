@@ -14,6 +14,7 @@ namespace Textures
     {
         TitleScreen,
         Player,
+        Background,
     };
 }
 

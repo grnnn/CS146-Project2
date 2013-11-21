@@ -1,5 +1,6 @@
 #include "..\headers\Game.hpp"
 #include "..\headers\TitleState.hpp"
+#include "..\headers\GameState.hpp"
 #include "..\..\engine\headers\StringHelpers.hpp"
 
 #include <SFML/Window.hpp>
@@ -86,6 +87,8 @@ void Game::processEvents()
         sf::Event event;
         while (gameWindow.pollEvent(event))
         {
+
+                gameStateStack.handleEvent(event);
                 switch (event.type)
                 {
                         case sf::Event::Closed:
@@ -100,6 +103,7 @@ void Game::processEvents()
 void Game::registerStates()
 {
     gameStateStack.registerState<TitleState>(States::Title);
+    gameStateStack.registerState<GameState>(States::Game);
 }
 
 

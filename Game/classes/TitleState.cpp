@@ -20,9 +20,6 @@ TitleState::TitleState(StateStack& stack, Context context)
         mTitle.setString("Title Screen");
         centerOrigin(mText);
         centerOrigin(mTitle);
-        sf::Vector2<float> pos = (context.window->getView().getSize() / 2.f);
-        //Debug
-            std::cout << "Position = (" << pos.x << ", " << pos.y << ")";
         mText.setPosition(context.window->getView().getSize() / 2.f);
         mTitle.setPosition(context.window->getView().getSize().x / 2.f, context.window->getView().getSize().y / 4.f);
 }
