@@ -1,10 +1,10 @@
 #include "..\headers\Game.hpp"
 #include "..\headers\TitleState.hpp"
 #include "..\..\engine\headers\StringHelpers.hpp"
-#include <iostream>
 
 #include <SFML/Window.hpp>
 #include <SFML/Graphics.hpp>
+#include <iostream>
 
 // Define the time per frame to be 1/60th of a second, for an FPS of 60
 const sf::Time Game::TimePerFrame = sf::seconds(1.f/60.f);

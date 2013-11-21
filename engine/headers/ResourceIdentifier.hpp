@@ -13,6 +13,7 @@ namespace Textures
     enum ID
     {
         TitleScreen,
+        Player,
     };
 }
 
