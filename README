@@ -9,8 +9,13 @@ Tyler Gatta
 
 Engine files are included in the engine directory.
 When altering the engine remember:
--class files (*.cpp) are members of the engine directory
+-class files (*.cpp) are members of the engine\classes directory
 -Header files (*.hpp) are members of the engine\headers directory
--resource files (*.inl) are members of the engine\headers\resources directory
+-resource files (*.inl) are members of the engine\resources directory
 
-Source files appropriately while coding.
+Game files are included in the Game directory
+When altering the game remember:
+-class files are members of Game\classes
+-Header files are members of Game\headers
+
+Source files appropriately while coding (eg: ../* to go back 1 directory).
