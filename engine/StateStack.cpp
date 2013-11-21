@@ -1,5 +1,5 @@
-#include "StateStack.hpp"
-#include "FOREACH.hpp"
+#include "headers\StateStack.hpp"
+#include "headers\FOREACH.hpp"
 
 #include <cassert>
 #include <iostream>
@@ -80,7 +80,13 @@ State::Ptr StateStack::createState(States::ID stateID)
 
 void StateStack::applyPendingChanges()
 {
-        FOREACH(PendingChange change, mPendingList)
+        //FOREACH(PendingChange change, mPendingList)
+        /*
+         * We're hung up on finding a way to iterate through this pending list of states
+         * without running into any weird errors
+         */
+
+        for (auto change = mPendingList.begin(); change != mPendingList.end(); ++change)
         {
                 switch (change.action)
                 {

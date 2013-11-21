@@ -8,6 +8,6 @@
 template <typename T>
 std::string toString(const T& value);
 
-#include "StringHelpers.inl"
+#include "resources\StringHelpers.inl"
 
 #endif // BOOK_STRINGHELPERS_HPP

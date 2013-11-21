@@ -26,6 +26,6 @@ class ResourceHolder
         std::map<Identifier, std::unique_ptr<Resource>>  mResourceMap;
 };
 
-#include "ResourceHolder.inl"
+#include "resources\ResourceHolder.inl"
 
 #endif // RESOURCEHOLDER_HPP_INCLUDED

@@ -1,5 +1,5 @@
-#include "Game.hpp"
-#include "StringHelpers.hpp"
+#include "headers\Game.hpp"
+#include "headers\StringHelpers.hpp"
 
 #include <SFML/Window.hpp>
 #include <SFML/Graphics.hpp>

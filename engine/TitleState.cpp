@@ -1,6 +1,6 @@
-#include "TitleState.hpp"
-#include "Utility.hpp"
-#include "ResourceHolder.hpp"
+#include "headers\TitleState.hpp"
+#include "headers\Utility.hpp"
+#include "headers\ResourceHolder.hpp"
 #include <iostream>
 
 

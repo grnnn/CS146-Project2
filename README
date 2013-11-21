@@ -5,3 +5,12 @@ Taylor Owen-Milner
 Ethan Lie
 Andrew Fisher
 Tyler Gatta
+
+
+Engine files are included in the engine directory.
+When altering the engine remember:
+-class files (*.cpp) are members of the engine directory
+-Header files (*.hpp) are members of the engine\headers directory
+-resource files (*.inl) are members of the engine\headers\resources directory
+
+Source files appropriately while coding.
