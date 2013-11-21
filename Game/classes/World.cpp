@@ -1,5 +1,6 @@
 #include "../headers/World.hpp"
 #include "../headers/Player.hpp"
+#include "../headers/SpriteNode.hpp"
 #include "../../engine/headers/SceneNode.hpp"
 
 #include <SFML/Graphics/RenderWindow.hpp>
@@ -62,10 +63,11 @@ void World::buildScene()
         mSceneLayers[Air]->attachChild(std::move(player));
 
         // Add the background sprite to the scene
-        /*std::unique_ptr<SpriteNode> backgroundSprite(new SpriteNode(texture, textureRect));
+        std::unique_ptr<SpriteNode> backgroundSprite(new SpriteNode(texture, textureRect));
         backgroundSprite->setPosition(mWorldBounds.left, mWorldBounds.top);
         mSceneLayers[Background]->attachChild(std::move(backgroundSprite));
 
+        /*
         // Add player's aircraft
         std::unique_ptr<Aircraft> leader(new Aircraft(Aircraft::Eagle, mTextures));
         mPlayerAircraft = leader.get();
