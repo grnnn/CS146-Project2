@@ -5,6 +5,7 @@
 #include "../../engine/headers/Entity.hpp"
 #include "../../engine/headers/ResourceIdentifier.hpp"
 
+
 class Player : public Entity
 {
     public:
