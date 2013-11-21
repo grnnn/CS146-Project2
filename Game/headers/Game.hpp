@@ -1,9 +1,14 @@
 #ifndef GAME_HPP_INCLUDED
 #define GAME_HPP_INCLUDED
 
-#include <SFML/Graphics.hpp>
+#include "..\..\engine\headers\ResourceHolder.hpp"
+#include "..\..\engine\headers\ResourceIdentifier.hpp"
+#include "..\..\engine\headers\StateStack.hpp"
 
-class Game
+#include <SFML/Graphics.hpp>
+#include <SFML/System/Time.hpp>
+
+class Game : private sf::NonCopyable
 {
     public:
                                 Game();
@@ -13,11 +18,14 @@ class Game
         void                    updateStatistics(sf::Time elapsedTime);
         void                    draw();
         void                    processEvents();
+        void                    registerStates();
     private:
         static const sf::Time   TimePerFrame;
 
         sf::RenderWindow        gameWindow;
-        sf::Font                gameFont;
+        TextureHolder           gameTextures;
+        FontHolder              gameFont;
+        StateStack              gameStateStack;
         sf::Text                gameStatisticsText;
         sf::Time                gameStatisticsUpdateTime;
         std::size_t             gameStatisticsNumFrames;
