@@ -1,5 +1,5 @@
 #include "..\headers\StateStack.hpp"
-#include "..\headers\FOREACH.hpp"
+//#include "..\headers\FOREACH.hpp"
 
 #include <cassert>
 #include <iostream>
@@ -27,13 +27,15 @@ void StateStack::update(sf::Time dt)
 void StateStack::draw()
 {
     //DEBUG
-    std::cout << "StateStack.draw()\n";
+    //std::cout << "StateStack.draw()\n";
+    if(mStack.empty())
+        std::cout << " Stack is empty.\n";
 
         // Draw all active states from bottom to top
-        for (auto itr = mStack.rend(); itr != mStack.rbegin(); --itr)
+        for (std::vector<State::Ptr>::reverse_iterator itr = mStack.rbegin(); itr != mStack.rend(); ++itr)
         {
             //DEBUG
-            std::cout << "Inside Loop";
+            std::cout << "Inside Loop\n";
                 (*itr)->draw();
         }
 }
@@ -80,7 +82,8 @@ State::Ptr StateStack::createState(States::ID stateID)
 
 void StateStack::applyPendingChanges()
 {
-        FOREACH(PendingChange change, mPendingList)
+        for(std::vector<StateStack::PendingChange>::iterator change = mPendingList.begin(); change != mPendingList.end(); change++)
+        //FOREACH(PendingChange change, mPendingList)
         /*
          * We're hung up on finding a way to iterate through this pending list of states
          * without running into any weird errors
@@ -88,10 +91,10 @@ void StateStack::applyPendingChanges()
 
         //for (auto change = mPendingList.begin(); change != mPendingList.end(); ++change)
         {
-                switch (change.action)
+                switch ((*change).action)
                 {
                         case Push:
-                                mStack.push_back(createState(change.stateID));
+                                mStack.push_back(createState((*change).stateID));
                                 break;
 
                         case Pop:

@@ -1,5 +1,7 @@
 #include "..\headers\Game.hpp"
+#include "..\headers\TitleState.hpp"
 #include "..\..\engine\headers\StringHelpers.hpp"
+#include <iostream>
 
 #include <SFML/Window.hpp>
 #include <SFML/Graphics.hpp>
@@ -10,14 +12,20 @@ const sf::Time Game::TimePerFrame = sf::seconds(1.f/60.f);
 Game::Game()
 : gameWindow(sf::VideoMode(640, 480), "Project 2", sf::Style::Close)
 , gameFont()
+, gameStateStack(State::Context(gameWindow, gameTextures, gameFont))
 , gameStatisticsText()
 , gameStatisticsUpdateTime()
 , gameStatisticsNumFrames(0)
 {
-        gameFont.loadFromFile("Media/LinLibertine.ttf");
-        gameStatisticsText.setFont(gameFont);
+        gameFont.load(Fonts::Main, "Media/LinLibertine.ttf");
+        gameTextures.load(Textures::TitleScreen, "Media/TitleScreen.png");
+
+        gameStatisticsText.setFont(gameFont.get(Fonts::Main));
         gameStatisticsText.setPosition(5.f, 5.f);
         gameStatisticsText.setCharacterSize(10);
+
+        registerStates();
+        gameStateStack.pushState(States::Title);
 }
 
 void Game::run()
@@ -46,12 +54,13 @@ void Game::run()
 
 void Game::update(sf::Time elapsedTime)
 {
-
+    gameStateStack.update(elapsedTime);
 }
 
 void Game::draw()
 {
     gameWindow.clear();
+    gameStateStack.draw();
     gameWindow.draw(gameStatisticsText);
     gameWindow.display();
 }
@@ -68,6 +77,7 @@ void Game::updateStatistics(sf::Time elapsedTime)
 
         gameStatisticsUpdateTime -= sf::seconds(1.0f);
         gameStatisticsNumFrames = 0;
+
     }
 }
 
@@ -85,6 +95,11 @@ void Game::processEvents()
                             break;
                 }
         }
+}
+
+void Game::registerStates()
+{
+    gameStateStack.registerState<TitleState>(States::Title);
 }
 
 

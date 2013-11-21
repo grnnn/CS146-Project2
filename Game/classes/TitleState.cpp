@@ -23,7 +23,7 @@ TitleState::TitleState(StateStack& stack, Context context)
 void TitleState::draw()
 {
     //DEBUG
-    std::cout << "TitleState.draw()";
+    //std::cout << "TitleState.draw()";
         sf::RenderWindow& window = *getContext().window;
         window.draw(mBackgroundSprite);
 
