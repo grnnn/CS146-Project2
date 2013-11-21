@@ -35,7 +35,11 @@ void World::draw()
 
 void World::loadTextures()
 {
-        mTextures.load(Textures::Player, "Media/Player.pdf");
+        mTextures.load(Textures::Player, "Media/Player.png");
+
+        //Tried to add background, I don't know how to add background to Texture namespace
+
+       // mTextures.load(Textures::Background, "Media/background.png");
 }
 
 void World::buildScene()
@@ -49,23 +53,22 @@ void World::buildScene()
                 mSceneGraph.attachChild(std::move(layer));
         }
 
+        //prepare background sprite
+        sf::IntRect backTextureRect(mWorldBounds);
+
         // Add player
         std::unique_ptr<Player> player(new Player(mTextures));
         mPlayer = player.get();
         mPlayer->setPosition(mSpawnPosition);
         mPlayer->setVelocity(0.f, 0.f);
-
-        // Currently the new problem 11/21/2013 2:41 AM
-        // For some reason, the tutorial allows a unique_ptr<Aircraft> (unique_ptr<Player for us>)
-        // To be attached to the scene layer with this call to std::move. However, attachChild only
-        // Takes SceneNode Ptr's. Somehow the player class is checked as a Scene Node and allowed to
-        // attach. I don't know how - Ethan
         mSceneLayers[Air]->attachChild(std::move(player));
 
+        /*
         // Add the background sprite to the scene
-        std::unique_ptr<SpriteNode> backgroundSprite(new SpriteNode(texture, textureRect));
+        std::unique_ptr<SpriteNode> backgroundSprite(new SpriteNode(mTextures.get(Textures::Background), backTextureRect));
         backgroundSprite->setPosition(mWorldBounds.left, mWorldBounds.top);
         mSceneLayers[Background]->attachChild(std::move(backgroundSprite));
+        */
 
         /*
         // Add player's aircraft
