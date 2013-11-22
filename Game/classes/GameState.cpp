@@ -1,4 +1,5 @@
 #include "../headers/GameState.hpp"
+#include "../headers/World.hpp"
 #include "../../engine/headers/Command.hpp"
 #include "../../engine/headers/CommandQueue.hpp"
 
@@ -37,3 +38,10 @@ bool GameState::handleEvent(const sf::Event& event)
 
         return true;
 }
+/*
+World* GameState::getWorld()
+{
+    World* ptr = mWorld;
+    return ptr;
+}
+*/

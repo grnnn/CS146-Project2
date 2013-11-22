@@ -10,23 +10,23 @@ StateMachine::~StateMachine()
     //dtor
 }
 
-std::vector<IAction> StateMachine::update(World world){
+std::vector<IAction> StateMachine::update(World& world){
     actionStack.clear();
 	bool trigger = false;
 
-	for(ITransition trans: currentState.getTransitions()){
-		if(trans.isTriggered(world)){
-			triggeredtrans = trans;
+	for(auto trans = currentState.getTransitions().begin(); trans != currentState.getTransitions().end(); ++trans){
+		if((*trans).isTriggered(world)){
+			triggeredtrans = (*trans);
 			trigger = true;
 			break;
 		}
 	}
 	if(trigger){
-		if(currentState.getExitAction() != null)
+		if(currentState.getExitAction() != NULL)
 			actionStack.push_back(currentState.getExitAction());
-		if(triggeredtrans.getAction() != null)
+		if(triggeredtrans.getAction() != NULL)
 			actionStack.push_back(triggeredtrans.getAction());
-		if(triggeredtrans.getTargetState().getEntryAction() != null)
+		if(triggeredtrans.getTargetState().getEntryAction() != NULL)
 			actionStack.push_back(triggeredtrans.getTargetState().getEntryAction());
 
 		currentState = triggeredtrans.getTargetState();
@@ -34,19 +34,19 @@ std::vector<IAction> StateMachine::update(World world){
 		return actionStack;
 	}
 	else{
-		if(currentState.getAction() != null)
+		if(currentState.getAction() != NULL)
 			actionStack.push_back(currentState.getAction());
 		return actionStack;
 	}
 
 }
 
-IState StateMachine::getCurrentState() {
+FState StateMachine::getCurrentState() {
     return currentState;
 }
 
 
-void StateMachine::setCurrentState(IState state) {
+void StateMachine::setCurrentState(FState state) {
 	currentState = state;
 
 }

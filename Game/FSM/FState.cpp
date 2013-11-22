@@ -29,11 +29,11 @@ void FState::setExitAction(IAction action)
 {
     this->EXAction = action;
 }
-std::vector<Transition> FState::getTransitions()
+std::vector<ITransition> FState::getTransitions()
 {
     return transitions;
 }
-void FState::setTransitions(std::vector<Transition> transitions)
+void FState::setTransitions(std::vector<ITransition> transitions)
 {
     this->transitions = transitions;
 }

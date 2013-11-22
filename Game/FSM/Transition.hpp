@@ -5,22 +5,18 @@
 #include "IAction.hpp"
 #include "ICondition.hpp"
 
-class Transition
+class Transition: public ITransition
 {
     public:
                                     Transition();
         FState                      getTargetState();
         void                        setTargetState(FState targetState);
-        IAction                     getAction();
         void                        setAction(IAction action);
         void                        setCondition(ICondition condition);
-        bool                        isTriggered(World world);
         virtual                     ~Transition();
     protected:
     private:
         FState                      targetState;
-        IAction                     action;
-        ICondition                  condition;
 };
 
 #endif // TRANSITION_H

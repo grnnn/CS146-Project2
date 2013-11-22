@@ -1,8 +1,10 @@
 #ifndef FSTATE_H
 #define FSTATE_H
 
+#include <vector>
+
 #include "IAction.hpp"
-#include "Transition.hpp"
+#include "ITransition.hpp"
 
 class FState
 {
@@ -14,15 +16,15 @@ class FState
         void                                setEntryAction(IAction action);
         IAction                             getExitAction();
         void                                setExitAction(IAction action);
-        std::vector<Transition>             getTransitions();
-        void                                setTransitions(std::vector<Transition> transitions);
+        std::vector<ITransition>            getTransitions();
+        void                                setTransitions(std::vector<ITransition> transitions);
         virtual                             ~FState();
     protected:
     private:
         IAction                             action;
         IAction                             EAction;
         IAction                             EXAction;
-        std::vector<Transition>             transitions;
+        std::vector<ITransition>            transitions;
 
 
 };
