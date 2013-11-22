@@ -4,7 +4,7 @@
 #include "../../engine/headers/ResourceHolder.hpp"
 #include "../../engine/headers/ResourceIdentifier.hpp"
 #include "../../engine/headers/SceneNode.hpp"
-#include "../headers/Player.hpp"
+#include "../headers/SpaceCraft.hpp"
 //#include <SpriteNode.hpp>
 
 #include <SFML/System/NonCopyable.hpp>
@@ -50,7 +50,7 @@ class World : private sf::NonCopyable
                 std::array<SceneNode*, LayerCount>        mSceneLayers;
                 sf::FloatRect                             mWorldBounds;
                 sf::Vector2f                              mSpawnPosition;
-                Player*                                    mPlayer;
+                SpaceCraft*                               mPlayer;
 
 };
 

@@ -3,7 +3,7 @@
 
 #include "../../engine/headers/State.hpp"
 #include "World.hpp"
-#include "Player.hpp"
+#include "SpaceCraft.hpp"
 
 #include <SFML/Graphics/Sprite.hpp>
 #include <SFML/Graphics/Text.hpp>

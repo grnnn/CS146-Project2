@@ -13,7 +13,7 @@ namespace Textures
     enum ID
     {
         TitleScreen,
-        Player,
+        SpaceCraft,
         Background,
     };
 }

@@ -1,9 +1,10 @@
 #include "../headers/World.hpp"
-#include "../headers/Player.hpp"
-#include "../headers/SpriteNode.hpp"
+#include "../headers/SpaceCraft.hpp"
+#include "../../engine/headers/SpriteNode.hpp"
 #include "../../engine/headers/SceneNode.hpp"
 
 #include <SFML/Graphics/RenderWindow.hpp>
+#include <iostream>
 
 World::World(sf::RenderWindow& window)
 : mWindow(window)
@@ -35,7 +36,7 @@ void World::draw()
 
 void World::loadTextures()
 {
-        mTextures.load(Textures::Player, "Media/Player.png");
+        mTextures.load(Textures::SpaceCraft, "Media/SpaceCraft.png");
 
         //Tried to add background, I don't know how to add background to Texture namespace
 
@@ -63,11 +64,11 @@ void World::buildScene()
         mSceneLayers[Background]->attachChild(std::move(backgroundSprite));
 
         // Add player
-        std::unique_ptr<Player> player(new Player(mTextures));
+        /*std::unique_ptr<Player> player(new Player(mTextures));
         mPlayer = player.get();
         mPlayer->setPosition(mSpawnPosition);
         mPlayer->setVelocity(0.f, 0.f);
-        mSceneLayers[Air]->attachChild(std::move(player));
+        mSceneLayers[Air]->attachChild(std::move(player));*/
 
         /*
         // Add the background sprite to the scene

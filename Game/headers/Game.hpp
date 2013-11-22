@@ -4,7 +4,7 @@
 #include "..\..\engine\headers\ResourceHolder.hpp"
 #include "..\..\engine\headers\ResourceIdentifier.hpp"
 #include "..\..\engine\headers\StateStack.hpp"
-#include "Player.hpp"
+#include "SpaceCraft.hpp"
 
 #include <SFML/Graphics.hpp>
 #include <SFML/System/Time.hpp>

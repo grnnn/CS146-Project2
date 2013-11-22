@@ -65,7 +65,6 @@ void SceneNode::drawCurrent(sf::RenderTarget&, sf::RenderStates) const
 void SceneNode::drawChildren(sf::RenderTarget& target, sf::RenderStates states) const
 {
         for (std::vector<Ptr>::const_iterator child = mChildren.begin(); child != mChildren.end(); ++child)
-        //FOREACH(const Ptr& child, mChildren)
                 (*child)->draw(target, states);
 }
 
