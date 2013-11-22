@@ -4,19 +4,20 @@
 #include <SFML/Graphics.hpp>
 
 #include "SceneNode.hpp"
+//include "CommandQueue.hpp"
 
 class Entity: public SceneNode
 {
     public:
         void            setVelocity(sf::Vector2f v);
         void            setVelocity(float vx, float vy);
-        void            setPosition(float px, float py);
-        void            setPosition(sf::Vector2f p);
+        void            accelerate(sf::Vector2f velocity);
+        void            accelerate(float vx, float vy);
         sf::Vector2f    getVelocity() const;
-        sf::Vector2f    getPosition() const;
     private:
-        sf::Vector2f    velocity;
-        sf::Vector2f    position;
+        virtual void    updateCurrent(sf::Time dt);
+        sf::Vector2f    mVelocity;
+        sf::Vector2f    mPosition;
 };
 
 #endif // ENTITY_HPP_INCLUDED

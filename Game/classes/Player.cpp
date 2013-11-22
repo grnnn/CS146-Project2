@@ -1,10 +1,12 @@
 #include "../headers/Player.hpp"
 #include "../../engine/headers/CommandQueue.hpp"
 #include "../headers/SpaceCraft.hpp"
+#include "../../engine/headers/Command.hpp"
 
 #include <map>
 #include <string>
 #include <algorithm>
+#include <iostream>
 
 
 struct SpaceCraftMover
@@ -34,7 +36,7 @@ Player::Player()
         initializeActions();
 
         // Assign all categories to player's aircraft
-        FOREACH(auto& pair, mActionBinding)
+        for(auto& pair : mActionBinding)
                 pair.second.category = Category::PlayerSpaceCraft;
 }
 
@@ -44,19 +46,25 @@ void Player::handleEvent(const sf::Event& event, CommandQueue& commands)
         {
                 // Check if pressed key appears in key binding, trigger command if so
                 auto found = mKeyBinding.find(event.key.code);
-                if (found != mKeyBinding.end() && !isRealtimeAction(found->second))
+                /*if (!(found != mKeyBinding.end()))
+                    std::cout << "found != mKeyBinding.end() returned false";
+                if (!(!isRealtimeAction(found->second)))
+                    std::cout << "!isRealtimeAction(found->second) returned false";*/
+                if (found != mKeyBinding.end() && !isRealtimeAction(found->second)){
+                    //std::cout << "Also got here.\n";
                         commands.push(mActionBinding[found->second]);
+                }
         }
 }
 
 void Player::handleRealtimeInput(CommandQueue& commands)
 {
         // Traverse all assigned keys and check if they are pressed
-        FOREACH(auto pair, mKeyBinding)
+        for(auto pair = mKeyBinding.rbegin(); pair != mKeyBinding.rend(); ++pair)
         {
                 // If key is pressed, lookup action and trigger corresponding command
-                if (sf::Keyboard::isKeyPressed(pair.first) && isRealtimeAction(pair.second))
-                        commands.push(mActionBinding[pair.second]);
+                if (sf::Keyboard::isKeyPressed((*pair).first) && isRealtimeAction((*pair).second))
+                        commands.push(mActionBinding[(*pair).second]);
         }
 }
 
@@ -77,10 +85,10 @@ void Player::assignKey(Action action, sf::Keyboard::Key key)
 
 sf::Keyboard::Key Player::getAssignedKey(Action action) const
 {
-        FOREACH(auto pair, mKeyBinding)
+        for(auto pair = mKeyBinding.rbegin(); pair != mKeyBinding.rend(); ++pair)
         {
-                if (pair.second == action)
-                        return pair.first;
+                if ((*pair).second == action)
+                        return (*pair).first;
         }
 
         return sf::Keyboard::Unknown;
@@ -88,12 +96,12 @@ sf::Keyboard::Key Player::getAssignedKey(Action action) const
 
 void Player::initializeActions()
 {
-        const float playerSpeed = 200.f;
+        const float playerSpeed = 250.f;
 
-        mActionBinding[MoveLeft].action = derivedAction<Aircraft>(AircraftMover(-playerSpeed, 0.f));
-        mActionBinding[MoveRight].action = derivedAction<Aircraft>(AircraftMover(+playerSpeed, 0.f));
-        mActionBinding[MoveUp].action = derivedAction<Aircraft>(AircraftMover(0.f, -playerSpeed));
-        mActionBinding[MoveDown].action = derivedAction<Aircraft>(AircraftMover(0.f, +playerSpeed));
+        mActionBinding[MoveLeft].action = derivedAction<SpaceCraft>(SpaceCraftMover(-playerSpeed, 0.f));
+        mActionBinding[MoveRight].action = derivedAction<SpaceCraft>(SpaceCraftMover(+playerSpeed, 0.f));
+        mActionBinding[MoveUp].action = derivedAction<SpaceCraft>(SpaceCraftMover(0.f, -playerSpeed));
+        mActionBinding[MoveDown].action = derivedAction<SpaceCraft>(SpaceCraftMover(0.f, +playerSpeed));
 }
 
 bool Player::isRealtimeAction(Action action)

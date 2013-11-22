@@ -4,6 +4,7 @@
 #include "..\..\engine\headers\ResourceHolder.hpp"
 #include "..\..\engine\headers\ResourceIdentifier.hpp"
 #include "..\..\engine\headers\StateStack.hpp"
+#include "Player.hpp"
 #include "SpaceCraft.hpp"
 
 #include <SFML/Graphics.hpp>
@@ -26,6 +27,7 @@ class Game : private sf::NonCopyable
         sf::RenderWindow        gameWindow;
         TextureHolder           gameTextures;
         FontHolder              gameFont;
+        Player                  gamePlayer;
         StateStack              gameStateStack;
         sf::Text                gameStatisticsText;
         sf::Time                gameStatisticsUpdateTime;

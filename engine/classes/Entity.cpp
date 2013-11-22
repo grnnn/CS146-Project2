@@ -1,33 +1,34 @@
 #include "..\headers\Entity.hpp"
+#include <iostream>
 
 void Entity::setVelocity(sf::Vector2f v)
 {
-    velocity = v;
+    mVelocity = v;
 }
 
 void Entity::setVelocity(float vx, float vy)
 {
-    velocity.x = vx;
-    velocity.y = vy;
-}
-
-void Entity::setPosition(sf::Vector2f p)
-{
-    position = p;
-}
-
-void Entity::setPosition(float px, float py)
-{
-    position.x = px;
-    position.y = py;
+    mVelocity.x = vx;
+    mVelocity.y = vy;
 }
 
 sf::Vector2f Entity::getVelocity() const
 {
-    return velocity;
+    return mVelocity;
 }
 
-sf::Vector2f Entity::getPosition() const
+void Entity::accelerate(sf::Vector2f velocity)
 {
-    return position;
+        mVelocity += velocity;
+}
+
+void Entity::accelerate(float vx, float vy)
+{
+        mVelocity.x += vx;
+        mVelocity.y += vy;
+}
+
+void Entity::updateCurrent(sf::Time dt)
+{
+        move(mVelocity * dt.asSeconds());
 }

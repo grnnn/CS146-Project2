@@ -1,9 +1,11 @@
 #include <SFML/Graphics/RenderTarget.hpp>
 #include <SFML/System/Time.hpp>
 #include "../headers/SceneNode.hpp"
+#include "../headers/Command.hpp"
 
 #include <algorithm>
 #include <cassert>
+#include <iostream>
 
 
 SceneNode::SceneNode()
@@ -83,18 +85,19 @@ sf::Transform SceneNode::getWorldTransform() const
         return transform;
 }
 
-/*void SceneNode::onCommand(const Command& command, sf::Time dt)
+void SceneNode::onCommand(const Command& command, sf::Time dt)
 {
         // Command current node, if category matches
-        if (command.category & getCategory())
+        if (command.category & getCategory()){
                 command.action(*this, dt);
+        }
 
         // Command children
-        FOREACH(Ptr& child, mChildren)
+        for(Ptr& child : mChildren)
                 child->onCommand(command, dt);
-}*/
+}
 
-/*unsigned int SceneNode::getCategory() const
+unsigned int SceneNode::getCategory() const
 {
         return Category::Scene;
-}*/
+}

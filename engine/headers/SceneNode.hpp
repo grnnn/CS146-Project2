@@ -1,6 +1,8 @@
 #ifndef SCENENODE_HPP_INCLUDED
 #define SCENENODE_HPP_INCLUDED
 
+#include "../../Game/headers/Category.hpp"
+
 #include <SFML/System/NonCopyable.hpp>
 #include <SFML/System/Time.hpp>
 #include <SFML/Graphics/Transformable.hpp>
@@ -8,6 +10,8 @@
 
 #include <vector>
 #include <memory>
+
+struct Command;
 
 class SceneNode : public sf::Transformable, public sf::Drawable, private sf::NonCopyable
 {
@@ -23,9 +27,8 @@ class SceneNode : public sf::Transformable, public sf::Drawable, private sf::Non
 
         sf::Vector2f                        getWorldPosition() const;
         sf::Transform                       getWorldTransform() const;
-
-        //void                                onCommand(const Command& command, sf::Time dt);
-        //virtual unsigned int                getCategory() const;                                detachChild(const SceneNode& node);
+        void                                onCommand(const Command& command, sf::Time dt);
+        virtual unsigned int                getCategory() const;
     private:
         std::vector<Ptr>                    mChildren;
         SceneNode*                          mParent;

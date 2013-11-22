@@ -12,8 +12,9 @@ class SpaceCraft : public Entity
         SpaceCraft(const TextureHolder& textures);
         void processEvents();
         void update(sf::Time dt);
-        virtual void drawCurrent(sf::RenderTarget& target, sf::RenderStates states) const;
+        virtual unsigned int        getCategory() const;
     private:
+        virtual void drawCurrent(sf::RenderTarget& target, sf::RenderStates states) const;
         sf::Sprite              mSprite;
 };
 

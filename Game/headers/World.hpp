@@ -5,6 +5,7 @@
 #include "../../engine/headers/ResourceIdentifier.hpp"
 #include "../../engine/headers/SceneNode.hpp"
 #include "../headers/SpaceCraft.hpp"
+#include "../../engine/headers/CommandQueue.hpp"
 //#include <SpriteNode.hpp>
 
 #include <SFML/System/NonCopyable.hpp>
@@ -25,12 +26,14 @@ class World : private sf::NonCopyable
                 explicit                                  World(sf::RenderWindow& window);
                 void                                      update(sf::Time dt);
                 void                                      draw();
+                CommandQueue&                             getCommandQueue();
 
 
         private:
                 void                                       loadTextures();
                 void                                       buildScene();
-
+                void                                       adaptPlayerVelocity();
+                void                                       adaptPlayerPosition();
 
         private:
                 enum Layer
@@ -46,6 +49,7 @@ class World : private sf::NonCopyable
                 sf::View                                  mWorldView;
                 TextureHolder                             mTextures;
 
+                CommandQueue                              mCommandQueue;
                 SceneNode                                 mSceneGraph;
                 std::array<SceneNode*, LayerCount>        mSceneLayers;
                 sf::FloatRect                             mWorldBounds;

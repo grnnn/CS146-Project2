@@ -1,14 +1,20 @@
 #include "../headers/SpaceCraft.hpp"
 #include "../../engine/headers/ResourceHolder.hpp"
+#include "../../engine/headers/Utility.hpp"
+#include <iostream>
 
 SpaceCraft::SpaceCraft(const TextureHolder& textures)
 : mSprite(textures.get(Textures::SpaceCraft))
 {
-    sf::FloatRect bounds = mSprite.getLocalBounds();
-    mSprite.setOrigin(bounds.width / 2.f, bounds.height / 2.f);
+    centerOrigin(mSprite);
 }
 
 void SpaceCraft::drawCurrent(sf::RenderTarget& target, sf::RenderStates states) const
 {
     target.draw(mSprite, states);
+}
+
+unsigned int SpaceCraft::getCategory() const
+{
+    return Category::PlayerSpaceCraft;
 }

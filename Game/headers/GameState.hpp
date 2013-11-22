@@ -3,7 +3,7 @@
 
 #include "../../engine/headers/State.hpp"
 #include "World.hpp"
-#include "SpaceCraft.hpp"
+#include "Player.hpp"
 
 #include <SFML/Graphics/Sprite.hpp>
 #include <SFML/Graphics/Text.hpp>
@@ -20,7 +20,8 @@ class GameState : public State
 
 
         private:
-                World                                mWorld;
+                World                       mWorld;
+                Player&                     mPlayer;
 };
 
 #endif // GAMESTATE_HPP_INCLUDED
