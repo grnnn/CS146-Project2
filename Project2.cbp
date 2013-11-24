@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="Project2" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="Debug">
+				<Option output="bin/Debug/Project2" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Debug/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-g" />
+					<Add option="-DSFML_STATIC" />
+					<Add directory="C:/SFML-2.1/include" />
+				</Compiler>
+				<Linker>
+					<Add library="sfml-audio-s-d" />
+					<Add library="sfml-network-s-d" />
+					<Add library="sfml-graphics-s-d" />
+					<Add library="sfml-window-s-d" />
+					<Add library="sfml-system-s-d" />
+					<Add directory="C:/SFML-2.1/lib" />
+				</Linker>
+			</Target>
+			<Target title="Release">
+				<Option output="bin/Release/Project2" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Release/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-O2" />
+					<Add option="-DSFML_STATIC" />
+					<Add directory="C:/SFML-2.1/include" />
+				</Compiler>
+				<Linker>
+					<Add option="-s" />
+					<Add library="sfml-audio-s" />
+					<Add library="sfml-network-s" />
+					<Add library="sfml-graphics-s" />
+					<Add library="sfml-window-s" />
+					<Add library="sfml-system-s" />
+					<Add directory="C:/SFML-2.1/lib" />
+				</Linker>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add option="-Wall" />
+			<Add option="-fexceptions" />
+		</Compiler>
+		<Unit filename="Game/classes/Game.cpp" />
+		<Unit filename="Game/classes/GameState.cpp" />
+		<Unit filename="Game/classes/Player.cpp" />
+		<Unit filename="Game/classes/SpaceCraft.cpp" />
+		<Unit filename="Game/classes/TitleState.cpp" />
+		<Unit filename="Game/classes/World.cpp" />
+		<Unit filename="Game/headers/Category.hpp" />
+		<Unit filename="Game/headers/Game.hpp" />
+		<Unit filename="Game/headers/GameState.h" />
+		<Unit filename="Game/headers/GameState.hpp" />
+		<Unit filename="Game/headers/Player.hpp" />
+		<Unit filename="Game/headers/SpaceCraft.hpp" />
+		<Unit filename="Game/headers/TitleState.hpp" />
+		<Unit filename="Game/headers/World.hpp" />
+		<Unit filename="engine/classes/Command.cpp" />
+		<Unit filename="engine/classes/CommandQueue.cpp" />
+		<Unit filename="engine/classes/Entity.cpp" />
+		<Unit filename="engine/classes/SceneNode.cpp" />
+		<Unit filename="engine/classes/SpriteNode.cpp" />
+		<Unit filename="engine/classes/State.cpp" />
+		<Unit filename="engine/classes/StateStack.cpp" />
+		<Unit filename="engine/classes/Utility.cpp" />
+		<Unit filename="engine/headers/Command.hpp" />
+		<Unit filename="engine/headers/CommandQueue.hpp" />
+		<Unit filename="engine/headers/Entity.hpp" />
+		<Unit filename="engine/headers/ResourceHolder.hpp" />
+		<Unit filename="engine/headers/ResourceIdentifier.hpp" />
+		<Unit filename="engine/headers/SceneNode.hpp" />
+		<Unit filename="engine/headers/SpriteNode.hpp" />
+		<Unit filename="engine/headers/State.hpp" />
+		<Unit filename="engine/headers/StateIdentifiers.hpp" />
+		<Unit filename="engine/headers/StateStack.hpp" />
+		<Unit filename="engine/headers/StringHelpers.hpp" />
+		<Unit filename="engine/headers/TitleState.hpp" />
+		<Unit filename="engine/headers/Utility.hpp" />
+		<Unit filename="main.cpp" />
+		<Extensions>
+			<code_completion />
+			<envvars />
+			<debugger />
+			<lib_finder disable_auto="1" />
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>
