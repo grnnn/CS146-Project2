@@ -13,10 +13,11 @@ class SceneNode;
 
 struct Command
 {
-        Command();
+        Command(SceneNode& n);
 
         std::function<void(SceneNode&, sf::Time)>        action;
         unsigned int                                     category;
+        SceneNode&                                       node;
 };
 
 template <typename GameObject, typename Function>

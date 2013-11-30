@@ -27,7 +27,7 @@ class Game : private sf::NonCopyable
         sf::RenderWindow        gameWindow;
         TextureHolder           gameTextures;
         FontHolder              gameFont;
-        Player                  gamePlayer;
+        //Player                  gamePlayer;
         StateStack              gameStateStack;
         sf::Text                gameStatisticsText;
         sf::Time                gameStatisticsUpdateTime;

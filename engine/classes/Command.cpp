@@ -1,7 +1,8 @@
 #include "../headers/Command.hpp"
 
-Command::Command()
+Command::Command(SceneNode& n)
 : action()
 , category(Category::None)
+, node(n)
 {
 }

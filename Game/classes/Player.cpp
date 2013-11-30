@@ -9,10 +9,10 @@
 #include <algorithm>
 #include <iostream>
 
-Player::Player(sf::RenderWindow& window)
+Player::Player(sf::RenderWindow& window, World& world)
 : mWindow(window)
+, mWorld(&world)
 {
-        //lastMousePosition = sf::Mouse::getPosition(mWindow);
 
         // Set initial key bindings
         mKeyBinding[sf::Keyboard::Left] = MoveLeft;
@@ -34,19 +34,17 @@ void Player::handleEvent(const sf::Event& event, CommandQueue& commands)
         {
                 // Check if pressed key appears in key binding, trigger command if so
                 auto found = mKeyBinding.find(event.key.code);
-                /*if (!(found != mKeyBinding.end()))
-                    std::cout << "found != mKeyBinding.end() returned false";
-                if (!(!isRealtimeAction(found->second)))
-                    std::cout << "!isRealtimeAction(found->second) returned false";*/
+
                 if (found != mKeyBinding.end() && !isRealtimeAction(found->second)){
-                    //std::cout << "Also got here.\n";
-                        commands.push(mActionBinding[found->second]);
+                        commands.push(mActionBinding.at(found->second));
                 }
         }
 }
 
 void Player::handleRealtimeInput(CommandQueue& commands)
 {
+        //SceneNode* craft = mWorld->getPlayer();
+
         // Update delta mouse
         sf::Vector2i mousePosition = sf::Mouse::getPosition(mWindow);
         deltaMouse = lastMousePosition - mousePosition;
@@ -62,9 +60,11 @@ void Player::handleRealtimeInput(CommandQueue& commands)
 
             float rotation = (atan2(dy, dx)) * 180 / PI;
 
-            mActionBinding[Rotate].action = derivedAction<SpaceCraft>(SpaceCraftRotater(rotation + 180));
+            //Command Rcmd(*craft);
+            mActionBinding.at(Rotate).action = derivedAction<SpaceCraft>(SpaceCraftRotater(rotation + 180));
+            //mActionBinding.insert(std::make_pair(Rotate, std::move(Rcmd)));
 
-            commands.push(mActionBinding[Rotate]);
+            commands.push(mActionBinding.at(Rotate));
         }
 
 
@@ -73,7 +73,7 @@ void Player::handleRealtimeInput(CommandQueue& commands)
         {
                 // If key is pressed, lookup action and trigger corresponding command
                 if (sf::Keyboard::isKeyPressed((*pair).first) && isRealtimeAction((*pair).second))
-                        commands.push(mActionBinding[(*pair).second]);
+                        commands.push(mActionBinding.at((*pair).second) );
         }
 
         lastMousePosition = mousePosition;
@@ -110,11 +110,27 @@ void Player::initializeActions()
 {
         const float playerSpeed = 250.f;
 
-        mActionBinding[MoveLeft].action = derivedAction<SpaceCraft>(SpaceCraftMover(-playerSpeed, 0.f));
-        mActionBinding[MoveRight].action = derivedAction<SpaceCraft>(SpaceCraftMover(+playerSpeed, 0.f));
-        mActionBinding[MoveUp].action = derivedAction<SpaceCraft>(SpaceCraftMover(0.f, -playerSpeed));
-        mActionBinding[MoveDown].action = derivedAction<SpaceCraft>(SpaceCraftMover(0.f, +playerSpeed));
-        mActionBinding[Rotate].action = nullptr;
+        SceneNode* craft = mWorld->getPlayer();
+
+        Command MLcmd(*craft);
+        MLcmd.action = derivedAction<SpaceCraft>(SpaceCraftMover(-playerSpeed, 0.f));
+        mActionBinding.insert(std::make_pair(MoveLeft, std::move(MLcmd)));
+
+        Command MRcmd(*craft);
+        MRcmd.action = derivedAction<SpaceCraft>(SpaceCraftMover(+playerSpeed, 0.f));
+        mActionBinding.insert(std::make_pair(MoveRight, std::move(MRcmd)));
+
+        Command MUcmd(*craft);
+        MUcmd.action = derivedAction<SpaceCraft>(SpaceCraftMover(0.f, -playerSpeed));
+        mActionBinding.insert(std::make_pair(MoveUp, std::move(MUcmd)));
+
+        Command MDcmd(*craft);
+        MDcmd.action = derivedAction<SpaceCraft>(SpaceCraftMover(0.f, +playerSpeed));
+        mActionBinding.insert(std::make_pair(MoveDown, std::move(MDcmd)));
+
+        Command Rcmd(*craft);
+        Rcmd.action = nullptr;
+        mActionBinding.insert(std::make_pair(Rotate, std::move(Rcmd)));
 }
 
 bool Player::isRealtimeAction(Action action)
@@ -132,7 +148,3 @@ bool Player::isRealtimeAction(Action action)
         }
 }
 
-void Player::setWorld(World& world)
-{
-    mWorld = &world;
-}

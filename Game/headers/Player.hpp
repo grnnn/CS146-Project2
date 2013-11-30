@@ -31,13 +31,12 @@ class Player : private sf::NonCopyable
                         ActionCount
                 };
         public:
-                explicit                                     Player(sf::RenderWindow& window);
+                explicit                                     Player(sf::RenderWindow& window, World& world);
                 void                                         handleEvent(const sf::Event& event, CommandQueue& commands);
                 void                                         handleRealtimeInput(CommandQueue& commands);
 
                 void                                         assignKey(Action action, sf::Keyboard::Key key);
                 sf::Keyboard::Key                            getAssignedKey(Action action) const;
-                void                                         setWorld(World& world);
         private:
                 void                                         initializeActions();
                 static bool                                  isRealtimeAction(Action action);

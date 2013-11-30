@@ -22,7 +22,7 @@ class GameState : public State
 
         private:
                 World                       mWorld;
-                Player&                     mPlayer;
+                Player                      mPlayer;
 };
 
 #endif // GAMESTATE_HPP_INCLUDED

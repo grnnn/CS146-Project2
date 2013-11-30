@@ -31,7 +31,8 @@ void World::update(sf::Time dt)
     mPlayer->setVelocity(0.f, 0.f);
 
     while (!mCommandQueue.isEmpty()){
-                mSceneGraph.onCommand(mCommandQueue.pop(), dt);
+                Command cmd = mCommandQueue.pop();
+                cmd.action(cmd.node, dt);
     }
     mSceneGraph.update(dt);
     adaptPlayerPosition();
@@ -114,4 +115,9 @@ void World::adaptPlayerVelocity()
 sf::Vector2f World::getPlayerPosition()
 {
     return mPlayer->getPosition();
+}
+
+SceneNode* World::getPlayer()
+{
+    return mPlayer;
 }

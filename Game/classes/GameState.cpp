@@ -7,9 +7,8 @@
 GameState::GameState(StateStack& stack, Context context)
 : State(stack, context)
 , mWorld(*context.window)
-, mPlayer(*context.player)
+, mPlayer(*context.window, mWorld)
 {
-    mPlayer.setWorld(mWorld);
 }
 
 void GameState::draw()
@@ -39,10 +38,3 @@ bool GameState::handleEvent(const sf::Event& event)
 
         return true;
 }
-/*
-World* GameState::getWorld()
-{
-    World* ptr = mWorld;
-    return ptr;
-}
-*/

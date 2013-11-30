@@ -28,6 +28,7 @@ class World : private sf::NonCopyable
                 void                                      draw();
                 CommandQueue&                             getCommandQueue();
                 sf::Vector2f                              getPlayerPosition();
+                SceneNode*                                getPlayer();
 
 
         private:
