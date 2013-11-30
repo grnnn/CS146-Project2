@@ -2,30 +2,18 @@
 #include "../../engine/headers/CommandQueue.hpp"
 #include "../headers/SpaceCraft.hpp"
 #include "../../engine/headers/Command.hpp"
+#include "../headers/SpaceCraftActions.hpp"
 
 #include <map>
 #include <string>
 #include <algorithm>
 #include <iostream>
 
-
-struct SpaceCraftMover
+Player::Player(sf::RenderWindow& window)
+: mWindow(window)
 {
-        SpaceCraftMover(float vx, float vy)
-        : velocity(vx, vy)
-        {
-        }
+        //lastMousePosition = sf::Mouse::getPosition(mWindow);
 
-        void operator() (SpaceCraft& spacecraft, sf::Time) const
-        {
-                spacecraft.accelerate(velocity);
-        }
-
-        sf::Vector2f velocity;
-};
-
-Player::Player()
-{
         // Set initial key bindings
         mKeyBinding[sf::Keyboard::Left] = MoveLeft;
         mKeyBinding[sf::Keyboard::Right] = MoveRight;
@@ -59,6 +47,27 @@ void Player::handleEvent(const sf::Event& event, CommandQueue& commands)
 
 void Player::handleRealtimeInput(CommandQueue& commands)
 {
+        // Update delta mouse
+        sf::Vector2i mousePosition = sf::Mouse::getPosition(mWindow);
+        deltaMouse = lastMousePosition - mousePosition;
+        sf::Vector2f spritePos = mWorld->getPlayerPosition();
+
+        // If the mouse has moved, we must update the sprites rotation
+        if ((deltaMouse.x != 0 && deltaMouse.y != 0) || (lastPlayerPosition != spritePos)){
+
+            const float PI = 3.14159265;
+
+            float dx = spritePos.x - mousePosition.x;
+            float dy = spritePos.y - mousePosition.y;
+
+            float rotation = (atan2(dy, dx)) * 180 / PI;
+
+            mActionBinding[Rotate].action = derivedAction<SpaceCraft>(SpaceCraftRotater(rotation + 180));
+
+            commands.push(mActionBinding[Rotate]);
+        }
+
+
         // Traverse all assigned keys and check if they are pressed
         for(auto pair = mKeyBinding.rbegin(); pair != mKeyBinding.rend(); ++pair)
         {
@@ -66,6 +75,9 @@ void Player::handleRealtimeInput(CommandQueue& commands)
                 if (sf::Keyboard::isKeyPressed((*pair).first) && isRealtimeAction((*pair).second))
                         commands.push(mActionBinding[(*pair).second]);
         }
+
+        lastMousePosition = mousePosition;
+        lastPlayerPosition = spritePos;
 }
 
 void Player::assignKey(Action action, sf::Keyboard::Key key)
@@ -102,6 +114,7 @@ void Player::initializeActions()
         mActionBinding[MoveRight].action = derivedAction<SpaceCraft>(SpaceCraftMover(+playerSpeed, 0.f));
         mActionBinding[MoveUp].action = derivedAction<SpaceCraft>(SpaceCraftMover(0.f, -playerSpeed));
         mActionBinding[MoveDown].action = derivedAction<SpaceCraft>(SpaceCraftMover(0.f, +playerSpeed));
+        mActionBinding[Rotate].action = nullptr;
 }
 
 bool Player::isRealtimeAction(Action action)
@@ -112,9 +125,14 @@ bool Player::isRealtimeAction(Action action)
                 case MoveRight:
                 case MoveDown:
                 case MoveUp:
+                case Rotate:
                         return true;
-
                 default:
                         return false;
         }
+}
+
+void Player::setWorld(World& world)
+{
+    mWorld = &world;
 }

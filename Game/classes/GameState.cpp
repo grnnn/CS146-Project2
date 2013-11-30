@@ -9,6 +9,7 @@ GameState::GameState(StateStack& stack, Context context)
 , mWorld(*context.window)
 , mPlayer(*context.player)
 {
+    mPlayer.setWorld(mWorld);
 }
 
 void GameState::draw()

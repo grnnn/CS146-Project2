@@ -13,7 +13,7 @@ const sf::Time Game::TimePerFrame = sf::seconds(1.f/60.f);
 Game::Game()
 : gameWindow(sf::VideoMode(640, 480), "Project 2", sf::Style::Close)
 , gameFont()
-, gamePlayer()
+, gamePlayer(gameWindow)
 , gameStateStack(State::Context(gameWindow, gameTextures, gameFont, gamePlayer))
 , gameStatisticsText()
 , gameStatisticsUpdateTime()

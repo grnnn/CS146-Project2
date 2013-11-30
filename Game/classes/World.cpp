@@ -1,5 +1,6 @@
 #include "../headers/World.hpp"
 #include "../headers/SpaceCraft.hpp"
+#include "../headers/Enemy.hpp"
 #include "../headers/Player.hpp"
 #include "../../engine/headers/SpriteNode.hpp"
 #include "../../engine/headers/SceneNode.hpp"
@@ -49,7 +50,8 @@ CommandQueue& World::getCommandQueue()
 
 void World::loadTextures()
 {
-        mTextures.load(Textures::SpaceCraft, "Media/SpaceCraft.png");
+        mTextures.load(Textures::SpaceCraft, "Media/Player.png");
+        mTextures.load(Textures::Enemy, "Media/Enemy.png");
         mTextures.load(Textures::Background, "Media/background.png");
 }
 
@@ -79,6 +81,11 @@ void World::buildScene()
         mPlayer->setPosition(mSpawnPosition);
         mPlayer->setVelocity(0.f, 0.f);
         mSceneLayers[Air]->attachChild(std::move(player));
+
+        //Test Enemy
+        std::unique_ptr<Enemy> enemy(new Enemy(mTextures, Category::Freezer));
+        enemy->setPosition(mWorldView.getSize().x / 2, (mWorldView.getSize().y / 2) - 50);
+        mSceneLayers[Air]->attachChild(std::move(enemy));
 }
 
 void World::adaptPlayerPosition()
@@ -102,4 +109,9 @@ void World::adaptPlayerVelocity()
         // If moving diagonally, reduce velocity (to have always same velocity)
         if (velocity.x != 0.f && velocity.y != 0.f)
                 mPlayer->setVelocity(velocity / std::sqrt(2.f));
+}
+
+sf::Vector2f World::getPlayerPosition()
+{
+    return mPlayer->getPosition();
 }

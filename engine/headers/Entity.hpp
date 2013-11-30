@@ -18,6 +18,7 @@ class Entity: public SceneNode
         virtual void    updateCurrent(sf::Time dt);
         sf::Vector2f    mVelocity;
         sf::Vector2f    mPosition;
+        //sf::Vector3f    mOrientation;
 };
 
 #endif // ENTITY_HPP_INCLUDED

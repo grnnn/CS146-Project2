@@ -17,7 +17,7 @@ class GameState : public State
                 virtual void                draw();
                 virtual bool                update(sf::Time dt);
                 virtual bool                handleEvent(const sf::Event& event);
-                World*                      getWorld();
+                //World*                      getWorld();
 
 
         private:

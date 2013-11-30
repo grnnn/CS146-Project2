@@ -50,6 +50,7 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
+		<Unit filename="Game/classes/Enemy.cpp" />
 		<Unit filename="Game/classes/Game.cpp" />
 		<Unit filename="Game/classes/GameState.cpp" />
 		<Unit filename="Game/classes/Player.cpp" />
@@ -57,11 +58,12 @@
 		<Unit filename="Game/classes/TitleState.cpp" />
 		<Unit filename="Game/classes/World.cpp" />
 		<Unit filename="Game/headers/Category.hpp" />
+		<Unit filename="Game/headers/Enemy.hpp" />
 		<Unit filename="Game/headers/Game.hpp" />
-		<Unit filename="Game/headers/GameState.h" />
 		<Unit filename="Game/headers/GameState.hpp" />
 		<Unit filename="Game/headers/Player.hpp" />
 		<Unit filename="Game/headers/SpaceCraft.hpp" />
+		<Unit filename="Game/headers/SpaceCraftActions.hpp" />
 		<Unit filename="Game/headers/TitleState.hpp" />
 		<Unit filename="Game/headers/World.hpp" />
 		<Unit filename="engine/classes/Command.cpp" />

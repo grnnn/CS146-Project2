@@ -10,8 +10,8 @@ namespace Category
                 None                 = 0,
                 Scene                = 1 << 0,
                 PlayerSpaceCraft     = 1 << 1,
-                AlliedAircraft       = 1 << 2,
-                Enemy                = 1 << 3,
+                Freezer              = 1 << 2,
+                MoveRight            = 1 << 3,
         };
 }
 

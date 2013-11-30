@@ -15,6 +15,7 @@ namespace Textures
         TitleScreen,
         SpaceCraft,
         Background,
+        Enemy,
     };
 }
 
