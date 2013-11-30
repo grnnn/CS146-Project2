@@ -16,7 +16,6 @@ struct Command
         Command(SceneNode& n);
 
         std::function<void(SceneNode&, sf::Time)>        action;
-        unsigned int                                     category;
         SceneNode&                                       node;
 };
 

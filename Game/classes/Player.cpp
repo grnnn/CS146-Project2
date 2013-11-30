@@ -22,10 +22,6 @@ Player::Player(sf::RenderWindow& window, World& world)
 
         // Set initial action bindings
         initializeActions();
-
-        // Assign all categories to player's aircraft
-        for(auto& pair : mActionBinding)
-                pair.second.category = Category::PlayerSpaceCraft;
 }
 
 void Player::handleEvent(const sf::Event& event, CommandQueue& commands)

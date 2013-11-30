@@ -2,7 +2,6 @@
 
 Command::Command(SceneNode& n)
 : action()
-, category(Category::None)
 , node(n)
 {
 }
