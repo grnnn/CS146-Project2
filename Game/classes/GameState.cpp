@@ -8,6 +8,7 @@ GameState::GameState(StateStack& stack, Context context)
 : State(stack, context)
 , mWorld(*context.window)
 , mPlayer(*context.window, mWorld)
+, mEnemyController(*context.window, mWorld)
 {
 }
 
@@ -22,6 +23,7 @@ bool GameState::update(sf::Time dt)
 
         CommandQueue& commands = mWorld.getCommandQueue();
         mPlayer.handleRealtimeInput(commands);
+        mEnemyController.update(commands);
 
         return true;
 }

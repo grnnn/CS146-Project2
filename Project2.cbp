@@ -51,6 +51,7 @@
 			<Add option="-fexceptions" />
 		</Compiler>
 		<Unit filename="Game/classes/Enemy.cpp" />
+		<Unit filename="Game/classes/EnemyController.cpp" />
 		<Unit filename="Game/classes/Game.cpp" />
 		<Unit filename="Game/classes/GameState.cpp" />
 		<Unit filename="Game/classes/Player.cpp" />
@@ -58,6 +59,8 @@
 		<Unit filename="Game/classes/TitleState.cpp" />
 		<Unit filename="Game/classes/World.cpp" />
 		<Unit filename="Game/headers/Enemy.hpp" />
+		<Unit filename="Game/headers/EnemyActions.hpp" />
+		<Unit filename="Game/headers/EnemyController.hpp" />
 		<Unit filename="Game/headers/Game.hpp" />
 		<Unit filename="Game/headers/GameState.hpp" />
 		<Unit filename="Game/headers/Player.hpp" />

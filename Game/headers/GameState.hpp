@@ -23,6 +23,7 @@ class GameState : public State
         private:
                 World                       mWorld;
                 Player                      mPlayer;
+                EnemyController             mEnemyController;
 };
 
 #endif // GAMESTATE_HPP_INCLUDED
