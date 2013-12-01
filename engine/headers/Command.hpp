@@ -1,8 +1,6 @@
 #ifndef COMMAND_HPP_INCLUDED
 #define COMMAND_HPP_INCLUDED
 
-#include "../../Game/headers/Category.hpp"
-
 #include <SFML/System/Time.hpp>
 
 #include <functional>

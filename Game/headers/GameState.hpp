@@ -4,6 +4,7 @@
 #include "../../engine/headers/State.hpp"
 #include "World.hpp"
 #include "Player.hpp"
+#include "EnemyController.hpp"
 
 #include <SFML/Graphics/Sprite.hpp>
 #include <SFML/Graphics/Text.hpp>
@@ -17,7 +18,6 @@ class GameState : public State
                 virtual void                draw();
                 virtual bool                update(sf::Time dt);
                 virtual bool                handleEvent(const sf::Event& event);
-                //World*                      getWorld();
 
 
         private:

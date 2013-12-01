@@ -61,10 +61,10 @@ void World::buildScene()
         // Initialize the different layers
         for (std::size_t i = 0; i < LayerCount; ++i)
         {
-                SceneNode::Ptr layer(new SceneNode());
-                mSceneLayers[i] = layer.get();
+                SceneNode* layer(new SceneNode());
+                mSceneLayers[i] = layer;
 
-                mSceneGraph.attachChild(std::move(layer));
+                mSceneGraph.attachChild( layer );
         }
 
         //prepare background sprite
@@ -72,21 +72,19 @@ void World::buildScene()
         sf::IntRect backTextureRect(mWorldBounds);
 
         // Add Background
-        std::unique_ptr<SpriteNode> backgroundSprite(new SpriteNode(texture, backTextureRect));
+        SpriteNode* backgroundSprite(new SpriteNode(texture, backTextureRect));
         backgroundSprite->setPosition(mWorldBounds.left, mWorldBounds.top);
-        mSceneLayers[Background]->attachChild(std::move(backgroundSprite));
+        mSceneLayers[Background]->attachChild( backgroundSprite );
 
         // Add player
-        std::unique_ptr<SpaceCraft> player(new SpaceCraft(mTextures));
-        mPlayer = player.get();
+        SpaceCraft* player(new SpaceCraft(mTextures));
+        mPlayer = player;
         mPlayer->setPosition(mSpawnPosition);
         mPlayer->setVelocity(0.f, 0.f);
-        mSceneLayers[Air]->attachChild(std::move(player));
+        mSceneLayers[Air]->attachChild(player);
 
         //Test Enemy
-        std::unique_ptr<Enemy> enemy(new Enemy(mTextures, Category::Freezer));
-        enemy->setPosition(mWorldView.getSize().x / 2, (mWorldView.getSize().y / 2) - 50);
-        mSceneLayers[Air]->attachChild(std::move(enemy));
+        spawnEnemy(mWorldView.getSize().x / 2, (mWorldView.getSize().y / 2) - 50);
 }
 
 void World::adaptPlayerPosition()
@@ -120,4 +118,20 @@ sf::Vector2f World::getPlayerPosition()
 SceneNode* World::getPlayer()
 {
     return mPlayer;
+}
+
+void World::spawnEnemy(float x, float y)
+{
+        Enemy* enemy(new Enemy(mTextures));
+        enemy->setPosition(x, y);
+        mEnemies.push_back( enemy );
+        mSceneLayers[Air]->attachChild( enemy );
+}
+
+void World::isEnemiesEmpty()
+{
+    if (mEnemies.empty())
+        std::cout << "mEnemies is still empty";
+    else
+        std::cout << "mEnemies has something in it";
 }

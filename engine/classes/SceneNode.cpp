@@ -14,18 +14,18 @@ SceneNode::SceneNode()
 {
 }
 
-void SceneNode::attachChild(Ptr child)
+void SceneNode::attachChild(SceneNode* child)
 {
         child->mParent = this;
-        mChildren.push_back(std::move(child));
+        mChildren.push_back(child);
 }
 
-SceneNode::Ptr SceneNode::detachChild(const SceneNode& node)
+SceneNode* SceneNode::detachChild(const SceneNode& node)
 {
-        auto found = std::find_if(mChildren.begin(), mChildren.end(), [&] (Ptr& p) { return p.get() == &node; });
+        auto found = std::find_if(mChildren.begin(), mChildren.end(), [&] (SceneNode* p) { return p == &node; });
         assert(found != mChildren.end());
 
-        Ptr result = std::move(*found);
+        SceneNode* result = std::move(*found);
         result->mParent = nullptr;
         mChildren.erase(found);
         return result;
@@ -44,7 +44,7 @@ void SceneNode::updateCurrent(sf::Time dt)
 
 void SceneNode::updateChildren(sf::Time dt)
 {
-        for (std::vector<Ptr>::iterator child = mChildren.begin(); child != mChildren.end(); ++child)
+        for (std::vector<SceneNode*>::iterator child = mChildren.begin(); child != mChildren.end(); ++child)
         //FOREACH(Ptr& child, mChildren)
                 (*child)->update(dt);
 }
@@ -66,7 +66,7 @@ void SceneNode::drawCurrent(sf::RenderTarget&, sf::RenderStates) const
 
 void SceneNode::drawChildren(sf::RenderTarget& target, sf::RenderStates states) const
 {
-        for (std::vector<Ptr>::const_iterator child = mChildren.begin(); child != mChildren.end(); ++child)
+        for (std::vector<SceneNode*>::const_iterator child = mChildren.begin(); child != mChildren.end(); ++child)
                 (*child)->draw(target, states);
 }
 
@@ -83,9 +83,4 @@ sf::Transform SceneNode::getWorldTransform() const
                 transform = node->getTransform() * transform;
 
         return transform;
-}
-
-unsigned int SceneNode::getCategory() const
-{
-        return Category::Scene;
 }

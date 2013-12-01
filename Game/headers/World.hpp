@@ -4,9 +4,9 @@
 #include "../../engine/headers/ResourceHolder.hpp"
 #include "../../engine/headers/ResourceIdentifier.hpp"
 #include "../../engine/headers/SceneNode.hpp"
-#include "../headers/SpaceCraft.hpp"
+#include "SpaceCraft.hpp"
 #include "../../engine/headers/CommandQueue.hpp"
-//#include <SpriteNode.hpp>
+#include "Enemy.hpp"
 
 #include <SFML/System/NonCopyable.hpp>
 #include <SFML/Graphics/View.hpp>
@@ -29,13 +29,9 @@ class World : private sf::NonCopyable
                 CommandQueue&                             getCommandQueue();
                 sf::Vector2f                              getPlayerPosition();
                 SceneNode*                                getPlayer();
+                void                                      isEnemiesEmpty();
 
-
-        private:
-                void                                       loadTextures();
-                void                                       buildScene();
-                void                                       adaptPlayerVelocity();
-                void                                       adaptPlayerPosition();
+                void                                      spawnEnemy(float x, float y);
 
         private:
                 enum Layer
@@ -45,18 +41,24 @@ class World : private sf::NonCopyable
                         LayerCount
                 };
 
+        private:
+                void                                       loadTextures();
+                void                                       buildScene();
+                void                                       adaptPlayerVelocity();
+                void                                       adaptPlayerPosition();
+
 
         private:
                 sf::RenderWindow&                         mWindow;
                 sf::View                                  mWorldView;
                 TextureHolder                             mTextures;
-
                 CommandQueue                              mCommandQueue;
                 SceneNode                                 mSceneGraph;
                 std::array<SceneNode*, LayerCount>        mSceneLayers;
                 sf::FloatRect                             mWorldBounds;
                 sf::Vector2f                              mSpawnPosition;
                 SpaceCraft*                               mPlayer;
+                std::vector<Enemy*>                       mEnemies;
 
 };
 

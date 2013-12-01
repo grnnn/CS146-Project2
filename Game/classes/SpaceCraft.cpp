@@ -13,8 +13,3 @@ void SpaceCraft::drawCurrent(sf::RenderTarget& target, sf::RenderStates states) 
 {
     target.draw(mSprite, states);
 }
-
-unsigned int SpaceCraft::getCategory() const
-{
-    return Category::PlayerSpaceCraft;
-}
