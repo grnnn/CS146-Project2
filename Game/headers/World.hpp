@@ -4,7 +4,7 @@
 #include "../../engine/headers/ResourceHolder.hpp"
 #include "../../engine/headers/ResourceIdentifier.hpp"
 #include "../../engine/headers/SceneNode.hpp"
-#include "SpaceCraft.hpp"
+
 #include "../../engine/headers/CommandQueue.hpp"
 #include "Enemy.hpp"
 
@@ -15,6 +15,7 @@
 #include <array>
 
 // Forward declaration
+class SpaceCraft;
 namespace sf
 {
         class RenderWindow;
@@ -28,8 +29,11 @@ class World : private sf::NonCopyable
                 void                                      draw();
                 CommandQueue&                             getCommandQueue();
                 sf::Vector2f                              getPlayerPosition();
-                SceneNode*                                getPlayer();
+                SpaceCraft*                               getPlayer();
+                SceneNode*                                getAirLayer();
+                TextureHolder&                            getTextures();
                 void                                      isEnemiesEmpty();
+                void                                      loadTextures();
 
                 void                                      spawnEnemy(float x, float y);
 
@@ -42,7 +46,7 @@ class World : private sf::NonCopyable
                 };
 
         private:
-                void                                       loadTextures();
+
                 void                                       buildScene();
                 void                                       adaptPlayerVelocity();
                 void                                       adaptPlayerPosition();
@@ -59,6 +63,7 @@ class World : private sf::NonCopyable
                 sf::Vector2f                              mSpawnPosition;
                 SpaceCraft*                               mPlayer;
                 std::vector<Enemy*>                       mEnemies;
+
 
 };
 

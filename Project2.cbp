@@ -55,6 +55,7 @@
 		<Unit filename="Game/classes/Game.cpp" />
 		<Unit filename="Game/classes/GameState.cpp" />
 		<Unit filename="Game/classes/Player.cpp" />
+		<Unit filename="Game/classes/Projectile.cpp" />
 		<Unit filename="Game/classes/SpaceCraft.cpp" />
 		<Unit filename="Game/classes/TitleState.cpp" />
 		<Unit filename="Game/classes/World.cpp" />
@@ -64,6 +65,7 @@
 		<Unit filename="Game/headers/Game.hpp" />
 		<Unit filename="Game/headers/GameState.hpp" />
 		<Unit filename="Game/headers/Player.hpp" />
+		<Unit filename="Game/headers/Projectile.hpp" />
 		<Unit filename="Game/headers/SpaceCraft.hpp" />
 		<Unit filename="Game/headers/SpaceCraftActions.hpp" />
 		<Unit filename="Game/headers/TitleState.hpp" />

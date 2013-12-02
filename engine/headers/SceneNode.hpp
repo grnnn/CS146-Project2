@@ -5,15 +5,17 @@
 #include <SFML/System/Time.hpp>
 #include <SFML/Graphics/Transformable.hpp>
 #include <SFML/Graphics/Drawable.hpp>
-
+#include <iostream>
 #include <vector>
 #include <memory>
+#include <set>
 
 struct Command;
 
 class SceneNode : public sf::Transformable, public sf::Drawable, private sf::NonCopyable
 {
     public:
+        typedef std::pair<SceneNode*, SceneNode*> Pair;
                                             SceneNode();
         void                                attachChild(SceneNode* child);
         SceneNode*                          detachChild(const SceneNode& node);
@@ -22,6 +24,10 @@ class SceneNode : public sf::Transformable, public sf::Drawable, private sf::Non
 
         sf::Vector2f                        getWorldPosition() const;
         sf::Transform                       getWorldTransform() const;
+        void                                checkNodeCollision(SceneNode& node, std::set<Pair>&
+                                            collisionPairs);
+        void                                checkSceneCollision(SceneNode& sceneGraph,
+                                            std::set<Pair>& collisionPairs);
     private:
         std::vector<SceneNode*>             mChildren;
         SceneNode*                          mParent;

@@ -3,18 +3,37 @@
 
 #include <SFML/Graphics/Sprite.hpp>
 #include "../../engine/headers/Entity.hpp"
+#include "Projectile.hpp"
 #include "../../engine/headers/ResourceIdentifier.hpp"
+#include "../../engine/headers/Command.hpp"
+#include "Player.hpp"
 
+#include <iostream>
+class World;
+class CommandQueue;
 
 class SpaceCraft : public Entity
 {
     public:
-        SpaceCraft(const TextureHolder& textures);
+        SpaceCraft(const TextureHolder& textures, World& world);
         void processEvents();
-        void update(sf::Time dt);
+
+        void fire();
+        void createBullets(SceneNode& node, const
+                           TextureHolder& texture) const;
+        void createProjectile(SceneNode& node, float xOffset, float yOffset, const TextureHolder& textures) const;
+        void checkProjectileLaunch(CommandQueue& commands, const TextureHolder& textures);
+    public:
+        bool                                         mIsFiring;
+
     private:
+        //virtual void updateCurrent(sf::Time dt);
         virtual void drawCurrent(sf::RenderTarget& target, sf::RenderStates states) const;
-        sf::Sprite              mSprite;
+        sf::Sprite                                   mSprite;
+        World*                                       mWorld;
+
+
+
 };
 
 #endif // SPACECRAFT_HPP_INCLUDED

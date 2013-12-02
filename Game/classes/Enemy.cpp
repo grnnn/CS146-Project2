@@ -13,3 +13,8 @@ void Enemy::drawCurrent(sf::RenderTarget& target, sf::RenderStates states) const
 {
     target.draw(mSprite, states);
 }
+sf::FloatRect Enemy::getBoundingRect() const
+{
+    return getWorldTransform()
+    .transformRect(mSprite.getGlobalBounds());
+}

@@ -22,9 +22,15 @@ World::World(sf::RenderWindow& window)
         loadTextures();
         buildScene();
 
+
+
         // Prepare the view
         mWorldView.setCenter(mSpawnPosition);
 }
+
+
+
+
 
 void World::update(sf::Time dt)
 {
@@ -44,9 +50,20 @@ void World::draw()
         mWindow.draw(mSceneGraph);
 }
 
+
 CommandQueue& World::getCommandQueue()
+
 {
         return mCommandQueue;
+}
+TextureHolder& World::getTextures()
+{
+    return mTextures;
+}
+
+SceneNode* World::getAirLayer()
+{
+    return mSceneLayers[Air];
 }
 
 void World::loadTextures()
@@ -77,7 +94,7 @@ void World::buildScene()
         mSceneLayers[Background]->attachChild( backgroundSprite );
 
         // Add player
-        SpaceCraft* player(new SpaceCraft(mTextures));
+        SpaceCraft* player(new SpaceCraft(mTextures, (*this)));
         mPlayer = player;
         mPlayer->setPosition(mSpawnPosition);
         mPlayer->setVelocity(0.f, 0.f);
@@ -115,7 +132,7 @@ sf::Vector2f World::getPlayerPosition()
     return mPlayer->getPosition();
 }
 
-SceneNode* World::getPlayer()
+SpaceCraft* World::getPlayer()
 {
     return mPlayer;
 }

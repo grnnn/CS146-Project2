@@ -13,6 +13,7 @@
 
 // Forward declarations
 class CommandQueue;
+class World;
 namespace sf
 {
         class RenderWindow;
@@ -28,6 +29,7 @@ class Player : private sf::NonCopyable
                         MoveUp,
                         MoveDown,
                         Rotate,
+                        Fire,
                         ActionCount
                 };
         public:

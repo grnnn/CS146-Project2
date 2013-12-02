@@ -84,3 +84,25 @@ sf::Transform SceneNode::getWorldTransform() const
 
         return transform;
 }
+bool collision(const SceneNode& lhs, const SceneNode& rhs)
+{
+    return lhs.getBoundingRect()
+    .intersects(rhs.getBoundingRect());
+}
+void SceneNode::checkNodeCollision(SceneNode& node, std::set<Pair>&
+                                   collisionPairs)
+{
+    if (this != &node && collision(*this, node)
+    && !isDestroyed() && !node.isDestroyed())
+        collisionPairs.insert(std::minmax(this, &node));
+    for(auto child = mChildren.begin(); child != mChildren.end(); ++child)
+        *child->checkCollision(stuff, things);
+}
+
+void SceneNode::checkSceneCollision(SceneNode& sceneGraph,
+std::set<Pair>& collisionPairs)
+{
+    checkNodeCollision(sceneGraph, collisionPairs);
+    for(auto child = sceneGraph.mChildren.begin(); child != sceneGraph.mChildren.end(); ++child)
+    checkSceneCollision(*child, collisionPairs);
+}
