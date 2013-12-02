@@ -1,4 +1,7 @@
 #include "StateMachine.hpp"
+#include "ICondition.hpp"
+#include "FState.hpp"
+#include "..\headers\World.hpp"
 
 StateMachine::StateMachine()
 {
@@ -13,29 +16,34 @@ StateMachine::~StateMachine()
 std::vector<IAction> StateMachine::update(World& world){
     actionStack.clear();
 	bool trigger = false;
+	ICondition triggeredtrans;
+    FState triggeredState;
 
-	for(auto trans = currentState.getTransitions().begin(); trans != currentState.getTransitions().end(); ++trans){
-		if((*trans).isTriggered(world)){
+    auto tState = currentState.getTransitionStates().begin();
+	for(auto trans = currentState.getConditions().begin(); trans != currentState.getConditions().end(); ++trans){
+		if((*trans).test(world)){
 			triggeredtrans = (*trans);
+			triggeredState = (*tState);
 			trigger = true;
 			break;
 		}
+		++tState;
 	}
 	if(trigger){
-		if(currentState.getExitAction() != NULL)
-			actionStack.push_back(currentState.getExitAction());
-		if(triggeredtrans.getAction() != NULL)
-			actionStack.push_back(triggeredtrans.getAction());
-		if(triggeredtrans.getTargetState().getEntryAction() != NULL)
-			actionStack.push_back(triggeredtrans.getTargetState().getEntryAction());
+		if(currentState.getExitAction() != nullptr)
+			actionStack.push_back(*currentState.getExitAction());
+		if(triggeredtrans.getTransitionAction() != nullptr)
+			actionStack.push_back(*triggeredtrans.getTransitionAction());
+		if(triggeredState.getEntryAction() != nullptr)
+			actionStack.push_back(*triggeredState.getEntryAction());
 
-		currentState = triggeredtrans.getTargetState();
+		currentState = triggeredState;
 
 		return actionStack;
 	}
 	else{
-		if(currentState.getAction() != NULL)
-			actionStack.push_back(currentState.getAction());
+		if(currentState.getAction() != nullptr)
+			actionStack.push_back(*currentState.getAction());
 		return actionStack;
 	}
 

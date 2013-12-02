@@ -4,7 +4,7 @@
 #include <vector>
 
 #include "IAction.hpp"
-#include "ITransition.hpp"
+#include "ICondition.hpp"
 #include "FState.hpp"
 #include "..\headers\World.hpp"
 
@@ -19,7 +19,6 @@ class StateMachine
 
     private:
         FState                                  currentState;
-        ITransition                             triggeredtrans;
         std::vector<IAction>                    actionStack;
 };
 

@@ -5,37 +5,45 @@ FState::FState()
 {
     //ctor
 }
-IAction FState::getAction()
+IAction* FState::getAction()
 {
-    return action;
+    return &action;
 }
 void FState::setAction(IAction action)
 {
     this->action = action;
 }
-IAction FState::getEntryAction()
+IAction* FState::getEntryAction()
 {
-    return EAction;
+    return &EAction;
 }
 void FState::setEntryAction(IAction action)
 {
     this->EAction = action;
 }
-IAction FState::getExitAction()
+IAction* FState::getExitAction()
 {
-    return EXAction;
+    return &EXAction;
 }
 void FState::setExitAction(IAction action)
 {
     this->EXAction = action;
 }
-std::vector<ITransition> FState::getTransitions()
+std::vector<ICondition> FState::getConditions()
 {
-    return transitions;
+    return conditions;
 }
-void FState::setTransitions(std::vector<ITransition> transitions)
+void FState::setConditions(std::vector<ICondition> iConditions)
 {
-    this->transitions = transitions;
+    this->conditions = iConditions;
+}
+std::vector<FState> FState::getTransitionStates()
+{
+    return states;
+}
+void FState::setTransitionStates(std::vector<FState> fStates)
+{
+    this->states = fStates;
 }
 
 FState::~FState()

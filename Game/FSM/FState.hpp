@@ -4,27 +4,30 @@
 #include <vector>
 
 #include "IAction.hpp"
-#include "ITransition.hpp"
+#include "ICondition.hpp"
 
 class FState
 {
     public:
                                             FState();
-        IAction                             getAction();
+        IAction*                            getAction();
         void                                setAction(IAction action);
-        IAction                             getEntryAction();
+        IAction*                            getEntryAction();
         void                                setEntryAction(IAction action);
-        IAction                             getExitAction();
+        IAction*                            getExitAction();
         void                                setExitAction(IAction action);
-        std::vector<ITransition>            getTransitions();
-        void                                setTransitions(std::vector<ITransition> transitions);
+        std::vector<ICondition>             getConditions();
+        void                                setConditions(std::vector<ICondition> iConditions);
+        std::vector<FState>                 getTransitionStates();
+        void                                setTransitionStates(std::vector<FState> fStates);
         virtual                             ~FState();
     protected:
     private:
         IAction                             action;
         IAction                             EAction;
         IAction                             EXAction;
-        std::vector<ITransition>            transitions;
+        std::vector<ICondition>             conditions;
+        std::vector<FState>                 states;
 
 
 };
