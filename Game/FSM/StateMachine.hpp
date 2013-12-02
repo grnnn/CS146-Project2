@@ -13,12 +13,9 @@ class StateMachine
     public:
                                                 StateMachine();
         virtual                                 ~StateMachine();
-        std::vector<IAction>                    update(World& world);
-        FState                                  getCurrentState();
-        void                                    setCurrentState(FState state);
+        std::vector<IAction>                    update(World& world, FState currentState);
 
     private:
-        FState                                  currentState;
         std::vector<IAction>                    actionStack;
 };
 

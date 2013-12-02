@@ -13,7 +13,7 @@ StateMachine::~StateMachine()
     //dtor
 }
 
-std::vector<IAction> StateMachine::update(World& world){
+std::vector<IAction> StateMachine::update(World& world, FState currentState){
     actionStack.clear();
 	bool trigger = false;
 	ICondition triggeredtrans;
@@ -49,12 +49,3 @@ std::vector<IAction> StateMachine::update(World& world){
 
 }
 
-FState StateMachine::getCurrentState() {
-    return currentState;
-}
-
-
-void StateMachine::setCurrentState(FState state) {
-	currentState = state;
-
-}
