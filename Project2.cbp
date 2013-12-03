@@ -63,6 +63,7 @@
 		<Unit filename="Game/classes/Game.cpp" />
 		<Unit filename="Game/classes/GameState.cpp" />
 		<Unit filename="Game/classes/Player.cpp" />
+		<Unit filename="Game/classes/Projectile.cpp" />
 		<Unit filename="Game/classes/SpaceCraft.cpp" />
 		<Unit filename="Game/classes/TitleState.cpp" />
 		<Unit filename="Game/classes/World.cpp" />

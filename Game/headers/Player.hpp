@@ -13,6 +13,7 @@
 
 // Forward declarations
 class CommandQueue;
+class World;
 namespace sf
 {
         class RenderWindow;
@@ -28,6 +29,7 @@ class Player : private sf::NonCopyable
                         MoveUp,
                         MoveDown,
                         Rotate,
+                        Fire,
                         ActionCount
                 };
         public:
@@ -37,6 +39,9 @@ class Player : private sf::NonCopyable
 
                 void                                         assignKey(Action action, sf::Keyboard::Key key);
                 sf::Keyboard::Key                            getAssignedKey(Action action) const;
+        public:
+                sf::Vector2f                                        mRotation;
+                float                                        lastRotation;
         private:
                 void                                         initializeActions();
                 static bool                                  isRealtimeAction(Action action);

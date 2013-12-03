@@ -2,7 +2,7 @@
 #include <SFML/System/Time.hpp>
 #include "../headers/SceneNode.hpp"
 #include "../headers/Command.hpp"
-
+#include <iterator>
 #include <algorithm>
 #include <cassert>
 #include <iostream>
@@ -11,6 +11,8 @@
 SceneNode::SceneNode()
 : mChildren()
 , mParent(nullptr)
+, mIsDestroyed(false)
+, mMarkedForRemoval(false)
 {
 }
 
@@ -83,4 +85,74 @@ sf::Transform SceneNode::getWorldTransform() const
                 transform = node->getTransform() * transform;
 
         return transform;
+}
+bool collision(const SceneNode& lhs, const SceneNode& rhs)
+{
+
+    return lhs.getBoundingRect()
+    .intersects(rhs.getBoundingRect());
+}
+void SceneNode::checkNodeCollision(SceneNode& node, std::set<Pair>&
+                                   collisionPairs)
+{
+    if (this != &node && collision(*this, node)
+    && !isDestroyed() && !node.isDestroyed()){
+        collisionPairs.insert(std::minmax(this, &node));
+
+        }
+    for(auto & child : mChildren)
+        child->checkNodeCollision(node, collisionPairs);
+}
+
+void SceneNode::checkSceneCollision(SceneNode& sceneGraph,
+std::set<Pair>& collisionPairs)
+{
+
+    checkNodeCollision(sceneGraph, collisionPairs);
+    for(auto & child : sceneGraph.mChildren)
+    checkSceneCollision(*child, collisionPairs);
+}
+sf::FloatRect SceneNode::getBoundingRect() const
+{
+    return getWorldTransform().transformRect(mSprite.getGlobalBounds());
+}
+bool SceneNode::isDestroyed()
+{
+    return mIsDestroyed;
+}
+int SceneNode::getID()
+{
+    return mID;
+}
+sf::Sprite SceneNode::getSprite() const
+{
+    return mSprite;
+}
+void SceneNode::setSprite(sf::Sprite spr)
+{
+    mSprite = spr;
+}
+void SceneNode::setID(int i)
+{
+    mID = i;
+}
+void SceneNode::markForRemoval()
+{
+    mIsDestroyed = true;
+    mMarkedForRemoval = true;
+}
+bool SceneNode::isMarkedForRemoval()
+{
+
+    return mMarkedForRemoval;
+
+}
+void SceneNode::removeWrecks()
+{
+    auto wreckfieldBegin = std::remove_if(mChildren.begin(),
+    mChildren.end(), std::mem_fn(&SceneNode::isMarkedForRemoval));
+    mChildren.erase(wreckfieldBegin, mChildren.end());
+
+    std::for_each(mChildren.begin(), mChildren.end(),
+    std::mem_fn(&SceneNode::removeWrecks));
 }

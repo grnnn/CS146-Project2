@@ -4,6 +4,7 @@
 #include "../../engine/headers/Command.hpp"
 #include "../headers/SpaceCraftActions.hpp"
 
+
 #include <map>
 #include <string>
 #include <algorithm>
@@ -19,6 +20,7 @@ Player::Player(sf::RenderWindow& window, World& world)
         mKeyBinding[sf::Keyboard::Right] = MoveRight;
         mKeyBinding[sf::Keyboard::Up] = MoveUp;
         mKeyBinding[sf::Keyboard::Down] = MoveDown;
+        mKeyBinding[sf::Keyboard::Space] = Fire;
 
         // Set initial action bindings
         initializeActions();
@@ -31,7 +33,9 @@ void Player::handleEvent(const sf::Event& event, CommandQueue& commands)
                 // Check if pressed key appears in key binding, trigger command if so
                 auto found = mKeyBinding.find(event.key.code);
 
+
                 if (found != mKeyBinding.end() && !isRealtimeAction(found->second)){
+                        std::cout << "Push onto commands";
                         commands.push(mActionBinding.at(found->second));
                 }
         }
@@ -55,6 +59,9 @@ void Player::handleRealtimeInput(CommandQueue& commands)
             float dy = spritePos.y - mousePosition.y;
 
             float rotation = (atan2(dy, dx)) * 180 / PI;
+
+            sf::Vector2f velocity(dx, dy);
+            mRotation = velocity;
 
             //Command Rcmd(*craft);
             mActionBinding.at(Rotate).action = derivedAction<SpaceCraft>(SpaceCraftRotater(rotation + 180));
@@ -107,6 +114,7 @@ void Player::initializeActions()
         const float playerSpeed = 250.f;
 
         SceneNode* craft = mWorld->getPlayer();
+        SceneNode* air = mWorld->getAirLayer();
 
         Command MLcmd(*craft);
         MLcmd.action = derivedAction<SpaceCraft>(SpaceCraftMover(-playerSpeed, 0.f));
@@ -127,16 +135,27 @@ void Player::initializeActions()
         Command Rcmd(*craft);
         Rcmd.action = nullptr;
         mActionBinding.insert(std::make_pair(Rotate, std::move(Rcmd)));
+
+        Command Firecmd(*air);
+        Firecmd.action = [this](SceneNode& node, sf::Time time)
+        {
+
+            this->mWorld->getPlayer()->checkProjectileLaunch(mWorld->getCommandQueue(), mWorld->getTextures(), mRotation);
+
+        };
+        mActionBinding.insert(std::make_pair(Fire, std::move(Firecmd)));
 }
 
 bool Player::isRealtimeAction(Action action)
 {
         switch (action)
         {
+                case Fire:
                 case MoveLeft:
                 case MoveRight:
                 case MoveDown:
                 case MoveUp:
+
                 case Rotate:
                         return true;
                 default:
