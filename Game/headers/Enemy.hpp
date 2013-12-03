@@ -13,10 +13,11 @@ class Enemy : public Entity
 
         void                        processEvents();
         void                        update(sf::Time dt);
-        virtual sf::FloatRect getBoundingRect() const;
+
+
     private:
         virtual void                drawCurrent(sf::RenderTarget& target, sf::RenderStates states) const;
-        sf::Sprite                  mSprite;
+
 };
 
 #endif // ENEMY_HPP_INCLUDED

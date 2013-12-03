@@ -60,6 +60,9 @@ void Player::handleRealtimeInput(CommandQueue& commands)
 
             float rotation = (atan2(dy, dx)) * 180 / PI;
 
+            sf::Vector2f velocity(dx, dy);
+            mRotation = velocity;
+
             //Command Rcmd(*craft);
             mActionBinding.at(Rotate).action = derivedAction<SpaceCraft>(SpaceCraftRotater(rotation + 180));
             //mActionBinding.insert(std::make_pair(Rotate, std::move(Rcmd)));
@@ -136,8 +139,8 @@ void Player::initializeActions()
         Command Firecmd(*air);
         Firecmd.action = [this](SceneNode& node, sf::Time time)
         {
-            this->mWorld->getPlayer()->mIsFiring = true;
-            this->mWorld->getPlayer()->checkProjectileLaunch(mWorld->getCommandQueue(), mWorld->getTextures());
+
+            this->mWorld->getPlayer()->checkProjectileLaunch(mWorld->getCommandQueue(), mWorld->getTextures(), mRotation);
 
         };
         mActionBinding.insert(std::make_pair(Fire, std::move(Firecmd)));

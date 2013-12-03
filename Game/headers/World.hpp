@@ -36,7 +36,8 @@ class World : private sf::NonCopyable
                 void                                      loadTextures();
 
                 void                                      spawnEnemy(float x, float y);
-
+                void                                      handleCollisions();
+                void                                      destroyEntitiesOutsideView();
         private:
                 enum Layer
                 {
@@ -50,6 +51,7 @@ class World : private sf::NonCopyable
                 void                                       buildScene();
                 void                                       adaptPlayerVelocity();
                 void                                       adaptPlayerPosition();
+                sf::FloatRect                              getBattlefieldBounds();
 
 
         private:
@@ -63,6 +65,7 @@ class World : private sf::NonCopyable
                 sf::Vector2f                              mSpawnPosition;
                 SpaceCraft*                               mPlayer;
                 std::vector<Enemy*>                       mEnemies;
+                sf::Sprite                                mSprite;
 
 
 };

@@ -20,16 +20,20 @@ class SpaceCraft : public Entity
 
         void fire();
         void createBullets(SceneNode& node, const
-                           TextureHolder& texture) const;
-        void createProjectile(SceneNode& node, float xOffset, float yOffset, const TextureHolder& textures) const;
-        void checkProjectileLaunch(CommandQueue& commands, const TextureHolder& textures);
+                           TextureHolder& texture, sf::Vector2f mRotations) const;
+        void createProjectile(SceneNode& node, float xOffset, float yOffset, const TextureHolder& textures, sf::Vector2f mRotations) const;
+        void checkProjectileLaunch(CommandQueue& commands, const TextureHolder& textures, sf::Vector2f mRotations);
+
     public:
         bool                                         mIsFiring;
+        int mTimer;
+
 
     private:
         //virtual void updateCurrent(sf::Time dt);
         virtual void drawCurrent(sf::RenderTarget& target, sf::RenderStates states) const;
-        sf::Sprite                                   mSprite;
+        virtual void updateCurrent(sf::Time dt);
+
         World*                                       mWorld;
 
 

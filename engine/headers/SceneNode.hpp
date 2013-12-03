@@ -5,6 +5,7 @@
 #include <SFML/System/Time.hpp>
 #include <SFML/Graphics/Transformable.hpp>
 #include <SFML/Graphics/Drawable.hpp>
+#include <SFML/Graphics/Sprite.hpp>
 #include <iostream>
 #include <vector>
 #include <memory>
@@ -19,24 +20,39 @@ class SceneNode : public sf::Transformable, public sf::Drawable, private sf::Non
                                             SceneNode();
         void                                attachChild(SceneNode* child);
         SceneNode*                          detachChild(const SceneNode& node);
-
         void                                update(sf::Time dt);
-
         sf::Vector2f                        getWorldPosition() const;
         sf::Transform                       getWorldTransform() const;
         void                                checkNodeCollision(SceneNode& node, std::set<Pair>&
                                             collisionPairs);
         void                                checkSceneCollision(SceneNode& sceneGraph,
                                             std::set<Pair>& collisionPairs);
+        sf::FloatRect                       getBoundingRect() const;
+        bool                                isDestroyed();
+        bool                                isMarkedForRemoval();
+        int                                 getID();
+        sf::Sprite                          getSprite() const;
+        void                                setSprite(sf::Sprite spr);
+        void                                setID(int i);
+        void                                markForRemoval();
+        void                                removeWrecks();
+    public:
+        bool                                mIsDestroyed;
+        bool                                mMarkedForRemoval;
+
     private:
+        sf::Sprite                          mSprite;
         std::vector<SceneNode*>             mChildren;
         SceneNode*                          mParent;
+
+        int                                 mID;
     private:
         virtual void                        draw(sf::RenderTarget& target,sf::RenderStates states) const;
         virtual void                        drawCurrent(sf::RenderTarget& target,sf::RenderStates states) const;
         void                                drawChildren(sf::RenderTarget& target,sf::RenderStates states) const;
         virtual void                        updateCurrent(sf::Time dt);
         void                                updateChildren(sf::Time dt);
+
 };
 
 

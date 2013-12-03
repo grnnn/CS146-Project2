@@ -11,9 +11,11 @@
 
 Projectile::Projectile(const TextureHolder& textures)
 : mType(AlliedBullet)
-, mSprite(textures.get(Textures::Enemy))
 {
-    centerOrigin(mSprite);
+    sf::Sprite spr(textures.get(Textures::Enemy));
+    centerOrigin(spr);
+    setSprite(spr);
+    setID(1);
 }
 Projectile::~Projectile()
 {
@@ -21,16 +23,12 @@ Projectile::~Projectile()
 }
 void Projectile::drawCurrent(sf::RenderTarget& target, sf::RenderStates states) const
 {
-    target.draw(mSprite, states);
+    target.draw(getSprite(), states);
 }
 
 
 void Projectile::updateCurrent(sf::Time dt,
         CommandQueue& commands){}
-sf::FloatRect Projectile::getBoundingRect() const
-{
-    return getWorldTransform()
-    .transformRect(mSprite.getGlobalBounds());
-}
+
 
 float Projectile::getMaxSpeed() const{return 100;}

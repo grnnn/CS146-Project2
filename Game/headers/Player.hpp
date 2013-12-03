@@ -39,6 +39,9 @@ class Player : private sf::NonCopyable
 
                 void                                         assignKey(Action action, sf::Keyboard::Key key);
                 sf::Keyboard::Key                            getAssignedKey(Action action) const;
+        public:
+                sf::Vector2f                                        mRotation;
+                float                                        lastRotation;
         private:
                 void                                         initializeActions();
                 static bool                                  isRealtimeAction(Action action);

@@ -41,6 +41,8 @@ void World::update(sf::Time dt)
                 cmd.action(cmd.node, dt);
     }
     mSceneGraph.update(dt);
+    handleCollisions();
+    mSceneGraph.removeWrecks();
     adaptPlayerPosition();
 }
 
@@ -86,8 +88,10 @@ void World::buildScene()
 
         //prepare background sprite
         sf::Texture& texture = mTextures.get(Textures::Background);
-        sf::IntRect backTextureRect(mWorldBounds);
 
+        sf::IntRect backTextureRect(mWorldBounds);
+        sf::Sprite spr(mTextures.get(Textures::Background));
+        mSprite = spr;
         // Add Background
         SpriteNode* backgroundSprite(new SpriteNode(texture, backTextureRect));
         backgroundSprite->setPosition(mWorldBounds.left, mWorldBounds.top);
@@ -152,3 +156,55 @@ void World::isEnemiesEmpty()
     else
         std::cout << "mEnemies has something in it";
 }
+bool matchesCategories(SceneNode::Pair& colliders,
+                      int type1, int type2)
+{
+    int category1 = colliders.first->getID();
+    int category2 = colliders.second->getID();
+    if (type1 & category1 && type2 & category2)
+    {
+        return true;
+    }
+    else if (type1 & category2 && type2 & category1)
+    {
+        std::swap(colliders.first, colliders.second);
+        return true;
+    }
+    else
+    {
+    return false;
+    }
+}
+void World::handleCollisions()
+{
+    std::set<SceneNode::Pair> collisionPairs;
+    mSceneGraph.checkSceneCollision(mSceneGraph, collisionPairs);
+    for(auto & i : collisionPairs)
+    {
+
+        SceneNode::Pair thing = i;
+        if (matchesCategories(thing, 1, 2))
+        {
+            thing.first->markForRemoval();
+            thing.second->markForRemoval();
+
+        }
+    }
+}
+/*void World::destroyEntitiesOutsideView()
+{
+    sf::FloatRect viewBounds(mWorldView.getCenter() - mWorldView.getSize() / 2.f, mWorldView.getSize());
+    Command command(*mSceneLayers[Air]);
+    command.action = derivedAction<Entity>(
+                    [this] (Entity& e, sf::Time)
+                    {
+                        if (!viewBounds.intersects(e.getBoundingRect())){
+                            e.markForRemoval();
+                            std::cout<<"Shits leaving";
+                        }
+
+                    });
+    mCommandQueue.push(command);
+}*/
+
+

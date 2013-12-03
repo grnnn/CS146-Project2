@@ -22,10 +22,11 @@ class Projectile : public Entity
         Projectile(const TextureHolder& textures);
         void guideTowards(sf::Vector2f position);
         bool isGuided() const;
-        virtual sf::FloatRect getBoundingRect() const;
+
         virtual ~Projectile();
         float getMaxSpeed() const;
         int getDamage() const;
+
     private:
         virtual void updateCurrent(sf::Time dt,
         CommandQueue& commands);
@@ -33,7 +34,6 @@ class Projectile : public Entity
         sf::RenderStates states) const;
     private:
         Type mType;
-        sf::Sprite mSprite;
         sf::Vector2f mTargetDirection;
 };
 #endif // PROJECTILE_HPP
