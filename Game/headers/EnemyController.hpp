@@ -5,6 +5,8 @@
 #include "World.hpp"
 #include "Enemy.hpp"
 
+#include "../FSM/StateMachine.hpp"
+
 #include <SFML/Window/Event.hpp>
 #include <SFML/System/NonCopyable.hpp>
 
@@ -33,7 +35,10 @@ class EnemyController : private sf::NonCopyable
                 void                                         handleEvent(const sf::Event& event, CommandQueue& commands);
                 void                                         update(CommandQueue& commands);
                 void                                         spawnEnemy(float x, float y);
-                //void                                         initializeStates();
+                void                                         initializeStates();
+
+                FState                                       sortState(int n);
+                std::string                                  sortString(FState *state);
         private:
                 static bool                                  isAction(Action action);
         private:
@@ -43,6 +48,30 @@ class EnemyController : private sf::NonCopyable
                 std::map<sf::Keyboard::Key, Action>          mKeyBinding;
                 World*                                       mWorld;
                 sf::Clock                                    mSpawnTimer;
+
+                StateMachine                                 LonerFSM;
+                StateMachine                                 SwarmerFSM;
+                StateMachine                                 FlockerFSM;
+                StateMachine                                 LeaderFSM;
+
+                //Loner State machine components
+                FState                                       LWander;
+                FState                                       LRushPlayer;
+
+                //Swarmer State Machine Components
+                FState                                       SWander;
+                FState                                       SRushPlayer;
+                FState                                       SSwarmPlayer;
+
+                //Flocker State Machine Components
+                FState                                       FWander;
+                FState                                       FFollowLeader;
+                FState                                       FRushPlayer;
+
+                //Leader State Machine Components
+                FState                                       LeadWander;
+                FState                                       LeadRushPlayer;
+
 };
 
 #endif // ENEMYCONTROLLER_HPP_INCLUDED

@@ -120,6 +120,11 @@ SceneNode* World::getPlayer()
     return mPlayer;
 }
 
+std::vector<Enemy*> World::getEnemies()
+{
+    return mEnemies;
+}
+
 void World::spawnEnemy(float x, float y)
 {
         Enemy* enemy(new Enemy(mTextures));

@@ -31,6 +31,7 @@ class World : private sf::NonCopyable
                 SceneNode*                                getPlayer();
                 void                                      isEnemiesEmpty();
 
+                std::vector<Enemy*>                       getEnemies();
                 void                                      spawnEnemy(float x, float y);
 
         private:

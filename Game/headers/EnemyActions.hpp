@@ -26,21 +26,21 @@
  *
  * 2. Alternatively, we can do all of the wander logic outside of these structs, then just pass in the final movement vector. This will look
  *    more like the code you see in SpaceCraftActions
- *
- *      struct EnemyMover
- *      {
- *          EnemyMover(float vx, float vy)
- *          : velocity(vx, vy)
- *          {
- *          }
- *
- *          void operator() (Enemy& enemy, sf::Time) const
- *          {
- *                  enemy.accelerate(velocity);
- *          }
- *
- *          sf::Vector2f velocity;
- *      }
- **/
+ */
+       struct EnemyMover
+       {
+           EnemyMover(float vx, float vy)
+           : velocity(vx, vy)
+           {
+           }
+
+           void operator() (Enemy& enemy, sf::Time) const
+           {
+                   enemy.accelerate(velocity);
+           }
+
+           sf::Vector2f velocity;
+       };
+
 
 #endif // ENEMYACTIONS_HPP_INCLUDED
