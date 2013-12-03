@@ -724,7 +724,7 @@
 	"Command.hpp"
 	<queue>
 
-1386040635 c:\users\godzilla2500\documents\github\cs146-project2\engine\headers\scenenode.hpp
+1386052322 c:\users\godzilla2500\documents\github\cs146-project2\engine\headers\scenenode.hpp
 	<SFML/System/NonCopyable.hpp>
 	<SFML/System/Time.hpp>
 	<SFML/Graphics/Transformable.hpp>
@@ -743,7 +743,7 @@
 	<SFML/Graphics.hpp>
 	"SceneNode.hpp"
 
-1386042157 source:c:\users\godzilla2500\documents\github\cs146-project2\engine\classes\scenenode.cpp
+1386052322 source:c:\users\godzilla2500\documents\github\cs146-project2\engine\classes\scenenode.cpp
 	<SFML/Graphics/RenderTarget.hpp>
 	<SFML/System/Time.hpp>
 	"../headers/SceneNode.hpp"
@@ -753,7 +753,7 @@
 	<cassert>
 	<iostream>
 
-1386040058 source:c:\users\godzilla2500\documents\github\cs146-project2\engine\classes\spritenode.cpp
+1386052322 source:c:\users\godzilla2500\documents\github\cs146-project2\engine\classes\spritenode.cpp
 	"..\headers\SpriteNode.hpp"
 	<SFML/Graphics/RenderTarget.hpp>
 
@@ -803,13 +803,13 @@
 
 1385872539 c:\users\godzilla2500\documents\github\cs146-project2\engine\headers\utility.inl
 
-1386036981 source:c:\users\godzilla2500\documents\github\cs146-project2\game\classes\enemy.cpp
+1386052322 source:c:\users\godzilla2500\documents\github\cs146-project2\game\classes\enemy.cpp
 	"../headers/Enemy.hpp"
 	"../../engine/headers/ResourceHolder.hpp"
 	"../../engine/headers/Utility.hpp"
 	<iostream>
 
-1386036794 c:\users\godzilla2500\documents\github\cs146-project2\game\headers\enemy.hpp
+1386052322 c:\users\godzilla2500\documents\github\cs146-project2\game\headers\enemy.hpp
 	<SFML/Graphics/Sprite.hpp>
 	"../../engine/headers/Entity.hpp"
 	"../../engine/headers/ResourceIdentifier.hpp"
@@ -836,7 +836,7 @@
 	<SFML/System/NonCopyable.hpp>
 	<map>
 
-1386044041 c:\users\godzilla2500\documents\github\cs146-project2\game\headers\world.hpp
+1386052322 c:\users\godzilla2500\documents\github\cs146-project2\game\headers\world.hpp
 	"../../engine/headers/ResourceHolder.hpp"
 	"../../engine/headers/ResourceIdentifier.hpp"
 	"../../engine/headers/SceneNode.hpp"
@@ -847,7 +847,7 @@
 	<SFML/Graphics/Texture.hpp>
 	<array>
 
-1386051086 c:\users\godzilla2500\documents\github\cs146-project2\game\headers\spacecraft.hpp
+1386052322 c:\users\godzilla2500\documents\github\cs146-project2\game\headers\spacecraft.hpp
 	<SFML/Graphics/Sprite.hpp>
 	"../../engine/headers/Entity.hpp"
 	"Projectile.hpp"
@@ -874,7 +874,7 @@
 	<SFML/Graphics.hpp>
 	<SFML/System/Time.hpp>
 
-1386048534 c:\users\godzilla2500\documents\github\cs146-project2\game\headers\player.hpp
+1386052322 c:\users\godzilla2500\documents\github\cs146-project2\game\headers\player.hpp
 	"../../engine/headers/Command.hpp"
 	"World.hpp"
 	<SFML/Window/Event.hpp>
@@ -906,7 +906,7 @@
 	"../../engine/headers/Command.hpp"
 	"../../engine/headers/CommandQueue.hpp"
 
-1386049209 source:c:\users\godzilla2500\documents\github\cs146-project2\game\classes\player.cpp
+1386052322 source:c:\users\godzilla2500\documents\github\cs146-project2\game\classes\player.cpp
 	"../headers/Player.hpp"
 	"../../engine/headers/CommandQueue.hpp"
 	"../headers/SpaceCraft.hpp"
@@ -921,7 +921,7 @@
 	"../headers/SpaceCraft.hpp"
 	<iostream>
 
-1386051572 source:c:\users\godzilla2500\documents\github\cs146-project2\game\classes\spacecraft.cpp
+1386052322 source:c:\users\godzilla2500\documents\github\cs146-project2\game\classes\spacecraft.cpp
 	"../headers/SpaceCraft.hpp"
 	"../../engine/headers/ResourceHolder.hpp"
 	"../../engine/headers/Utility.hpp"
@@ -937,7 +937,7 @@
 	<iostream>
 	<SFML/Graphics/RenderWindow.hpp>
 
-1386047235 source:c:\users\godzilla2500\documents\github\cs146-project2\game\classes\world.cpp
+1386052322 source:c:\users\godzilla2500\documents\github\cs146-project2\game\classes\world.cpp
 	"../headers/World.hpp"
 	"../headers/SpaceCraft.hpp"
 	"../headers/Enemy.hpp"
@@ -952,7 +952,7 @@
 	<iostream>
 	"Game/headers/Game.hpp"
 
-1386036682 source:c:\users\godzilla2500\documents\github\cs146-project2\game\classes\projectile.cpp
+1386052322 source:c:\users\godzilla2500\documents\github\cs146-project2\game\classes\projectile.cpp
 	"..\headers\Projectile.hpp"
 	<SFML/Graphics/Sprite.hpp>
 	"../../engine/headers/Entity.hpp"
@@ -962,7 +962,7 @@
 	"../../engine/headers/CommandQueue.hpp"
 	<iostream>
 
-1386036933 c:\users\godzilla2500\documents\github\cs146-project2\game\headers\projectile.hpp
+1386052322 c:\users\godzilla2500\documents\github\cs146-project2\game\headers\projectile.hpp
 	<SFML/Graphics/Sprite.hpp>
 	"../../engine/headers/Entity.hpp"
 	"../../engine/headers/ResourceIdentifier.hpp"
