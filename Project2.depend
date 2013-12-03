@@ -1281,3 +1281,299 @@
 	"../../engine/headers/CommandQueue.hpp"
 	<iostream>
 
+1386025559 source:c:\users\tyler\documents\github\cs146-project2\engine\classes\command.cpp
+	"../headers/Command.hpp"
+
+1386025559 c:\users\tyler\documents\github\cs146-project2\engine\headers\command.hpp
+	<SFML/System/Time.hpp>
+	<functional>
+	<cassert>
+
+1386025559 source:c:\users\tyler\documents\github\cs146-project2\engine\classes\commandqueue.cpp
+	"../headers/CommandQueue.hpp"
+	"../headers/SceneNode.hpp"
+
+1386025559 c:\users\tyler\documents\github\cs146-project2\engine\headers\commandqueue.hpp
+	"Command.hpp"
+	<queue>
+
+1386052322 c:\users\tyler\documents\github\cs146-project2\engine\headers\scenenode.hpp
+	<SFML/System/NonCopyable.hpp>
+	<SFML/System/Time.hpp>
+	<SFML/Graphics/Transformable.hpp>
+	<SFML/Graphics/Drawable.hpp>
+	<SFML/Graphics/Sprite.hpp>
+	<iostream>
+	<vector>
+	<memory>
+	<set>
+
+1386025559 source:c:\users\tyler\documents\github\cs146-project2\engine\classes\entity.cpp
+	"..\headers\Entity.hpp"
+	<iostream>
+
+1386025559 c:\users\tyler\documents\github\cs146-project2\engine\headers\entity.hpp
+	<SFML/Graphics.hpp>
+	"SceneNode.hpp"
+
+1386052322 source:c:\users\tyler\documents\github\cs146-project2\engine\classes\scenenode.cpp
+	<SFML/Graphics/RenderTarget.hpp>
+	<SFML/System/Time.hpp>
+	"../headers/SceneNode.hpp"
+	"../headers/Command.hpp"
+	<iterator>
+	<algorithm>
+	<cassert>
+	<iostream>
+
+1386055971 source:c:\users\tyler\documents\github\cs146-project2\engine\classes\spritenode.cpp
+	"..\headers\SpriteNode.hpp"
+	<SFML/Graphics/RenderTarget.hpp>
+
+1386025560 c:\users\tyler\documents\github\cs146-project2\engine\headers\spritenode.hpp
+	"SceneNode.hpp"
+	<SFML/Graphics/Sprite.hpp>
+
+1386025559 source:c:\users\tyler\documents\github\cs146-project2\engine\classes\state.cpp
+	"..\headers\State.hpp"
+	"..\headers\StateStack.hpp"
+
+1386025560 c:\users\tyler\documents\github\cs146-project2\engine\headers\state.hpp
+	"StateIdentifiers.hpp"
+	"ResourceIdentifier.hpp"
+	<SFML/System/Time.hpp>
+	<SFML/Window/Event.hpp>
+	<memory>
+
+1386025560 c:\users\tyler\documents\github\cs146-project2\engine\headers\stateidentifiers.hpp
+
+1386109835 c:\users\tyler\documents\github\cs146-project2\engine\headers\resourceidentifier.hpp
+
+1386025560 c:\users\tyler\documents\github\cs146-project2\engine\headers\statestack.hpp
+	"State.hpp"
+	"StateIdentifiers.hpp"
+	"ResourceIdentifier.hpp"
+	<SFML/System/NonCopyable.hpp>
+	<SFML/System/Time.hpp>
+	<vector>
+	<utility>
+	<functional>
+	<map>
+
+1386025559 source:c:\users\tyler\documents\github\cs146-project2\engine\classes\statestack.cpp
+	"..\headers\StateStack.hpp"
+	<cassert>
+	<iostream>
+
+1386025559 source:c:\users\tyler\documents\github\cs146-project2\engine\classes\utility.cpp
+	"..\headers\Utility.hpp"
+	<SFML/Graphics/Sprite.hpp>
+	<SFML/Graphics/Text.hpp>
+
+1386025560 c:\users\tyler\documents\github\cs146-project2\engine\headers\utility.hpp
+	<sstream>
+	"Utility.inl"
+
+1386025560 c:\users\tyler\documents\github\cs146-project2\engine\headers\utility.inl
+
+1386052322 source:c:\users\tyler\documents\github\cs146-project2\game\classes\enemy.cpp
+	"../headers/Enemy.hpp"
+	"../../engine/headers/ResourceHolder.hpp"
+	"../../engine/headers/Utility.hpp"
+	<iostream>
+
+1386052322 c:\users\tyler\documents\github\cs146-project2\game\headers\enemy.hpp
+	<SFML/Graphics/Sprite.hpp>
+	"../../engine/headers/Entity.hpp"
+	"../../engine/headers/ResourceIdentifier.hpp"
+
+1386025559 c:\users\tyler\documents\github\cs146-project2\engine\headers\resourceholder.hpp
+	<map>
+	<string>
+	<memory>
+	<stdexcept>
+	<cassert>
+	"..\resources\ResourceHolder.inl"
+
+1386025560 c:\users\tyler\documents\github\cs146-project2\engine\resources\resourceholder.inl
+
+1386025559 source:c:\users\tyler\documents\github\cs146-project2\game\classes\enemycontroller.cpp
+	"../headers/EnemyController.hpp"
+	<iostream>
+
+1386025559 c:\users\tyler\documents\github\cs146-project2\game\headers\enemycontroller.hpp
+	"../../engine/headers/Command.hpp"
+	"World.hpp"
+	"Enemy.hpp"
+	<SFML/Window/Event.hpp>
+	<SFML/System/NonCopyable.hpp>
+	<map>
+
+1386052322 c:\users\tyler\documents\github\cs146-project2\game\headers\world.hpp
+	"../../engine/headers/ResourceHolder.hpp"
+	"../../engine/headers/ResourceIdentifier.hpp"
+	"../../engine/headers/SceneNode.hpp"
+	"../../engine/headers/CommandQueue.hpp"
+	"Enemy.hpp"
+	<SFML/System/NonCopyable.hpp>
+	<SFML/Graphics/View.hpp>
+	<SFML/Graphics/Texture.hpp>
+	<array>
+
+1386025559 source:c:\users\tyler\documents\github\cs146-project2\game\classes\game.cpp
+	"..\headers\Game.hpp"
+	"..\headers\TitleState.hpp"
+	"..\headers\GameState.hpp"
+	"..\..\engine\headers\StringHelpers.hpp"
+	<SFML/Window.hpp>
+	<SFML/Graphics.hpp>
+	<iostream>
+
+1386025559 c:\users\tyler\documents\github\cs146-project2\game\headers\game.hpp
+	"..\..\engine\headers\ResourceHolder.hpp"
+	"..\..\engine\headers\ResourceIdentifier.hpp"
+	"..\..\engine\headers\StateStack.hpp"
+	"Player.hpp"
+	"SpaceCraft.hpp"
+	<SFML/Graphics.hpp>
+	<SFML/System/Time.hpp>
+
+1386052322 c:\users\tyler\documents\github\cs146-project2\game\headers\player.hpp
+	"../../engine/headers/Command.hpp"
+	"World.hpp"
+	<SFML/Window/Event.hpp>
+	<SFML/System/NonCopyable.hpp>
+	<map>
+
+1386052322 c:\users\tyler\documents\github\cs146-project2\game\headers\spacecraft.hpp
+	<SFML/Graphics/Sprite.hpp>
+	"../../engine/headers/Entity.hpp"
+	"Projectile.hpp"
+	"../../engine/headers/ResourceIdentifier.hpp"
+	"../../engine/headers/Command.hpp"
+	"Player.hpp"
+	<iostream>
+
+1386052322 c:\users\tyler\documents\github\cs146-project2\game\headers\projectile.hpp
+	<SFML/Graphics/Sprite.hpp>
+	"../../engine/headers/Entity.hpp"
+	"../../engine/headers/ResourceIdentifier.hpp"
+	"../../engine/headers/Command.hpp"
+	"World.hpp"
+	"../../engine/headers/CommandQueue.hpp"
+	<iostream>
+
+1386025559 c:\users\tyler\documents\github\cs146-project2\game\headers\titlestate.hpp
+	"..\..\engine\headers\State.hpp"
+	<SFML/Graphics/Sprite.hpp>
+	<SFML/Graphics/Text.hpp>
+
+1386025559 c:\users\tyler\documents\github\cs146-project2\game\headers\gamestate.hpp
+	"../../engine/headers/State.hpp"
+	"World.hpp"
+	"Player.hpp"
+	"EnemyController.hpp"
+	<SFML/Graphics/Sprite.hpp>
+	<SFML/Graphics/Text.hpp>
+
+1386025560 c:\users\tyler\documents\github\cs146-project2\engine\headers\stringhelpers.hpp
+	<sstream>
+	"..\resources\StringHelpers.inl"
+
+1386025560 c:\users\tyler\documents\github\cs146-project2\engine\resources\stringhelpers.inl
+
+1386025559 source:c:\users\tyler\documents\github\cs146-project2\game\classes\gamestate.cpp
+	"../headers/GameState.hpp"
+	"../headers/World.hpp"
+	"../../engine/headers/Command.hpp"
+	"../../engine/headers/CommandQueue.hpp"
+
+1386052322 source:c:\users\tyler\documents\github\cs146-project2\game\classes\player.cpp
+	"../headers/Player.hpp"
+	"../../engine/headers/CommandQueue.hpp"
+	"../headers/SpaceCraft.hpp"
+	"../../engine/headers/Command.hpp"
+	"../headers/SpaceCraftActions.hpp"
+	<map>
+	<string>
+	<algorithm>
+	<iostream>
+
+1386025559 c:\users\tyler\documents\github\cs146-project2\game\headers\spacecraftactions.hpp
+	"../headers/SpaceCraft.hpp"
+	<iostream>
+
+1386109835 source:c:\users\tyler\documents\github\cs146-project2\game\classes\projectile.cpp
+	"..\headers\Projectile.hpp"
+	<SFML/Graphics/Sprite.hpp>
+	"../../engine/headers/Entity.hpp"
+	"../../engine/headers/ResourceIdentifier.hpp"
+	"../../engine/headers/Command.hpp"
+	"../../engine/headers/Utility.hpp"
+	"../../engine/headers/CommandQueue.hpp"
+	<iostream>
+
+1386052322 source:c:\users\tyler\documents\github\cs146-project2\game\classes\spacecraft.cpp
+	"../headers/SpaceCraft.hpp"
+	"../../engine/headers/ResourceHolder.hpp"
+	"../../engine/headers/Utility.hpp"
+	"../../engine/headers/Command.hpp"
+	"../headers/World.hpp"
+	<iostream>
+	<math.h>
+
+1386025559 source:c:\users\tyler\documents\github\cs146-project2\game\classes\titlestate.cpp
+	"..\headers\TitleState.hpp"
+	"..\..\engine\headers\Utility.hpp"
+	"..\..\engine\headers\ResourceHolder.hpp"
+	<iostream>
+	<SFML/Graphics/RenderWindow.hpp>
+
+1386109901 source:c:\users\tyler\documents\github\cs146-project2\game\classes\world.cpp
+	"../headers/World.hpp"
+	"../headers/SpaceCraft.hpp"
+	"../headers/Enemy.hpp"
+	"../headers/Player.hpp"
+	"../../engine/headers/SpriteNode.hpp"
+	"../../engine/headers/SceneNode.hpp"
+	"../../engine/headers/CommandQueue.hpp"
+	<SFML/Graphics/RenderWindow.hpp>
+	<iostream>
+
+1386053119 source:c:\users\tyler\documents\github\cs146-project2\game\fsm\fstate.cpp
+	"FState.hpp"
+
+1386053119 c:\users\tyler\documents\github\cs146-project2\game\fsm\fstate.hpp
+	<vector>
+	"IAction.hpp"
+	"ICondition.hpp"
+
+1386025559 c:\users\tyler\documents\github\cs146-project2\game\fsm\iaction.hpp
+
+1386053119 c:\users\tyler\documents\github\cs146-project2\game\fsm\icondition.hpp
+	"..\headers\World.hpp"
+	"IAction.hpp"
+
+1386053119 source:c:\users\tyler\documents\github\cs146-project2\game\fsm\iaction.cpp
+	"IAction.hpp"
+
+1386053119 source:c:\users\tyler\documents\github\cs146-project2\game\fsm\icondition.cpp
+	"ICondition.hpp"
+
+1386053119 source:c:\users\tyler\documents\github\cs146-project2\game\fsm\statemachine.cpp
+	"StateMachine.hpp"
+	"ICondition.hpp"
+	"FState.hpp"
+	"..\headers\World.hpp"
+
+1386053119 c:\users\tyler\documents\github\cs146-project2\game\fsm\statemachine.hpp
+	<vector>
+	"IAction.hpp"
+	"ICondition.hpp"
+	"FState.hpp"
+	"..\headers\World.hpp"
+
+1386025560 source:c:\users\tyler\documents\github\cs146-project2\main.cpp
+	<iostream>
+	"Game/headers/Game.hpp"
+

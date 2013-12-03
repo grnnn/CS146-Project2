@@ -73,6 +73,7 @@ void World::loadTextures()
         mTextures.load(Textures::SpaceCraft, "Media/Player.png");
         mTextures.load(Textures::Enemy, "Media/Enemy.png");
         mTextures.load(Textures::Background, "Media/background.png");
+         mTextures.load(Textures::Projectile, "Media/Projectile.png");
 }
 
 void World::buildScene()

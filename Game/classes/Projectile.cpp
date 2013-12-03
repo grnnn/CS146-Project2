@@ -12,7 +12,7 @@
 Projectile::Projectile(const TextureHolder& textures)
 : mType(AlliedBullet)
 {
-    sf::Sprite spr(textures.get(Textures::Enemy));
+    sf::Sprite spr(textures.get(Textures::Projectile));
     centerOrigin(spr);
     setSprite(spr);
     setID(1);
