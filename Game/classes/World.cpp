@@ -107,7 +107,9 @@ void World::buildScene()
         mSceneLayers[Air]->attachChild(player);
 
         //Test Enemy
-        spawnEnemy(mWorldView.getSize().x / 2, (mWorldView.getSize().y / 2) - 50);
+        spawnEnemy(mWorldView.getSize().x / 2 +20, (mWorldView.getSize().y / 2) - 20);
+         spawnEnemy(mWorldView.getSize().x / 2, (mWorldView.getSize().y / 2) - 90);
+
 }
 
 void World::adaptPlayerPosition()
@@ -193,20 +195,9 @@ void World::handleCollisions()
         }
     }
 }
-/*void World::destroyEntitiesOutsideView()
-{
-    sf::FloatRect viewBounds(mWorldView.getCenter() - mWorldView.getSize() / 2.f, mWorldView.getSize());
-    Command command(*mSceneLayers[Air]);
-    command.action = derivedAction<Entity>(
-                    [this, &viewBounds] (Entity& e, sf::Time)
-                    {
-                        if (!viewBounds.intersects(e.getBoundingRect())){
-                            e.markForRemoval();
 
-                        }
 
-                    });
-    mCommandQueue.push(command);
-}*/
-
+std::vector<Enemy*>  World::getEnemies(){
+ return mEnemies;
+}
 

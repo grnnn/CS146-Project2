@@ -359,7 +359,7 @@
 
 1384402112 c:\users\game\documents\codeblocks workspace\project2\stringhelpers.inl
 
-1385008657 source:c:\users\game\documents\codeblocks workspace\project2\main.cpp
+1386142552 source:c:\users\game\documents\codeblocks workspace\project2\main.cpp
 	<iostream>
 	"Game/headers/Game.hpp"
 
@@ -478,30 +478,30 @@
 	<SFML/Graphics/Sprite.hpp>
 	<SFML/Graphics/Text.hpp>
 
-1385108438 source:c:\users\game\documents\codeblocks workspace\project2\engine\classes\entity.cpp
+1386142552 source:c:\users\game\documents\codeblocks workspace\project2\engine\classes\entity.cpp
 	"..\headers\Entity.hpp"
 	<iostream>
 
-1385295412 c:\users\game\documents\codeblocks workspace\project2\engine\headers\entity.hpp
+1386142552 c:\users\game\documents\codeblocks workspace\project2\engine\headers\entity.hpp
 	<SFML/Graphics.hpp>
 	"SceneNode.hpp"
 
-1385089042 source:c:\users\game\documents\codeblocks workspace\project2\engine\classes\state.cpp
+1386142552 source:c:\users\game\documents\codeblocks workspace\project2\engine\classes\state.cpp
 	"..\headers\State.hpp"
 	"..\headers\StateStack.hpp"
 
-1385089065 c:\users\game\documents\codeblocks workspace\project2\engine\headers\state.hpp
+1386142552 c:\users\game\documents\codeblocks workspace\project2\engine\headers\state.hpp
 	"StateIdentifiers.hpp"
 	"ResourceIdentifier.hpp"
 	<SFML/System/Time.hpp>
 	<SFML/Window/Event.hpp>
 	<memory>
 
-1385071654 c:\users\game\documents\codeblocks workspace\project2\engine\headers\stateidentifiers.hpp
+1386142552 c:\users\game\documents\codeblocks workspace\project2\engine\headers\stateidentifiers.hpp
 
-1385286487 c:\users\game\documents\codeblocks workspace\project2\engine\headers\resourceidentifier.hpp
+1386142552 c:\users\game\documents\codeblocks workspace\project2\engine\headers\resourceidentifier.hpp
 
-1385009754 c:\users\game\documents\codeblocks workspace\project2\engine\headers\statestack.hpp
+1386142552 c:\users\game\documents\codeblocks workspace\project2\engine\headers\statestack.hpp
 	"State.hpp"
 	"StateIdentifiers.hpp"
 	"ResourceIdentifier.hpp"
@@ -512,23 +512,23 @@
 	<functional>
 	<map>
 
-1385011606 source:c:\users\game\documents\codeblocks workspace\project2\engine\classes\statestack.cpp
+1386142552 source:c:\users\game\documents\codeblocks workspace\project2\engine\classes\statestack.cpp
 	"..\headers\StateStack.hpp"
 	<cassert>
 	<iostream>
 
-1384998595 source:c:\users\game\documents\codeblocks workspace\project2\engine\classes\utility.cpp
+1386142552 source:c:\users\game\documents\codeblocks workspace\project2\engine\classes\utility.cpp
 	"..\headers\Utility.hpp"
 	<SFML/Graphics/Sprite.hpp>
 	<SFML/Graphics/Text.hpp>
 
-1385007044 c:\users\game\documents\codeblocks workspace\project2\engine\headers\utility.hpp
+1386142552 c:\users\game\documents\codeblocks workspace\project2\engine\headers\utility.hpp
 	<sstream>
 	"Utility.inl"
 
-1384568706 c:\users\game\documents\codeblocks workspace\project2\engine\headers\utility.inl
+1386142552 c:\users\game\documents\codeblocks workspace\project2\engine\headers\utility.inl
 
-1385293780 source:c:\users\game\documents\codeblocks workspace\project2\game\classes\game.cpp
+1386142552 source:c:\users\game\documents\codeblocks workspace\project2\game\classes\game.cpp
 	"..\headers\Game.hpp"
 	"..\headers\TitleState.hpp"
 	"..\headers\GameState.hpp"
@@ -537,7 +537,7 @@
 	<SFML/Graphics.hpp>
 	<iostream>
 
-1385088768 c:\users\game\documents\codeblocks workspace\project2\game\headers\game.hpp
+1386142552 c:\users\game\documents\codeblocks workspace\project2\game\headers\game.hpp
 	"..\..\engine\headers\ResourceHolder.hpp"
 	"..\..\engine\headers\ResourceIdentifier.hpp"
 	"..\..\engine\headers\StateStack.hpp"
@@ -546,7 +546,7 @@
 	<SFML/Graphics.hpp>
 	<SFML/System/Time.hpp>
 
-1385007044 c:\users\game\documents\codeblocks workspace\project2\engine\headers\resourceholder.hpp
+1386142552 c:\users\game\documents\codeblocks workspace\project2\engine\headers\resourceholder.hpp
 	<map>
 	<string>
 	<memory>
@@ -554,45 +554,48 @@
 	<cassert>
 	"..\resources\ResourceHolder.inl"
 
-1384998595 c:\users\game\documents\codeblocks workspace\project2\engine\resources\resourceholder.inl
+1386142552 c:\users\game\documents\codeblocks workspace\project2\engine\resources\resourceholder.inl
 
-1385007044 c:\users\game\documents\codeblocks workspace\project2\engine\headers\stringhelpers.hpp
+1386142552 c:\users\game\documents\codeblocks workspace\project2\engine\headers\stringhelpers.hpp
 	<sstream>
 	"..\resources\StringHelpers.inl"
 
-1384998595 c:\users\game\documents\codeblocks workspace\project2\engine\resources\stringhelpers.inl
+1386142552 c:\users\game\documents\codeblocks workspace\project2\engine\resources\stringhelpers.inl
 
-1385072642 source:c:\users\game\documents\codeblocks workspace\project2\game\classes\titlestate.cpp
+1386142552 source:c:\users\game\documents\codeblocks workspace\project2\game\classes\titlestate.cpp
 	"..\headers\TitleState.hpp"
 	"..\..\engine\headers\Utility.hpp"
 	"..\..\engine\headers\ResourceHolder.hpp"
 	<iostream>
 	<SFML/Graphics/RenderWindow.hpp>
 
-1385011759 c:\users\game\documents\codeblocks workspace\project2\game\headers\titlestate.hpp
+1386142552 c:\users\game\documents\codeblocks workspace\project2\game\headers\titlestate.hpp
 	"..\..\engine\headers\State.hpp"
 	<SFML/Graphics/Sprite.hpp>
 	<SFML/Graphics/Text.hpp>
 
-1385789033 source:c:\users\game\documents\codeblocks workspace\project2\engine\classes\scenenode.cpp
+1386142552 source:c:\users\game\documents\codeblocks workspace\project2\engine\classes\scenenode.cpp
 	<SFML/Graphics/RenderTarget.hpp>
 	<SFML/System/Time.hpp>
 	"../headers/SceneNode.hpp"
 	"../headers/Command.hpp"
+	<iterator>
 	<algorithm>
 	<cassert>
 	<iostream>
 
-1385106144 c:\users\game\documents\codeblocks workspace\project2\engine\headers\scenenode.hpp
-	"../../Game/headers/Category.hpp"
+1386142552 c:\users\game\documents\codeblocks workspace\project2\engine\headers\scenenode.hpp
 	<SFML/System/NonCopyable.hpp>
 	<SFML/System/Time.hpp>
 	<SFML/Graphics/Transformable.hpp>
 	<SFML/Graphics/Drawable.hpp>
+	<SFML/Graphics/Sprite.hpp>
+	<iostream>
 	<vector>
 	<memory>
+	<set>
 
-1385788878 source:c:\users\game\documents\codeblocks workspace\project2\game\classes\world.cpp
+1386142552 source:c:\users\game\documents\codeblocks workspace\project2\game\classes\world.cpp
 	"../headers/World.hpp"
 	"../headers/SpaceCraft.hpp"
 	"../headers/Enemy.hpp"
@@ -603,18 +606,18 @@
 	<SFML/Graphics/RenderWindow.hpp>
 	<iostream>
 
-1385787149 c:\users\game\documents\codeblocks workspace\project2\game\headers\world.hpp
+1386142552 c:\users\game\documents\codeblocks workspace\project2\game\headers\world.hpp
 	"../../engine/headers/ResourceHolder.hpp"
 	"../../engine/headers/ResourceIdentifier.hpp"
 	"../../engine/headers/SceneNode.hpp"
-	"../headers/SpaceCraft.hpp"
 	"../../engine/headers/CommandQueue.hpp"
+	"Enemy.hpp"
 	<SFML/System/NonCopyable.hpp>
 	<SFML/Graphics/View.hpp>
 	<SFML/Graphics/Texture.hpp>
 	<array>
 
-1385789041 source:c:\users\game\documents\codeblocks workspace\project2\game\classes\player.cpp
+1386142552 source:c:\users\game\documents\codeblocks workspace\project2\game\classes\player.cpp
 	"../headers/Player.hpp"
 	"../../engine/headers/CommandQueue.hpp"
 	"../headers/SpaceCraft.hpp"
@@ -625,7 +628,7 @@
 	<algorithm>
 	<iostream>
 
-1385788611 c:\users\game\documents\codeblocks workspace\project2\game\headers\player.hpp
+1386142552 c:\users\game\documents\codeblocks workspace\project2\game\headers\player.hpp
 	"../../engine/headers/Command.hpp"
 	"World.hpp"
 	<SFML/Window/Event.hpp>
@@ -636,24 +639,25 @@
 	<SFML/Graphics/Sprite.hpp>
 	"../../engine/headers/SceneNode.hpp"
 
-1385786729 source:c:\users\game\documents\codeblocks workspace\project2\game\classes\gamestate.cpp
+1386142552 source:c:\users\game\documents\codeblocks workspace\project2\game\classes\gamestate.cpp
 	"../headers/GameState.hpp"
 	"../headers/World.hpp"
 	"../../engine/headers/Command.hpp"
 	"../../engine/headers/CommandQueue.hpp"
 
-1385786729 c:\users\game\documents\codeblocks workspace\project2\game\headers\gamestate.hpp
+1386142552 c:\users\game\documents\codeblocks workspace\project2\game\headers\gamestate.hpp
 	"../../engine/headers/State.hpp"
 	"World.hpp"
 	"Player.hpp"
+	"EnemyController.hpp"
 	<SFML/Graphics/Sprite.hpp>
 	<SFML/Graphics/Text.hpp>
 
-1385075194 source:c:\users\game\documents\codeblocks workspace\project2\engine\classes\spritenode.cpp
+1386142552 source:c:\users\game\documents\codeblocks workspace\project2\engine\classes\spritenode.cpp
 	"..\headers\SpriteNode.hpp"
 	<SFML/Graphics/RenderTarget.hpp>
 
-1385073725 c:\users\game\documents\codeblocks workspace\project2\engine\headers\spritenode.hpp
+1386142552 c:\users\game\documents\codeblocks workspace\project2\engine\headers\spritenode.hpp
 	"SceneNode.hpp"
 	<SFML/Graphics/Sprite.hpp>
 
@@ -661,48 +665,55 @@
 	"..\headers\SpriteNode.hpp"
 	<SFML/Graphics/RenderTarget.hpp>
 
-1385103247 c:\users\game\documents\codeblocks workspace\project2\game\headers\spacecraft.hpp
+1386142552 c:\users\game\documents\codeblocks workspace\project2\game\headers\spacecraft.hpp
 	<SFML/Graphics/Sprite.hpp>
 	"../../engine/headers/Entity.hpp"
+	"Projectile.hpp"
 	"../../engine/headers/ResourceIdentifier.hpp"
+	"../../engine/headers/Command.hpp"
+	"Player.hpp"
+	<iostream>
 
-1385108372 source:c:\users\game\documents\codeblocks workspace\project2\game\classes\spacecraft.cpp
+1386142552 source:c:\users\game\documents\codeblocks workspace\project2\game\classes\spacecraft.cpp
 	"../headers/SpaceCraft.hpp"
 	"../../engine/headers/ResourceHolder.hpp"
 	"../../engine/headers/Utility.hpp"
+	"../../engine/headers/Command.hpp"
+	"../headers/World.hpp"
 	<iostream>
+	<math.h>
 
-1385081422 source:c:\users\game\documents\codeblocks workspace\project2\engine\classes\command.cpp
+1386142552 source:c:\users\game\documents\codeblocks workspace\project2\engine\classes\command.cpp
 	"../headers/Command.hpp"
 
-1385257734 c:\users\game\documents\codeblocks workspace\project2\engine\headers\command.hpp
-	"../../Game/headers/Category.hpp"
+1386142552 c:\users\game\documents\codeblocks workspace\project2\engine\headers\command.hpp
 	<SFML/System/Time.hpp>
 	<functional>
 	<cassert>
 
 1385286406 c:\users\game\documents\codeblocks workspace\project2\game\headers\category.hpp
 
-1385081498 source:c:\users\game\documents\codeblocks workspace\project2\engine\classes\commandqueue.cpp
+1386142552 source:c:\users\game\documents\codeblocks workspace\project2\engine\classes\commandqueue.cpp
 	"../headers/CommandQueue.hpp"
 	"../headers/SceneNode.hpp"
 
-1385081378 c:\users\game\documents\codeblocks workspace\project2\engine\headers\commandqueue.hpp
+1386142552 c:\users\game\documents\codeblocks workspace\project2\engine\headers\commandqueue.hpp
 	"Command.hpp"
 	<queue>
 
-1385286468 source:c:\users\game\documents\codeblocks workspace\project2\game\classes\enemy.cpp
+1386142552 source:c:\users\game\documents\codeblocks workspace\project2\game\classes\enemy.cpp
 	"../headers/Enemy.hpp"
 	"../../engine/headers/ResourceHolder.hpp"
 	"../../engine/headers/Utility.hpp"
 	<iostream>
+	"../headers/Seek.hpp"
 
-1385293754 c:\users\game\documents\codeblocks workspace\project2\game\headers\enemy.hpp
+1386142552 c:\users\game\documents\codeblocks workspace\project2\game\headers\enemy.hpp
 	<SFML/Graphics/Sprite.hpp>
 	"../../engine/headers/Entity.hpp"
 	"../../engine/headers/ResourceIdentifier.hpp"
 
-1385788848 c:\users\game\documents\codeblocks workspace\project2\game\headers\spacecraftactions.hpp
+1386142552 c:\users\game\documents\codeblocks workspace\project2\game\headers\spacecraftactions.hpp
 	"../headers/SpaceCraft.hpp"
 	<iostream>
 
@@ -1869,15 +1880,32 @@
 
 1386113752 c:\users\tyler\desktop\test\engine\headers\utility.inl
 
-1386113752 source:c:\users\tyler\desktop\test\game\classes\enemycontroller.cpp
+1386135113 source:c:\users\tyler\desktop\test\game\classes\enemycontroller.cpp
 	"../headers/EnemyController.hpp"
+	"../headers/Seek.hpp"
+	<math.h>
 	<iostream>
 
-1386113752 c:\users\tyler\desktop\test\game\headers\enemycontroller.hpp
+1386132212 c:\users\tyler\desktop\test\game\headers\enemycontroller.hpp
+	"../../engine/headers/Command.hpp"
+	"World.hpp"
+	"Enemy.hpp"
+	<SFML/Window/Event.hpp>
+	<SFML/System/NonCopyable.hpp>
+	<map>
 
 1386114400 c:\users\godzilla2500\documents\github\cs146-project2\game\headers\world.hpp
 
-1386113752 c:\users\tyler\desktop\test\game\headers\world.hpp
+1386130058 c:\users\tyler\desktop\test\game\headers\world.hpp
+	"../../engine/headers/ResourceHolder.hpp"
+	"../../engine/headers/ResourceIdentifier.hpp"
+	"../../engine/headers/SceneNode.hpp"
+	"../../engine/headers/CommandQueue.hpp"
+	"Enemy.hpp"
+	<SFML/System/NonCopyable.hpp>
+	<SFML/Graphics/View.hpp>
+	<SFML/Graphics/Texture.hpp>
+	<array>
 
 1386114400 source:c:\users\godzilla2500\documents\github\cs146-project2\game\classes\game.cpp
 
@@ -1891,16 +1919,17 @@
 
 1386113752 c:\users\tyler\desktop\test\engine\resources\resourceholder.inl
 
-1386128411 c:\users\tyler\desktop\test\game\headers\enemy.hpp
+1386132841 c:\users\tyler\desktop\test\game\headers\enemy.hpp
 	<SFML/Graphics/Sprite.hpp>
 	"../../engine/headers/Entity.hpp"
 	"../../engine/headers/ResourceIdentifier.hpp"
 
-1386128411 source:c:\users\tyler\desktop\test\game\classes\enemy.cpp
+1386138287 source:c:\users\tyler\desktop\test\game\classes\enemy.cpp
 	"../headers/Enemy.hpp"
 	"../../engine/headers/ResourceHolder.hpp"
 	"../../engine/headers/Utility.hpp"
 	<iostream>
+	"../headers/Seek.hpp"
 
 1386128411 source:c:\users\tyler\desktop\test\game\classes\followtheleader.cpp
 	"../headers/VectorUtil.hpp"
@@ -1908,7 +1937,7 @@
 	"../headers/FollowTheLeader.hpp"
 	<SFML/System/Vector2.hpp>
 
-1386128411 c:\users\tyler\desktop\test\game\headers\vectorutil.hpp
+1386137387 c:\users\tyler\desktop\test\game\headers\vectorutil.hpp
 	<SFML/System.hpp>
 
 1386128411 c:\users\tyler\desktop\test\game\headers\followtheleader.hpp
@@ -2002,7 +2031,7 @@
 
 1386114400 source:c:\users\godzilla2500\documents\github\cs146-project2\game\classes\spacecraft.cpp
 
-1386128411 source:c:\users\tyler\desktop\test\game\classes\seek.cpp
+1386138486 source:c:\users\tyler\desktop\test\game\classes\seek.cpp
 	"../headers/VectorUtil.hpp"
 	"../headers/Enemy.hpp"
 	"../headers/Seek.hpp"
@@ -2024,10 +2053,10 @@
 
 1386114400 c:\users\godzilla2500\documents\github\cs146-project2\game\fsm\fstate.hpp
 
-1386128411 source:c:\users\tyler\desktop\test\game\classes\vectorutil.cpp
+1386138153 source:c:\users\tyler\desktop\test\game\classes\vectorutil.cpp
 	"../headers/VectorUtil.hpp"
 
-1386128409 source:c:\users\tyler\desktop\test\game\classes\world.cpp
+1386130131 source:c:\users\tyler\desktop\test\game\classes\world.cpp
 	"../headers/World.hpp"
 	"../headers/SpaceCraft.hpp"
 	"../headers/Enemy.hpp"
@@ -2093,4 +2122,98 @@
 1386113752 source:c:\users\tyler\desktop\test\main.cpp
 	<iostream>
 	"Game/headers/Game.hpp"
+
+1386142552 c:\users\game\documents\codeblocks workspace\project2\game\headers\seek.hpp
+	"../FSM/IAction.hpp"
+	"World.hpp"
+	<SFML/System.hpp>
+
+1386142552 c:\users\game\documents\codeblocks workspace\project2\game\fsm\iaction.hpp
+
+1386142552 source:c:\users\game\documents\codeblocks workspace\project2\game\classes\enemycontroller.cpp
+	"../headers/EnemyController.hpp"
+	"../headers/Seek.hpp"
+	<math.h>
+	<iostream>
+
+1386142552 c:\users\game\documents\codeblocks workspace\project2\game\headers\enemycontroller.hpp
+	"../../engine/headers/Command.hpp"
+	"World.hpp"
+	"Enemy.hpp"
+	<SFML/Window/Event.hpp>
+	<SFML/System/NonCopyable.hpp>
+	<map>
+
+1386142552 source:c:\users\game\documents\codeblocks workspace\project2\game\classes\followtheleader.cpp
+	"../headers/VectorUtil.hpp"
+	"../headers/Enemy.hpp"
+	"../headers/FollowTheLeader.hpp"
+	<SFML/System/Vector2.hpp>
+
+1386142552 c:\users\game\documents\codeblocks workspace\project2\game\headers\vectorutil.hpp
+	<SFML/System.hpp>
+
+1386142552 c:\users\game\documents\codeblocks workspace\project2\game\headers\followtheleader.hpp
+	"../FSM/IAction.hpp"
+	"World.hpp"
+	<SFML/System.hpp>
+
+1386142552 c:\users\game\documents\codeblocks workspace\project2\game\headers\projectile.hpp
+	<SFML/Graphics/Sprite.hpp>
+	"../../engine/headers/Entity.hpp"
+	"../../engine/headers/ResourceIdentifier.hpp"
+	"../../engine/headers/Command.hpp"
+	"World.hpp"
+	"../../engine/headers/CommandQueue.hpp"
+	<iostream>
+
+1386142552 source:c:\users\game\documents\codeblocks workspace\project2\game\classes\projectile.cpp
+	"..\headers\Projectile.hpp"
+	<SFML/Graphics/Sprite.hpp>
+	"../../engine/headers/Entity.hpp"
+	"../../engine/headers/ResourceIdentifier.hpp"
+	"../../engine/headers/Command.hpp"
+	"../../engine/headers/Utility.hpp"
+	"../../engine/headers/CommandQueue.hpp"
+	<iostream>
+
+1386142552 source:c:\users\game\documents\codeblocks workspace\project2\game\classes\seek.cpp
+	"../headers/VectorUtil.hpp"
+	"../headers/Enemy.hpp"
+	"../headers/Seek.hpp"
+	<SFML/System/Vector2.hpp>
+
+1386142552 source:c:\users\game\documents\codeblocks workspace\project2\game\classes\vectorutil.cpp
+	"../headers/VectorUtil.hpp"
+
+1386142552 source:c:\users\game\documents\codeblocks workspace\project2\game\fsm\fstate.cpp
+	"FState.hpp"
+
+1386142552 c:\users\game\documents\codeblocks workspace\project2\game\fsm\fstate.hpp
+	<vector>
+	"IAction.hpp"
+	"ICondition.hpp"
+
+1386142552 c:\users\game\documents\codeblocks workspace\project2\game\fsm\icondition.hpp
+	"..\headers\World.hpp"
+	"IAction.hpp"
+
+1386142552 source:c:\users\game\documents\codeblocks workspace\project2\game\fsm\iaction.cpp
+	"IAction.hpp"
+
+1386142552 source:c:\users\game\documents\codeblocks workspace\project2\game\fsm\icondition.cpp
+	"ICondition.hpp"
+
+1386142552 source:c:\users\game\documents\codeblocks workspace\project2\game\fsm\statemachine.cpp
+	"StateMachine.hpp"
+	"ICondition.hpp"
+	"FState.hpp"
+	"..\headers\World.hpp"
+
+1386142552 c:\users\game\documents\codeblocks workspace\project2\game\fsm\statemachine.hpp
+	<vector>
+	"IAction.hpp"
+	"ICondition.hpp"
+	"FState.hpp"
+	"..\headers\World.hpp"
 

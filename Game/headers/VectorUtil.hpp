@@ -13,7 +13,7 @@ public:
     sf::Vector2f normalize (sf::Vector2f *v);
     sf::Vector2f truncate(sf::Vector2f *v, float maxNum);
     sf::Vector2f truncate(sf::Vector2f v, float maxNum);
-
+     sf::Vector2f truncateLength (sf::Vector2f v, float maxLength);
 };
 
 
