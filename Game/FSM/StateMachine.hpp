@@ -13,7 +13,7 @@ class StateMachine
     public:
                                                 StateMachine();
         virtual                                 ~StateMachine();
-        std::vector<IAction>                    update(World& world, FState currentState);
+        std::vector<IAction>                    update(World& world, Enemy& enemy, FState currentState);
 
     private:
         std::vector<IAction>                    actionStack;

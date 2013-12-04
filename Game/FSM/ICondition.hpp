@@ -9,7 +9,7 @@ class ICondition
     public:
                                                 ICondition();
         virtual                                 ~ICondition();
-        virtual bool                            test(World& world);
+        virtual bool                            test(World& world, Enemy& enemy);
 
 
         void                                    setTransitionAction(IAction action);

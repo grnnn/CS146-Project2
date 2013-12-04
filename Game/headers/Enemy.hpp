@@ -4,12 +4,12 @@
 #include <SFML/Graphics/Sprite.hpp>
 #include "../../engine/headers/Entity.hpp"
 #include "../../engine/headers/ResourceIdentifier.hpp"
+#include "IState.hpp"
 
 
 class Enemy : public Entity
 {
     public:
-        Enemy(const TextureHolder& textures);
 
         enum Type
         {
@@ -19,26 +19,9 @@ class Enemy : public Entity
             Leader
         };
 
-        enum IState
-        {
-            // Loners
-            LWander,
-            LRushPlayer,
 
-            //Swarmers
-            SWander,
-            SSwarmPlayer,
-            SRushPlayer,
 
-            // Flockers
-            FWander,
-            FRushPlayer,
-            FFollowLeader,
-
-            //Leader
-            LeadWander,
-            LeadRushPlayer
-        };
+        Enemy(const TextureHolder& textures, std::string m_type, IState m_state);
 
         void                        processEvents();
         void                        update(sf::Time dt);
@@ -52,6 +35,8 @@ class Enemy : public Entity
         bool                        isLeader();
 
         int                         getState();
+
+        void                        setState(IState i_state);
 
     private:
         virtual void                drawCurrent(sf::RenderTarget& target, sf::RenderStates states) const;

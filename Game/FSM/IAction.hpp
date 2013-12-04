@@ -3,12 +3,15 @@
 
 #include <SFML/System.hpp>
 
+#include "../headers/World.hpp"
+#include "../headers/Enemy.hpp"
+
 class IAction
 {
     public:
                                                 IAction();
         virtual                                 ~IAction();
-        virtual sf::Vector2f                    doAction();
+        virtual sf::Vector2f                    doAction(World& world, Enemy& enemy);
 };
 
 #endif // IACTION_H

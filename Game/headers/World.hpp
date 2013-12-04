@@ -32,7 +32,9 @@ class World : private sf::NonCopyable
                 void                                      isEnemiesEmpty();
 
                 std::vector<Enemy*>                       getEnemies();
-                void                                      spawnEnemy(float x, float y);
+                void                                      spawnEnemy(float x, float y, std::string type, IState state);
+
+                bool                                      hasLeader();
 
         private:
                 enum Layer
@@ -60,6 +62,9 @@ class World : private sf::NonCopyable
                 sf::Vector2f                              mSpawnPosition;
                 SpaceCraft*                               mPlayer;
                 std::vector<Enemy*>                       mEnemies;
+
+        private:
+                bool                                      leaderExists;
 
 };
 

@@ -84,7 +84,7 @@ void World::buildScene()
         mSceneLayers[Air]->attachChild(player);
 
         //Test Enemy
-        spawnEnemy(mWorldView.getSize().x / 2, (mWorldView.getSize().y / 2) - 50);
+        //spawnEnemy(mWorldView.getSize().x / 2, (mWorldView.getSize().y / 2) - 50, );
 }
 
 void World::adaptPlayerPosition()
@@ -125,9 +125,9 @@ std::vector<Enemy*> World::getEnemies()
     return mEnemies;
 }
 
-void World::spawnEnemy(float x, float y)
+void World::spawnEnemy(float x, float y, std::string type, IState state)
 {
-        Enemy* enemy(new Enemy(mTextures));
+        Enemy* enemy(new Enemy(mTextures, type, state));
         enemy->setPosition(x, y);
         mEnemies.push_back( enemy );
         mSceneLayers[Air]->attachChild( enemy );
@@ -139,4 +139,9 @@ void World::isEnemiesEmpty()
         std::cout << "mEnemies is still empty";
     else
         std::cout << "mEnemies has something in it";
+}
+
+bool World::hasLeader()
+{
+    return leaderExists;
 }

@@ -13,7 +13,7 @@ StateMachine::~StateMachine()
     //dtor
 }
 
-std::vector<IAction> StateMachine::update(World& world, FState currentState){
+std::vector<IAction> StateMachine::update(World& world, Enemy& enemy, FState currentState){
     actionStack.clear();
 	bool trigger = false;
 	ICondition triggeredtrans;
@@ -21,7 +21,7 @@ std::vector<IAction> StateMachine::update(World& world, FState currentState){
 
     auto tState = currentState.getTransitionStates().begin();
 	for(auto trans = currentState.getConditions().begin(); trans != currentState.getConditions().end(); ++trans){
-		if((*trans).test(world)){
+		if((*trans).test(world, enemy)){
 			triggeredtrans = (*trans);
 			triggeredState = (*tState);
 			trigger = true;

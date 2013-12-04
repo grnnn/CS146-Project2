@@ -2,12 +2,18 @@
 #include "../../engine/headers/ResourceHolder.hpp"
 #include "../../engine/headers/Utility.hpp"
 #include "../headers/VectorUtil.hpp"
+
+
+
 #include <iostream>
 
-Enemy::Enemy(const TextureHolder& textures)
+Enemy::Enemy(const TextureHolder& textures, std::string m_type, IState m_state)
 : mSprite(textures.get(Textures::Enemy))
 {
     centerOrigin(mSprite);
+    setType(m_type);
+    setState(m_state);
+
 }
 
 void Enemy::drawCurrent(sf::RenderTarget& target, sf::RenderStates states) const
@@ -49,57 +55,61 @@ void Enemy::setType(std::string i_type)
 
 void Enemy::setState(std::string i_state)
 {
+     std::cout <<  "okay6\n";
+
+      std::cout <<  i_state + "huehue\n";
 
     int sCase = 0;
     if(i_state == "LWander") sCase = 1;
-    if(i_state == "LRushLeader") sCase = 2;
-    if(i_state == "SWander") sCase = 3;
-    if(i_state == "SSwarmLeader") sCase = 4;
-    if(i_state == "SRushPlayer") sCase = 5;
-    if(i_state == "FRushPlayer") sCase = 6;
-    if(i_state == "FWander") sCase = 7;
-    if(i_state == "FFollowLeader") sCase = 8;
-    if(i_state == "LeadWander") sCase = 9;
-    if(i_state == "LeadRushPlayer") sCase = 10;
-
+    else if(i_state == "LRushLeader") sCase = 2;
+    else if(i_state == "SWander") sCase = 3;
+    else if(i_state == "SSwarmLeader") sCase = 4;
+    else if(i_state == "SRushPlayer") sCase = 5;
+    else if(i_state == "FRushPlayer") sCase = 6;
+    else if(i_state == "FWander") sCase = 7;
+    else if(i_state == "FFollowLeader") sCase = 8;
+    else if(i_state == "LeadWander") sCase = 9;
+    else if(i_state == "LeadRushPlayer") sCase = 10;
 
     switch(sCase){
         // Loners
         case 1:
-            state = LWander;
+             std::cout <<  "okay7\n";
+            setState(ILWander);
+             std::cout <<  "okay8\n";
             break;
         case 2:
-            state = LRushPlayer;
+            state = ILRushPlayer;
             break;
 
         //Swarmers
         case 3:
-            state = SWander;
+            state = ISWander;
             break;
         case 4:
-            state = SSwarmPlayer;
+            state = ISSwarmPlayer;
             break;
         case 5:
-            state = SRushPlayer;
+            state = ISRushPlayer;
             break;
 
         // Flockers
         case 6:
-            state = FWander;
+            state = IFWander;
             break;
         case 7:
-            state = FRushPlayer;
+            state = IFRushPlayer;
             break;
         case 8:
-            state = FFollowLeader;
+            state = IFFollowLeader;
             break;
 
         //Leader
         case 9:
-            state = LeadWander;
+            state = ILeadWander;
             break;
         case 10:
-            state = LeadRushPlayer;
+            state = ILeadRushPlayer;
             break;
 
         default:
@@ -137,41 +147,45 @@ int Enemy::getState()
 {
     switch(state){
         // Loners
-        case LWander:
+        case ILWander:
             return 1;
             break;
-        case LRushPlayer:
+        case ILRushPlayer:
             return 2;
             break;
 
         //Swarmers
-        case SWander:
+        case ISWander:
             return 3;
             break;
-        case SSwarmPlayer:
+        case ISSwarmPlayer:
             return 4;
             break;
-        case SRushPlayer:
+        case ISRushPlayer:
             return 5;
             break;
 
         // Flockers
-        case FWander:
+        case IFWander:
             return 6;
             break;
-        case FRushPlayer:
+        case IFRushPlayer:
             return 7;
             break;
-        case FFollowLeader:
+        case IFFollowLeader:
             return 8;
             break;
 
         //Leader
-        case LeadWander:
+        case ILeadWander:
             return 9;
             break;
-        case LeadRushPlayer:
+        case ILeadRushPlayer:
             return 10;
             break;
     }
+}
+
+void Enemy::setState(IState i_state){
+    state = i_state;
 }
