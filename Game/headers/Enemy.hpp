@@ -15,8 +15,10 @@ class Enemy : public Entity
         void                        update(sf::Time dt);
 
         float                       getMaxSpeed();
+        float                       getMaxForce();
 
     private:
+        float maxForce;
         float maxSpeed;
 
         virtual void                drawCurrent(sf::RenderTarget& target, sf::RenderStates states) const;

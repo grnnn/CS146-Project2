@@ -34,6 +34,7 @@ class World : private sf::NonCopyable
                 TextureHolder&                            getTextures();
                 void                                      isEnemiesEmpty();
                 void                                      loadTextures();
+                std::vector<Enemy*>                       getEnemies();
 
                 void                                      spawnEnemy(float x, float y);
                 void                                      handleCollisions();

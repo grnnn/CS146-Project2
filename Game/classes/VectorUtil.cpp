@@ -41,6 +41,7 @@ sf::Vector2f VectorUtil::truncate(sf::Vector2f v, float maxNum){
     return v;
 }
 
+
 float VectorUtil::distance(sf::Vector2f *a,sf::Vector2f *b){
     return sqrt((a->x - b->x) * (a->x - b->x)  + (a->y - b->y) * (a->y - b->y));
 }

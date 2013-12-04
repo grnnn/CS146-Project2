@@ -11,6 +11,7 @@
 #include <map>
 
 // Forward declarations
+class SpaceCraft;
 class CommandQueue;
 namespace sf
 {
@@ -33,7 +34,7 @@ class EnemyController : private sf::NonCopyable
                 void                                         handleEvent(const sf::Event& event, CommandQueue& commands);
                 void                                         update(CommandQueue& commands);
                 void                                         spawnEnemy(float x, float y);
-                //void                                         initializeStates();
+                //void                                        initializeStates();
         private:
                 static bool                                  isAction(Action action);
         private:

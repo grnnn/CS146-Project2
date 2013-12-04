@@ -1,7 +1,10 @@
 #include "../headers/EnemyController.hpp"
+#include "../headers/Seek.hpp"
+#include <math.h>
 
 #include <iostream>
 
+const float PI = 3.14159265;
 const int MAX_NUM_ENEMIES = 50;
 const float SPAWN_INTERVAL = .7f;
 
@@ -14,11 +17,33 @@ EnemyController::EnemyController(sf::RenderWindow& window, World& world)
 void EnemyController::spawnEnemy(float x, float y)
 {
     mWorld->spawnEnemy(x, y);
+
 }
 
 void EnemyController::update(CommandQueue& commands)
 {
 
+
+    sf::Vector2f playerPosition= mWorld->getPlayerPosition();
+    sf::Vector2f enemyVelocity;
+
+    Seek* seekObj = new Seek();
+
+    for(auto &  i : mWorld->getEnemies()){
+        enemyVelocity = seekObj->doAction(*i, playerPosition);
+        i->setVelocity(enemyVelocity);
+
+        float dx = i->getPosition().x - playerPosition.x;
+        float dy = i->getPosition().y - playerPosition.y;
+
+        float rotation = (atan2(dx*-1,dy)) * 180 / PI;
+        i->setRotation(rotation + 180);
+    }
+
+
+
+
+/*
     // Spawn enemies randomly at SPAWN_INTERVAL second intervals
     if (mSpawnTimer.getElapsedTime().asSeconds() >= SPAWN_INTERVAL){
         float winX = mWindow.getDefaultView().getSize().x;
@@ -46,12 +71,16 @@ void EnemyController::update(CommandQueue& commands)
      *
      * Finally, call commands.push(cmd);
      */
+
 }
 
 void EnemyController::handleEvent(const sf::Event& event, CommandQueue& commands)
 {
      // This is here incase we want Enemies to do something on a button press (debugging purposes only, probably)
 }
+
+
+
 
 bool EnemyController::isAction(Action action)
 {

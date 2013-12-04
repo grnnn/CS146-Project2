@@ -1869,15 +1869,32 @@
 
 1386113752 c:\users\tyler\desktop\test\engine\headers\utility.inl
 
-1386113752 source:c:\users\tyler\desktop\test\game\classes\enemycontroller.cpp
+1386135113 source:c:\users\tyler\desktop\test\game\classes\enemycontroller.cpp
 	"../headers/EnemyController.hpp"
+	"../headers/Seek.hpp"
+	<math.h>
 	<iostream>
 
-1386113752 c:\users\tyler\desktop\test\game\headers\enemycontroller.hpp
+1386132212 c:\users\tyler\desktop\test\game\headers\enemycontroller.hpp
+	"../../engine/headers/Command.hpp"
+	"World.hpp"
+	"Enemy.hpp"
+	<SFML/Window/Event.hpp>
+	<SFML/System/NonCopyable.hpp>
+	<map>
 
 1386114400 c:\users\godzilla2500\documents\github\cs146-project2\game\headers\world.hpp
 
-1386113752 c:\users\tyler\desktop\test\game\headers\world.hpp
+1386130058 c:\users\tyler\desktop\test\game\headers\world.hpp
+	"../../engine/headers/ResourceHolder.hpp"
+	"../../engine/headers/ResourceIdentifier.hpp"
+	"../../engine/headers/SceneNode.hpp"
+	"../../engine/headers/CommandQueue.hpp"
+	"Enemy.hpp"
+	<SFML/System/NonCopyable.hpp>
+	<SFML/Graphics/View.hpp>
+	<SFML/Graphics/Texture.hpp>
+	<array>
 
 1386114400 source:c:\users\godzilla2500\documents\github\cs146-project2\game\classes\game.cpp
 
@@ -1891,16 +1908,17 @@
 
 1386113752 c:\users\tyler\desktop\test\engine\resources\resourceholder.inl
 
-1386128411 c:\users\tyler\desktop\test\game\headers\enemy.hpp
+1386132841 c:\users\tyler\desktop\test\game\headers\enemy.hpp
 	<SFML/Graphics/Sprite.hpp>
 	"../../engine/headers/Entity.hpp"
 	"../../engine/headers/ResourceIdentifier.hpp"
 
-1386128411 source:c:\users\tyler\desktop\test\game\classes\enemy.cpp
+1386138287 source:c:\users\tyler\desktop\test\game\classes\enemy.cpp
 	"../headers/Enemy.hpp"
 	"../../engine/headers/ResourceHolder.hpp"
 	"../../engine/headers/Utility.hpp"
 	<iostream>
+	"../headers/Seek.hpp"
 
 1386128411 source:c:\users\tyler\desktop\test\game\classes\followtheleader.cpp
 	"../headers/VectorUtil.hpp"
@@ -1908,7 +1926,7 @@
 	"../headers/FollowTheLeader.hpp"
 	<SFML/System/Vector2.hpp>
 
-1386128411 c:\users\tyler\desktop\test\game\headers\vectorutil.hpp
+1386137387 c:\users\tyler\desktop\test\game\headers\vectorutil.hpp
 	<SFML/System.hpp>
 
 1386128411 c:\users\tyler\desktop\test\game\headers\followtheleader.hpp
@@ -2002,7 +2020,7 @@
 
 1386114400 source:c:\users\godzilla2500\documents\github\cs146-project2\game\classes\spacecraft.cpp
 
-1386128411 source:c:\users\tyler\desktop\test\game\classes\seek.cpp
+1386138486 source:c:\users\tyler\desktop\test\game\classes\seek.cpp
 	"../headers/VectorUtil.hpp"
 	"../headers/Enemy.hpp"
 	"../headers/Seek.hpp"
@@ -2024,10 +2042,10 @@
 
 1386114400 c:\users\godzilla2500\documents\github\cs146-project2\game\fsm\fstate.hpp
 
-1386128411 source:c:\users\tyler\desktop\test\game\classes\vectorutil.cpp
+1386138153 source:c:\users\tyler\desktop\test\game\classes\vectorutil.cpp
 	"../headers/VectorUtil.hpp"
 
-1386128409 source:c:\users\tyler\desktop\test\game\classes\world.cpp
+1386130131 source:c:\users\tyler\desktop\test\game\classes\world.cpp
 	"../headers/World.hpp"
 	"../headers/SpaceCraft.hpp"
 	"../headers/Enemy.hpp"
