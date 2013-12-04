@@ -66,14 +66,14 @@ sf::Vector2f FollowTheLeader::doAction(Enemy& enemy, Enemy& leader, World& world
     sf::Vector2f force;
     int neighborCount = 0;
 
-    for(auto currentEnemy = world.getEnemies().begin(); currentEnemy != world.getEnemies().end(); ++currentEnemy){ //doStuff}
+    /*for(auto currentEnemy = world.getEnemies().begin(); currentEnemy != world.getEnemies().end(); ++currentEnemy){ //doStuff}
 
         if ((*currentEnemy != &enemy) && (util->distance(*currentEnemy.getPosition(), position) <= SEPARATION_RADIUS) {
             force.x += currentEnemy.getPosition().x - position.x;
             force.y += currentEnemy.getPosition().y - position.y;
             neighborCount++;
         }
-  }
+  }*/
 
     if (neighborCount != 0) {
         force.x /= neighborCount;

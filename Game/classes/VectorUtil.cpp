@@ -34,8 +34,8 @@ sf::Vector2f VectorUtil::truncate(sf::Vector2f *v, float maxNum){
 }
 
 sf::Vector2f VectorUtil::truncate(sf::Vector2f v, float maxNum){
-    float i = maxNum / length(&v);
-    i = i < 1.0 ? i : 1.0;
+    float i = length(&v)/maxNum;
+    i = i < 1.0 ? 1.0 : 1/i;
     v.x = v.x * i;
     v.y = v.y * i;
     return v;

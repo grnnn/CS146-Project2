@@ -24,29 +24,18 @@ sf::Vector2f Seek::doAction(Enemy& enemy, sf::Vector2f target)
 
 
     sf::Vector2f position = enemy.getPosition();
-/*
 
-    sf::Vector2f desired_velocity = util->normalize(target-position)*max_speed;
-    sf::Vector2f steering = desired_velocity - currentVelocity;
-    steering = util->truncate(steering, max_force);
-    sf::Vector2f finalVelocity = util->truncate(currentVelocity + steering, max_speed);
-*/
 		sf::Vector2f source = position;
 
-		sf::Vector2f des_vel = target - (source);
+		sf::Vector2f des_vel = util->normalize(target - (source)) * max_speed;
 
-		float distance = util->length(&des_vel);
+		sf::Vector2f steering = des_vel - currentVelocity;
+		steering = util->truncate(steering, max_force);
+		steering.x = steering.x / 2;
+		steering.y = steering.y / 2;
+		currentVelocity = util->truncate (currentVelocity + steering, max_speed);
 
-		des_vel.x = des_vel.x * (max_speed / distance);
-		des_vel.y = des_vel.y * (max_speed /distance);
-
-		des_vel.x = des_vel.x - currentVelocity.x;
-		des_vel.y = des_vel.y - currentVelocity.y;
-
-		des_vel.x = des_vel.x * max_force;
-		des_vel.y = des_vel.y * max_force;
-
-		return des_vel;
+		return currentVelocity;
 
 
     /*

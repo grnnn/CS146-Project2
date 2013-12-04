@@ -31,6 +31,7 @@ void EnemyController::update(CommandQueue& commands)
 
     for(auto &  i : mWorld->getEnemies()){
         enemyVelocity = seekObj->doAction(*i, playerPosition);
+        float sign;
         i->setVelocity(enemyVelocity);
 
         float dx = i->getPosition().x - playerPosition.x;
@@ -39,8 +40,7 @@ void EnemyController::update(CommandQueue& commands)
         float rotation = (atan2(dx*-1,dy)) * 180 / PI;
         i->setRotation(rotation + 180);
     }
-
-
+lastVelocity = enemyVelocity;
 
 
 /*

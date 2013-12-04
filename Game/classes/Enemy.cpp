@@ -5,8 +5,8 @@
 #include "../headers/Seek.hpp"
 
 Enemy::Enemy(const TextureHolder& textures)
-:maxSpeed(50)
-,maxForce(1)
+:maxSpeed(500)
+,maxForce(10)
 {
     sf::Sprite spr(textures.get(Textures::Enemy));
     centerOrigin(spr);

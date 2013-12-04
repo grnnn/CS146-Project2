@@ -35,6 +35,8 @@ class EnemyController : private sf::NonCopyable
                 void                                         update(CommandQueue& commands);
                 void                                         spawnEnemy(float x, float y);
                 //void                                        initializeStates();
+        public:
+                sf::Vector2f                                lastVelocity;
         private:
                 static bool                                  isAction(Action action);
         private:
