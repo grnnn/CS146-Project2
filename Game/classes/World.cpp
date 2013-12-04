@@ -34,7 +34,7 @@ World::World(sf::RenderWindow& window)
 
 void World::update(sf::Time dt)
 {
-    mPlayer->setVelocity(0.f, 0.f);
+    mPlayer->setVelocity(0.1f, 0.1f);
 
     while (!mCommandQueue.isEmpty()){
                 Command cmd = mCommandQueue.pop();
@@ -109,6 +109,7 @@ void World::buildScene()
         //Test Enemy
         spawnEnemy(mWorldView.getSize().x / 2 +20, (mWorldView.getSize().y / 2) - 20);
          spawnEnemy(mWorldView.getSize().x / 2, (mWorldView.getSize().y / 2) - 90);
+         spawnEnemy(mWorldView.getSize().x / 2 - 20, (mWorldView.getSize().y / 2) - 190);
 
 }
 
@@ -192,6 +193,12 @@ void World::handleCollisions()
             thing.first->markForRemoval();
             thing.second->markForRemoval();
 
+        }
+        else if(matchesCategories(thing, 2, 100))
+        {
+            //thing.first->markForRemoval();
+            //thing.second->markForRemoval();
+            std::cout<<"DEMO VERSION, ship would take damage \n";
         }
     }
 }

@@ -2,7 +2,7 @@
 #include "World.hpp"
 
 #include <SFML/System.hpp>
-
+class SpaceCraft;
 
 class FollowTheLeader: public IAction
 {

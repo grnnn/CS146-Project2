@@ -13,6 +13,7 @@ float VectorUtil::length (sf::Vector2f *v){
 
 sf::Vector2f VectorUtil::normalize (sf::Vector2f v){
 	float len = length(&v);
+    if(len==0) return v;
 	v.x = v.x / len;
 	v.y = v.y / len;
 	return v;
@@ -20,6 +21,7 @@ sf::Vector2f VectorUtil::normalize (sf::Vector2f v){
 
 sf::Vector2f VectorUtil::normalize (sf::Vector2f *v){
 	float len = length(v);
+	if(len==0) len =1;
 	v->x = v->x / len;
 	v->y = v->y / len;
 	return *v;
@@ -42,6 +44,6 @@ sf::Vector2f VectorUtil::truncate(sf::Vector2f v, float maxNum){
 }
 
 
-float VectorUtil::distance(sf::Vector2f *a,sf::Vector2f *b){
-    return sqrt((a->x - b->x) * (a->x - b->x)  + (a->y - b->y) * (a->y - b->y));
+float VectorUtil::distance(sf::Vector2f a,sf::Vector2f b){
+    return sqrt((a.x - b.x) * (a.x - b.x)  + (a.y - b.y) * (a.y - b.y));
 }

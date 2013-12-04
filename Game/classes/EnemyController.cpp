@@ -1,5 +1,6 @@
 #include "../headers/EnemyController.hpp"
 #include "../headers/Seek.hpp"
+#include "../headers/FollowTheLeader.hpp"
 #include <math.h>
 
 #include <iostream>
@@ -28,17 +29,45 @@ void EnemyController::update(CommandQueue& commands)
     sf::Vector2f enemyVelocity;
 
     Seek* seekObj = new Seek();
+    FollowTheLeader* fObj = new FollowTheLeader();
+    int h = 0;
+    Enemy* lastEnemy;
 
     for(auto &  i : mWorld->getEnemies()){
-        enemyVelocity = seekObj->doAction(*i, playerPosition);
-        float sign;
-        i->setVelocity(enemyVelocity);
+        if(h==0){
+            enemyVelocity = seekObj->doAction(*i, playerPosition);
+            h++;
+            lastEnemy = i;
+            i->setVelocity(enemyVelocity);
+        float dx = enemyVelocity.x;
+        float dy = enemyVelocity.y;
+        float rotation = (atan2(dx*-1,dy)) * 180 / PI;
+        i->setRotation(rotation);
+        }
+        else if(h==1){
 
-        float dx = i->getPosition().x - playerPosition.x;
-        float dy = i->getPosition().y - playerPosition.y;
-
+        enemyVelocity = fObj->doAction(*i, *lastEnemy, *mWorld);
+        i->setVelocity(-enemyVelocity);
+        float dx = enemyVelocity.x;
+        float dy = enemyVelocity.y;
         float rotation = (atan2(dx*-1,dy)) * 180 / PI;
         i->setRotation(rotation + 180);
+        lastEnemy = i;
+        h++;
+        }
+        else if(h==2){
+            enemyVelocity = fObj->doAction(*i, *lastEnemy, *mWorld);
+        i->setVelocity(-enemyVelocity);
+        float dx = enemyVelocity.x;
+        float dy = enemyVelocity.y;
+        float rotation = (atan2(dx*-1,dy)) * 180 / PI;
+        i->setRotation(rotation + 180);
+        lastEnemy = i;
+        h++;
+        }
+
+        float sign;
+
     }
 lastVelocity = enemyVelocity;
 

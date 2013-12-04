@@ -1,6 +1,6 @@
 #include "../headers/VectorUtil.hpp"
 #include "../headers/Enemy.hpp"
-
+#include "../headers/SpaceCraft.hpp"
 #include "../headers/FollowTheLeader.hpp"
 #include <SFML/System/Vector2.hpp>
 
@@ -15,10 +15,10 @@ sf::Vector2f FollowTheLeader::doAction(Enemy& enemy, Enemy& leader, World& world
 {
 
 //Initialize values
-    float LEADER_BEHIND_DIST = 20;   //How close they follow
-    float SLOWING_RADIUS = 20;       //Arrive distance
-    float SEPARATION_RADIUS = 5;     //How far they should detect neighbors
-    float MAX_SEPARATION = 5;        //How far they should move away from neighbors
+    float LEADER_BEHIND_DIST = 50;   //How close they follow
+    float SLOWING_RADIUS = 4;       //Arrive distance
+    float SEPARATION_RADIUS = 50;     //How far they should detect neighbors
+    float MAX_SEPARATION = 20;        //How far they should move away from neighbors
 
     VectorUtil* util = new VectorUtil();
      //Some Arbitrary value
@@ -29,16 +29,23 @@ sf::Vector2f FollowTheLeader::doAction(Enemy& enemy, Enemy& leader, World& world
     sf::Vector2f leaderPosition = leader.getPosition();
 
 //Calculate point behind leader
-    tv.x *= -1;
-    tv.y *= -1;
+    tv.x = tv.x * -1;
+    tv.y = tv.y * -1;
     tv = util->normalize(tv);
     tv.x *= LEADER_BEHIND_DIST;
     tv.y *= LEADER_BEHIND_DIST;
+
     sf::Vector2f behind = tv + leaderPosition;
 
+
 // Calculate the desired velocity to behind point
-    sf::Vector2f desired_velocity = util->normalize(position - behind);
-    float distance = util->length(&desired_velocity);
+    sf::Vector2f desired_velocity = position - behind;
+
+    desired_velocity = util->normalize(desired_velocity);
+    //float distance = util->length(&desired_velocity);
+    float distance = 1;
+
+
 
 // Check the distance to detect whether the character is inside the slowing area
 
@@ -46,34 +53,43 @@ sf::Vector2f FollowTheLeader::doAction(Enemy& enemy, Enemy& leader, World& world
     {
         // Inside the slowing area
         desired_velocity = util->normalize(desired_velocity);
-        desired_velocity.y *= maxSpeed * (distance / SLOWING_RADIUS);
-        desired_velocity.x *= maxSpeed * (distance / SLOWING_RADIUS);
+                desired_velocity.x *= maxSpeed * (distance / SLOWING_RADIUS);
+                desired_velocity.y *= maxSpeed * (distance / SLOWING_RADIUS);
+
     }
     else
     {
         // Outside the slowing area
-        desired_velocity = util->normalize(desired_velocity);
-        desired_velocity.y *= maxSpeed;
+        //desired_velocity = util->normalize(desired_velocity);
         desired_velocity.x *= maxSpeed;
+                desired_velocity.y *= maxSpeed;
+
     }
 
 //Desired velocity slowed
 
     sf::Vector2f steering = desired_velocity - velocity; //Set the steering
+
     velocity = util->truncate (velocity + steering , maxSpeed);
 
+    //sf::Vector2f steering2 = velocity;
+    //steering2 = util->truncate(steering2, enemy.getMaxForce());
+
+    //velocity = util->truncate(velocity + steering2, enemy.getMaxSpeed());
+
 //Separation
-    sf::Vector2f force;
+    /*sf::Vector2f force;
     int neighborCount = 0;
 
-    /*for(auto currentEnemy = world.getEnemies().begin(); currentEnemy != world.getEnemies().end(); ++currentEnemy){ //doStuff}
+    for(auto currentEnemy = world.getEnemies().begin(); currentEnemy != world.getEnemies().end(); ++currentEnemy){ //doStuff}
 
-        if ((*currentEnemy != &enemy) && (util->distance(*currentEnemy.getPosition(), position) <= SEPARATION_RADIUS) {
-            force.x += currentEnemy.getPosition().x - position.x;
-            force.y += currentEnemy.getPosition().y - position.y;
+            if ((*currentEnemy != &enemy) && (util->distance((**currentEnemy).getPosition(), position) <= SEPARATION_RADIUS))
+            {
+            force.x += (**currentEnemy).getPosition().x - position.x;
+            force.y += (**currentEnemy).getPosition().y - position.y;
             neighborCount++;
         }
-  }*/
+  }
 
     if (neighborCount != 0) {
         force.x /= neighborCount;
@@ -84,7 +100,7 @@ sf::Vector2f FollowTheLeader::doAction(Enemy& enemy, Enemy& leader, World& world
     }
 
     force = util->normalize(force);
-    force *= MAX_SEPARATION;
+    force *= MAX_SEPARATION;*/
 
 
     return velocity;

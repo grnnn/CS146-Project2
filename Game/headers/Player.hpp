@@ -39,6 +39,7 @@ class Player : private sf::NonCopyable
 
                 void                                         assignKey(Action action, sf::Keyboard::Key key);
                 sf::Keyboard::Key                            getAssignedKey(Action action) const;
+                sf::Vector2f                                 getmRotations();
         public:
                 sf::Vector2f                                        mRotation;
                 float                                        lastRotation;

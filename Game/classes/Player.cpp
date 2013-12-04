@@ -162,4 +162,8 @@ bool Player::isRealtimeAction(Action action)
                         return false;
         }
 }
+sf::Vector2f Player::getmRotations()
+{
+    return mRotation;
+}
 
