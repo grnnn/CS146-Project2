@@ -10,6 +10,8 @@ Enemy::Enemy(const TextureHolder& textures)
     centerOrigin(spr);
     setSprite(spr);
     setID(2);
+
+    float maxSpeed = 250;
 }
 
 void Enemy::drawCurrent(sf::RenderTarget& target, sf::RenderStates states) const
@@ -17,4 +19,7 @@ void Enemy::drawCurrent(sf::RenderTarget& target, sf::RenderStates states) const
     target.draw(getSprite(), states);
 }
 
+float Enemy::getMaxSpeed(){
+    return maxSpeed;
+}
 
