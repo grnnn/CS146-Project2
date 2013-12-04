@@ -36,6 +36,7 @@ class SceneNode : public sf::Transformable, public sf::Drawable, private sf::Non
         void                                setID(int i);
         void                                markForRemoval();
         void                                removeWrecks();
+        void                                destroyOutsideWorld();
     public:
         bool                                mIsDestroyed;
         bool                                mMarkedForRemoval;

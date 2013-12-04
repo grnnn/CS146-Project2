@@ -27,8 +27,18 @@ void Projectile::drawCurrent(sf::RenderTarget& target, sf::RenderStates states) 
 }
 
 
-void Projectile::updateCurrent(sf::Time dt,
-        CommandQueue& commands){}
+void Projectile::updateCurrent(sf::Time dt){
+    move(getVelocity() * dt.asSeconds());
+    checkOutOfBounds();
+
+}
+
+void Projectile::checkOutOfBounds()
+{
+    if(getPosition().x < -10 || getPosition().x > 680 || getPosition().y < -10 || getPosition().y > 500){
+        markForRemoval();
+    }
+}
 
 
 float Projectile::getMaxSpeed() const{return 100;}

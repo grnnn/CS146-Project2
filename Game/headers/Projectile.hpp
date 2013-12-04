@@ -22,14 +22,14 @@ class Projectile : public Entity
         Projectile(const TextureHolder& textures);
         void guideTowards(sf::Vector2f position);
         bool isGuided() const;
+        void checkOutOfBounds();
 
         virtual ~Projectile();
         float getMaxSpeed() const;
         int getDamage() const;
 
     private:
-        virtual void updateCurrent(sf::Time dt,
-        CommandQueue& commands);
+        void updateCurrent(sf::Time dt);
         virtual void drawCurrent(sf::RenderTarget& target,
         sf::RenderStates states) const;
     private:

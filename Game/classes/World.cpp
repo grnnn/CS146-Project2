@@ -43,6 +43,7 @@ void World::update(sf::Time dt)
     mSceneGraph.update(dt);
     handleCollisions();
     mSceneGraph.removeWrecks();
+    //destroyEntitiesOutsideView();
     adaptPlayerPosition();
 }
 
@@ -197,11 +198,11 @@ void World::handleCollisions()
     sf::FloatRect viewBounds(mWorldView.getCenter() - mWorldView.getSize() / 2.f, mWorldView.getSize());
     Command command(*mSceneLayers[Air]);
     command.action = derivedAction<Entity>(
-                    [this] (Entity& e, sf::Time)
+                    [this, &viewBounds] (Entity& e, sf::Time)
                     {
                         if (!viewBounds.intersects(e.getBoundingRect())){
                             e.markForRemoval();
-                            std::cout<<"Shits leaving";
+
                         }
 
                     });
