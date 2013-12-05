@@ -108,7 +108,7 @@ void World::buildScene()
 
         //Test Enemy
         spawnEnemy(mWorldView.getSize().x / 2 +20, (mWorldView.getSize().y / 2) - 20);
-         spawnEnemy(mWorldView.getSize().x / 2, (mWorldView.getSize().y / 2) - 90);
+        spawnEnemy(mWorldView.getSize().x / 2, (mWorldView.getSize().y / 2) - 90);
          spawnEnemy(mWorldView.getSize().x / 2 - 20, (mWorldView.getSize().y / 2) - 190);
 
 }
@@ -150,6 +150,7 @@ void World::spawnEnemy(float x, float y)
 {
         Enemy* enemy(new Enemy(mTextures));
         enemy->setPosition(x, y);
+        enemy->setVelocity(0.f, 100.f);
         mEnemies.push_back( enemy );
         mSceneLayers[Air]->attachChild( enemy );
 }

@@ -35,7 +35,7 @@ void Projectile::updateCurrent(sf::Time dt){
 
 void Projectile::checkOutOfBounds()
 {
-    if(getPosition().x < -10 || getPosition().x > 680 || getPosition().y < -10 || getPosition().y > 500){
+    if(getPosition().x < -10 || getPosition().x > 1034 || getPosition().y < -10 || getPosition().y > 778){
         markForRemoval();
     }
 }
