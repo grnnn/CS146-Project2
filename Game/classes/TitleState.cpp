@@ -17,7 +17,7 @@ TitleState::TitleState(StateStack& stack, Context context)
         mText.setFont(context.fonts->get(Fonts::Main));
         mTitle.setFont(context.fonts->get(Fonts::Main));
         mText.setString("Press any key to start");
-        mTitle.setString("Title Screen");
+        mTitle.setString("Remember that one scene from the Matrix?");
         centerOrigin(mText);
         centerOrigin(mTitle);
         mText.setPosition(context.window->getView().getSize() / 2.f);

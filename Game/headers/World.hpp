@@ -18,6 +18,7 @@
 
 // Forward declaration
 class SpaceCraft;
+class Enemy;
 namespace sf
 {
         class RenderWindow;
@@ -46,7 +47,8 @@ class World : private sf::NonCopyable
                 void                                      spawnFollowEnemy(float x, float y);
                 void                                      handleCollisions();
                 void                                      destroyEntitiesOutsideView();
-
+                void                                      removeFromList(Enemy& e);
+                void                                      listUpdate();
 
         private:
                 enum Layer

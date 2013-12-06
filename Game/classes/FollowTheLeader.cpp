@@ -16,7 +16,7 @@ sf::Vector2f FollowTheLeader::doAction(Enemy& enemy, Enemy& leader, World& world
 
 //Initialize values
     float LEADER_BEHIND_DIST = 50;   //How close they follow
-    float SLOWING_RADIUS = 4;       //Arrive distance
+    float SLOWING_RADIUS = 70;       //Arrive distance
     float SEPARATION_RADIUS = 50;     //How far they should detect neighbors
     float MAX_SEPARATION = 20;        //How far they should move away from neighbors
 
@@ -40,10 +40,10 @@ sf::Vector2f FollowTheLeader::doAction(Enemy& enemy, Enemy& leader, World& world
 
 // Calculate the desired velocity to behind point
     sf::Vector2f desired_velocity = position - behind;
-
+    float distance = util->length(&desired_velocity);
     desired_velocity = util->normalize(desired_velocity);
-    //float distance = util->length(&desired_velocity);
-    float distance = 1;
+
+
 
 
 
@@ -72,10 +72,7 @@ sf::Vector2f FollowTheLeader::doAction(Enemy& enemy, Enemy& leader, World& world
 
     velocity = util->truncate (velocity + steering , maxSpeed);
 
-    //sf::Vector2f steering2 = velocity;
-    //steering2 = util->truncate(steering2, enemy.getMaxForce());
 
-    //velocity = util->truncate(velocity + steering2, enemy.getMaxSpeed());
 
 //Separation
     /*sf::Vector2f force;

@@ -1,13 +1,14 @@
 #include "../headers/EnemyController.hpp"
 #include "../headers/Seek.hpp"
 #include "../headers/FollowTheLeader.hpp"
+#include "../headers/Wander2.hpp"
 #include <math.h>
 
 #include <iostream>
 
 const float PI = 3.14159265;
 const int MAX_NUM_ENEMIES = 50;
-const float SPAWN_INTERVAL = .7f;
+const float SPAWN_INTERVAL = 1.0f;
 
 EnemyController::EnemyController(sf::RenderWindow& window, World& world)
 : mWindow(window)
@@ -30,49 +31,40 @@ void EnemyController::update(CommandQueue& commands)
 
     Seek* seekObj = new Seek();
     FollowTheLeader* fObj = new FollowTheLeader();
+    Wander2* wObj = new Wander2();
     int h = 0;
     Enemy* lastEnemy;
 
     for(auto &  i : mWorld->getEnemies()){
+
+
         if(h==0){
             enemyVelocity = seekObj->doAction(*i, playerPosition);
             h++;
             lastEnemy = i;
             i->setVelocity(enemyVelocity);
-        float dx = enemyVelocity.x;
-        float dy = enemyVelocity.y;
-        float rotation = (atan2(dx*-1,dy)) * 180 / PI;
-        i->setRotation(rotation);
+            float dx = enemyVelocity.x;
+            float dy = enemyVelocity.y;
+            float rotation = (atan2(dx*-1,dy)) * 180 / PI;
+            i->setRotation(rotation);
         }
-        else if(h==1){
+        else {
 
-        enemyVelocity = fObj->doAction(*i, *lastEnemy, *mWorld);
-        i->setVelocity(-enemyVelocity);
-        float dx = enemyVelocity.x;
-        float dy = enemyVelocity.y;
-        float rotation = (atan2(dx*-1,dy)) * 180 / PI;
-        i->setRotation(rotation + 180);
-        lastEnemy = i;
-        h++;
-        }
-        else if(h==2){
             enemyVelocity = fObj->doAction(*i, *lastEnemy, *mWorld);
-        i->setVelocity(-enemyVelocity);
-        float dx = enemyVelocity.x;
-        float dy = enemyVelocity.y;
-        float rotation = (atan2(dx*-1,dy)) * 180 / PI;
-        i->setRotation(rotation + 180);
-        lastEnemy = i;
-        h++;
+            i->setVelocity(-enemyVelocity);
+            float dx = enemyVelocity.x;
+            float dy = enemyVelocity.y;
+            float rotation = (atan2(dx*-1,dy)) * 180 / PI;
+            i->setRotation(rotation + 180);
+            lastEnemy = i;
+        }
         }
 
-        float sign;
 
-    }
-lastVelocity = enemyVelocity;
+//lastVelocity = enemyVelocity;
 
 
-/*
+
     // Spawn enemies randomly at SPAWN_INTERVAL second intervals
     if (mSpawnTimer.getElapsedTime().asSeconds() >= SPAWN_INTERVAL){
         float winX = mWindow.getDefaultView().getSize().x;
