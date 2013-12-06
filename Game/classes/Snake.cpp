@@ -1,19 +1,19 @@
 #include "../headers/VectorUtil.hpp"
 
 #include "../headers/SpaceCraft.hpp"
-#include "../headers/FollowTheLeader.hpp"
+#include "../headers/Snake.hpp"
 #include "../headers/LeaderEnemy.hpp"
 #include "../headers/FollowEnemy.hpp"
 #include <SFML/System/Vector2.hpp>
 
 
-FollowTheLeader::~FollowTheLeader() {}
+Snake::~Snake() {}
 
-FollowTheLeader::FollowTheLeader()
+Snake::Snake()
 {
 }
 
-sf::Vector2f FollowTheLeader::doAction(FollowEnemy& enemy, LeaderEnemy& leader, World& world)
+sf::Vector2f Snake::doAction(Enemy& enemy, Enemy& leader, World& world)
 {
 
 //Initialize values

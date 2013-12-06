@@ -2,6 +2,7 @@
 #include "../headers/Seek.hpp"
 #include "../headers/FollowTheLeader.hpp"
 #include "../headers/Wander2.hpp"
+#include "../headers/Snake.hpp"
 #include <math.h>
 
 #include <iostream>
@@ -32,6 +33,7 @@ void EnemyController::update(CommandQueue& commands)
     Seek* seekObj = new Seek();
     FollowTheLeader* fObj = new FollowTheLeader();
     Wander2* wObj = new Wander2();
+    Snake* snakeObj = new Snake();
     int h = 0;
     Enemy* lastEnemy;
 
@@ -50,7 +52,7 @@ void EnemyController::update(CommandQueue& commands)
         }
         else {
 
-            enemyVelocity = fObj->doAction(*i, *lastEnemy, *mWorld);
+            enemyVelocity = snakeObj->doAction(*i, *lastEnemy, *mWorld);
             i->setVelocity(-enemyVelocity);
             float dx = enemyVelocity.x;
             float dy = enemyVelocity.y;

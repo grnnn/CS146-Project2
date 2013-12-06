@@ -7,6 +7,7 @@
 LeaderEnemy::LeaderEnemy(const TextureHolder& textures)
 :maxSpeed(500)
 ,maxForce(10)
+,health(5)
 {
     sf::Sprite spr(textures.get(Textures::LeaderEnemy));
     centerOrigin(spr);
@@ -26,4 +27,11 @@ float LeaderEnemy::getMaxSpeed(){
 
 float LeaderEnemy::getMaxForce(){
     return maxForce;
+}
+
+int LeaderEnemy::getHealth(){
+    return health;
+}
+void LeaderEnemy::damage(){
+    health--;
 }

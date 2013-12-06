@@ -9,5 +9,5 @@ class FollowTheLeader: public IAction
 public:
                                            FollowTheLeader();
     virtual                             ~FollowTheLeader();
-    sf::Vector2f                    doAction(Enemy& enemy, Enemy& leader, World& world);
+    sf::Vector2f                    doAction(FollowEnemy& enemy, LeaderEnemy& leader, World& world);
 };

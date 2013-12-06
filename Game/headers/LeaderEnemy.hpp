@@ -16,8 +16,12 @@ class LeaderEnemy : public Entity
 
         float                       getMaxSpeed();
         float                       getMaxForce();
+        void                        damage();
+        int                         getHealth();
+
 
     private:
+        int health;
         float maxForce;
         float maxSpeed;
 
