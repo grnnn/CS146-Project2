@@ -9,12 +9,17 @@ GameState::GameState(StateStack& stack, Context context)
 , mWorld(*context.window)
 , mPlayer(*context.window, mWorld)
 , mEnemyController(*context.window, mWorld)
+
+
 {
+
+
 }
 
 void GameState::draw()
 {
         mWorld.draw();
+
 }
 
 bool GameState::update(sf::Time dt)
@@ -40,3 +45,4 @@ bool GameState::handleEvent(const sf::Event& event)
 
         return true;
 }
+

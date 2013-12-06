@@ -17,6 +17,7 @@ Game::Game()
 , gameStatisticsText()
 , gameStatisticsUpdateTime()
 , gameStatisticsNumFrames(0)
+
 {
         gameFont.load(Fonts::Main, "Media/LinLibertine.ttf");
         gameTextures.load(Textures::TitleScreen, "Media/TitleScreen.png");
@@ -27,6 +28,9 @@ Game::Game()
 
         registerStates();
         gameStateStack.pushState(States::Title);
+
+
+
 }
 
 void Game::run()

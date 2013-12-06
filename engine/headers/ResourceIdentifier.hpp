@@ -16,6 +16,8 @@ namespace Textures
         SpaceCraft,
         Background,
         Enemy,
+        LeaderEnemy,
+        FollowEnemy,
         Projectile
     };
 }
