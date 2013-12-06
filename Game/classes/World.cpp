@@ -238,27 +238,26 @@ void World::handleCollisions()
             thing.second->enemyDestroy();
             listUpdate();
             score += 10;
-<<<<<<< HEAD
-=======
+
             //thing.second->markForRemoval();
             }
 
 
 
 
->>>>>>> 03a69386c1db863718dfc9dcc82b0f6139477169
+
         }
         else if(matchesCategories(thing, 2, 100))
         {
             lives--;
-<<<<<<< HEAD
+
         //    thing.first->markForRemoval();
           //  thing.second->markForRemoval();
-=======
+
             thing.first->enemyDestroy();
             listUpdate();
             //thing.second->markForRemoval();
->>>>>>> 03a69386c1db863718dfc9dcc82b0f6139477169
+
            // std::cout<<"DEMO VERSION, ship would take damage \n";
         }
     }
@@ -268,13 +267,13 @@ void World::handleCollisions()
 std::vector<Enemy*>  World::getEnemies(){
  return mEnemies;
 }
-<<<<<<< HEAD
+
 std::vector<LeaderEnemy*>  World::getLeaderEnemies(){
  return mLeaderEnemies;
 }
 std::vector<FollowEnemy*>  World::getFollowEnemies(){
  return mFollowEnemies;
-=======
+}
 void World::listUpdate()
 {
     int h = 0;
@@ -283,17 +282,13 @@ void World::listUpdate()
 
         if((*i).listRemoval && !mEnemies.empty()){
             auto k = mEnemies.begin();
-
             std::cout<<"YOLOSWAG";
-
             mEnemies.erase(k + h);
-
-
-
 
         }
         h++;
     }
->>>>>>> 03a69386c1db863718dfc9dcc82b0f6139477169
+
 }
+
 
