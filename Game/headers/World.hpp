@@ -34,11 +34,14 @@ class World : private sf::NonCopyable
                 TextureHolder&                            getTextures();
                 void                                      isEnemiesEmpty();
                 void                                      loadTextures();
+                void                                      loadFonts();
                 std::vector<Enemy*>                       getEnemies();
 
                 void                                      spawnEnemy(float x, float y);
                 void                                      handleCollisions();
                 void                                      destroyEntitiesOutsideView();
+
+
         private:
                 enum Layer
                 {
@@ -56,6 +59,7 @@ class World : private sf::NonCopyable
 
 
         private:
+                FontHolder                                mFonts;
                 sf::RenderWindow&                         mWindow;
                 sf::View                                  mWorldView;
                 TextureHolder                             mTextures;
@@ -67,6 +71,13 @@ class World : private sf::NonCopyable
                 SpaceCraft*                               mPlayer;
                 std::vector<Enemy*>                       mEnemies;
                 sf::Sprite                                mSprite;
+                sf::Text                                  scoreText;
+                sf::Text                                  livesText;
+                int                                       score;
+                int                                       lives;
+
+
+
 
 
 };

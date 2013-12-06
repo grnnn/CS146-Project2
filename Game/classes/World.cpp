@@ -2,6 +2,7 @@
 #include "../headers/SpaceCraft.hpp"
 #include "../headers/Enemy.hpp"
 #include "../headers/Player.hpp"
+#include "../headers/GameState.hpp"
 #include "../../engine/headers/SpriteNode.hpp"
 #include "../../engine/headers/SceneNode.hpp"
 #include "../../engine/headers/CommandQueue.hpp"
@@ -18,10 +19,23 @@ World::World(sf::RenderWindow& window)
 , mWorldBounds(0.f, 0.f, mWorldView.getSize().x, mWorldView.getSize().y)
 , mSpawnPosition(mWorldView.getSize().x / 2.f, mWorldView.getSize().y / 2.f)
 , mPlayer(nullptr)
+, livesText()
+, scoreText()
+, score()
+, lives()
+, mFonts()
+
+
 {
+        loadFonts();
         loadTextures();
         buildScene();
+        score = 0;
+        lives = 3;
 
+
+        scoreText.setFont(mFonts.get(Fonts::Main));
+        livesText.setFont(mFonts.get(Fonts::Main));
 
 
         // Prepare the view
@@ -45,12 +59,24 @@ void World::update(sf::Time dt)
     mSceneGraph.removeWrecks();
     //destroyEntitiesOutsideView();
     adaptPlayerPosition();
+
+
+    //Text
+    char buffer [33];
+    sprintf (buffer, "Lives: %d", lives);
+    livesText.setString(buffer);
+    sprintf(buffer, "Score: %d", score);
+    scoreText.setString(buffer);
+    livesText.setPosition(mWindow.getView().getSize().x -180.f, 5.f);
+    scoreText.setPosition(mWindow.getView().getSize().x -180.f, 35.f);
 }
 
 void World::draw()
 {
         mWindow.setView(mWorldView);
         mWindow.draw(mSceneGraph);
+        mWindow.draw(livesText);
+        mWindow.draw(scoreText);
 }
 
 
@@ -75,7 +101,16 @@ void World::loadTextures()
         mTextures.load(Textures::Enemy, "Media/Enemy.png");
         mTextures.load(Textures::Background, "Media/background.png");
          mTextures.load(Textures::Projectile, "Media/Projectile.png");
+
+
 }
+void World::loadFonts()
+{
+    mFonts.load(Fonts::Main, "Media/LinLibertine.ttf");
+
+
+}
+
 
 void World::buildScene()
 {
@@ -107,9 +142,9 @@ void World::buildScene()
         mSceneLayers[Air]->attachChild(player);
 
         //Test Enemy
-        spawnEnemy(mWorldView.getSize().x / 2 +20, (mWorldView.getSize().y / 2) - 20);
-        spawnEnemy(mWorldView.getSize().x / 2, (mWorldView.getSize().y / 2) - 90);
-         spawnEnemy(mWorldView.getSize().x / 2 - 20, (mWorldView.getSize().y / 2) - 190);
+        spawnEnemy(mWorldView.getSize().x / 2 +20, (mWorldView.getSize().y ) - 20);
+        spawnEnemy(mWorldView.getSize().x / 2, (mWorldView.getSize().y ) - 90);
+        spawnEnemy(mWorldView.getSize().x / 2 - 20, (mWorldView.getSize().y / 2) - 190);
 
 }
 
@@ -193,13 +228,17 @@ void World::handleCollisions()
         {
             thing.first->markForRemoval();
             thing.second->markForRemoval();
+            score += 10;
+
+
 
         }
         else if(matchesCategories(thing, 2, 100))
         {
-            //thing.first->markForRemoval();
-            //thing.second->markForRemoval();
-            std::cout<<"DEMO VERSION, ship would take damage \n";
+            lives--;
+            thing.first->markForRemoval();
+            thing.second->markForRemoval();
+           // std::cout<<"DEMO VERSION, ship would take damage \n";
         }
     }
 }
