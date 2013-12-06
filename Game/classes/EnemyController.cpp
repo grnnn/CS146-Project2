@@ -10,12 +10,13 @@
 const float PI = 3.14159265;
 const int MAX_NUM_ENEMIES = 50;
 const float SPAWN_INTERVAL = 1.0f;
+const float GROUP_SPAWN = 0.f;
 
 EnemyController::EnemyController(sf::RenderWindow& window, World& world)
     : mWindow(window)
     , mWorld(&world)
 {
-    spawnGroup (500,100);
+
 }
 
 void EnemyController::spawnEnemy(float x, float y)
@@ -24,9 +25,25 @@ void EnemyController::spawnEnemy(float x, float y)
 
 }
 
-void EnemyController::spawnGroup(float x, float y)
+void EnemyController::spawnGroup(float x, float y, int dir)
 {
+
+
     mWorld->spawnLeaderEnemy(x, y);
+
+    if(dir == 0){
+        mWorld->getLeaderEnemies().back()->setVelocity(0.f, -100.f);
+    }
+    else if(dir == 1){
+        mWorld->getLeaderEnemies().back()->setVelocity(-100.f, 0.f);
+    }
+    else if(dir == 2){
+        mWorld->getLeaderEnemies().back()->setVelocity(0.f, 100.f);
+    }
+    else if(dir == 3){
+        mWorld->getLeaderEnemies().back()->setVelocity(100.f, 0.f);
+    }
+
     for(int i=5; i>0; i--)
     {
         float winX = mWindow.getDefaultView().getSize().x;
@@ -36,6 +53,7 @@ void EnemyController::spawnGroup(float x, float y)
         mWorld->spawnFollowEnemy(x+x2,y+y2);
         mWorld->getFollowEnemies().back()->setLeader(*mWorld->getLeaderEnemies().back());
     }
+
 
 }
 
@@ -71,15 +89,13 @@ void EnemyController::update(CommandQueue& commands)
     {
         enemyVelocity = fObj->doAction(*i,*i->getLeader(),*mWorld );
         i->setVelocity(-enemyVelocity);
+        float dx = i->getPosition().x - i->getLeader()->getPosition().x;
+        float dy = i->getPosition().y - i->getLeader()->getPosition().y;
 
-        float dx = enemyVelocity.x;
-        float dy = enemyVelocity.y;
-        float rotation = (atan2(dx*-1,dy)) * 180 / PI;
+        float rotation =(atan2(dx*-1,dy)) * 180 / PI;
         i->setRotation(rotation+180);
     }
 
-
-    /*
     for(auto &  i : mWorld->getEnemies())
     {
         if(h==0)
@@ -96,7 +112,7 @@ void EnemyController::update(CommandQueue& commands)
         else
         {
 
-            enemyVelocity = snakeObj->doAction(*i, *lastEnemy);
+            enemyVelocity = snakeObj->doAction(*i, *lastEnemy, *mWorld);
             i->setVelocity(-enemyVelocity);
             float dx = enemyVelocity.x;
             float dy = enemyVelocity.y;
@@ -106,20 +122,46 @@ void EnemyController::update(CommandQueue& commands)
         }
     }
 
-    */
 
-
-    /*
-        // Spawn enemies randomly at SPAWN_INTERVAL second intervals
-        if (mSpawnTimer.getElapsedTime().asSeconds() >= SPAWN_INTERVAL){
-            float winX = mWindow.getDefaultView().getSize().x;
-            float winY = mWindow.getDefaultView().getSize().y;
+    // Spawn enemies randomly at SPAWN_INTERVAL second intervals
+    if (mSpawnTimer.getElapsedTime().asSeconds() >= SPAWN_INTERVAL)
+    {
+        float winX = mWindow.getDefaultView().getSize().x;
+        float winY = mWindow.getDefaultView().getSize().y;
+        float side = rand() % (int)4;
+        std::cout<< "SIDE: "<<side<<"\n";
+        if(side ==0)  //top
+        {
             float x = rand() % (int)winX;
+            float y = -100;
+            spawnEnemy(x, y);
+        }
+        else if(side == 1) //right
+        {
+            float x = (int)winY +100;
             float y = rand() % (int)winY;
             spawnEnemy(x, y);
-            mSpawnTimer.restart();
         }
-    */
+        else if(side == 2) //bottom
+        {
+            float x = rand() % (int)winX;
+            float y = (int)winY +100;
+            spawnEnemy(x, y);
+        }
+        else if(side == 3) //left
+        {
+            float x = - 100;
+            float y = rand() % (int)winY;
+            spawnEnemy(x, y);
+        }
+
+
+        mSpawnTimer.restart();
+    }
+
+
+
+
 
 }
 

@@ -23,23 +23,9 @@ sf::Vector2f Wander2::doAction(LeaderEnemy& enemy)
     //Set values
     sf::Vector2f velocity = enemy.getVelocity();
 
-    float max_speed = 180;
+    float max_speed = 90;
     float max_force = 10;
 
-
-
-/*
-    float CIRCLE_DISTANCE = 20;
-    float CIRCLE_RADIUS = 10;
-    float ANGLE_CHANGE = 20;
-    float wanderAngle = 0;
-
-    //Set values
-     sf::Vector2f velocity = enemy.getVelocity();
-
-    float max_speed = 120;
-    float max_force = 20;
-*/
 
    sf::Vector2f circleCenter = velocity;
    circleCenter = util->normalize(circleCenter);
@@ -53,7 +39,7 @@ sf::Vector2f Wander2::doAction(LeaderEnemy& enemy)
 
    displacement.x =cos(wanderAngle) * len;
    displacement.y = sin(wanderAngle) * len;
-//std::cout<<"Displacement.x: "<<displacement.x<< ",Displacement.y: "<<displacement.y<<"\n";
+
    // Wander force
    sf::Vector2f wanderForce = circleCenter + (displacement);
 

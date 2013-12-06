@@ -17,15 +17,14 @@ sf::Vector2f FollowTheLeader::doAction(FollowEnemy& enemy, LeaderEnemy& leader, 
 {
 
 //Initialize values
-    float LEADER_BEHIND_DIST = 50;   //How close they follow
+    float LEADER_BEHIND_DIST = 70;   //How close they follow
     float SLOWING_RADIUS = 20;       //Arrive distance
-    float SEPARATION_RADIUS = 30;     //How far they should detect neighbors
-    float MAX_SEPARATION = 40;        //How far they should move away from neighbors
+    float SEPARATION_RADIUS =80;     //How far they should detect neighbors
+    float MAX_SEPARATION = 4000;        //How far they should move away from neighbors
 
     VectorUtil* util = new VectorUtil();
      //Some Arbitrary value
     float maxSpeed = enemy.getMaxSpeed();
-
     sf::Vector2f velocity = enemy.getVelocity();
     sf::Vector2f position = enemy.getPosition();
     sf::Vector2f tv = leader.getVelocity();
@@ -45,9 +44,6 @@ sf::Vector2f FollowTheLeader::doAction(FollowEnemy& enemy, LeaderEnemy& leader, 
     sf::Vector2f desired_velocity = position - behind;
     float distance = util->length(&desired_velocity);
     desired_velocity = util->normalize(desired_velocity);
-
-
-
 
 
 // Check the distance to detect whether the character is inside the slowing area
@@ -75,8 +71,6 @@ sf::Vector2f FollowTheLeader::doAction(FollowEnemy& enemy, LeaderEnemy& leader, 
 
     velocity = util->truncate (velocity + steering , maxSpeed);
 
-
-
 //Separation
 
     sf::Vector2f force;
@@ -84,8 +78,8 @@ sf::Vector2f FollowTheLeader::doAction(FollowEnemy& enemy, LeaderEnemy& leader, 
 
     for(auto currentEnemy = world.getFollowEnemies().begin(); currentEnemy != world.getFollowEnemies().end(); ++currentEnemy){ //doStuff}
 
-            if ((*currentEnemy != &enemy) && (util->distance((**currentEnemy).getPosition(), position) <= SEPARATION_RADIUS))
-            {
+        if ((*currentEnemy != &enemy) && (util->distance((**currentEnemy).getPosition(), position) <= SEPARATION_RADIUS))
+        {
             force.x += (**currentEnemy).getPosition().x - position.x;
             force.y += (**currentEnemy).getPosition().y - position.y;
             neighborCount++;
@@ -95,16 +89,14 @@ sf::Vector2f FollowTheLeader::doAction(FollowEnemy& enemy, LeaderEnemy& leader, 
     if (neighborCount != 0) {
         force.x /= neighborCount;
         force.y /= neighborCount;
-
-        force.x *= -1;
-        force.y *= -1;
+        //force.x *= -1;
+       // force.y *= -1;
     }
 
     force = util->normalize(force);
     force *= MAX_SEPARATION;
 
-    velocity = util->truncate(velocity + force, maxSpeed);
-
+    velocity = util->truncate(velocity + force, enemy.getMaxForce()*10.f);
 
     return velocity;
 }

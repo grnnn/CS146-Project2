@@ -76,31 +76,6 @@ sf::Vector2f Snake::doAction(Enemy& enemy, Enemy& leader, World& world)
 
 
 
-//Separation
-    /*sf::Vector2f force;
-    int neighborCount = 0;
-
-    for(auto currentEnemy = world.getEnemies().begin(); currentEnemy != world.getEnemies().end(); ++currentEnemy){ //doStuff}
-
-            if ((*currentEnemy != &enemy) && (util->distance((**currentEnemy).getPosition(), position) <= SEPARATION_RADIUS))
-            {
-            force.x += (**currentEnemy).getPosition().x - position.x;
-            force.y += (**currentEnemy).getPosition().y - position.y;
-            neighborCount++;
-        }
-  }
-
-    if (neighborCount != 0) {
-        force.x /= neighborCount;
-        force.y /= neighborCount;
-
-        force.x *= -1;
-        force.y *= -1;
-    }
-
-    force = util->normalize(force);
-    force *= MAX_SEPARATION;*/
-
 
     return velocity;
 }

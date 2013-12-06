@@ -34,7 +34,7 @@ public:
     void                                         handleEvent(const sf::Event& event, CommandQueue& commands);
     void                                         update(CommandQueue& commands);
     void                                         spawnEnemy(float x, float y);
-    void spawnGroup(float x, float y);
+    void                                         spawnGroup(float x, float y, int dir);
     //void                                        initializeStates();
 public:
     sf::Vector2f                                lastVelocity;

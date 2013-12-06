@@ -15,7 +15,7 @@ SpaceCraft::SpaceCraft(const TextureHolder& textures, World& world)
     sf::Sprite spr(textures.get(Textures::SpaceCraft));
     centerOrigin(spr);
     setSprite(spr);
-    setID(100);
+    setID(300);
 }
 
 void SpaceCraft::createBullets(SceneNode& node, const TextureHolder& textures, sf::Vector2f mRotations) const
@@ -51,7 +51,7 @@ void SpaceCraft::createProjectile(SceneNode& node, float xOffset, float yOffset,
         yOffset * getSprite().getGlobalBounds().height);
 
     //sf::Vector2f velocity(mRotations, projectile->getMaxSpeed());
-    float sign = -300.f;
+    float sign = -600.f;
 
     float len = sqrt((mRotations.x * mRotations.x) +(mRotations.y * mRotations.y));
     mRotations.x = mRotations.x / len;
