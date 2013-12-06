@@ -11,7 +11,7 @@ Wander2::~Wander2() {}
 Wander2::Wander2()
 {
 }
-sf::Vector2f Wander2::doAction(Enemy& enemy)
+sf::Vector2f Wander2::doAction(LeaderEnemy& enemy)
 {
     VectorUtil* util = new VectorUtil();
 

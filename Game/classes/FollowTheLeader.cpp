@@ -18,13 +18,14 @@ sf::Vector2f FollowTheLeader::doAction(FollowEnemy& enemy, LeaderEnemy& leader, 
 
 //Initialize values
     float LEADER_BEHIND_DIST = 50;   //How close they follow
-    float SLOWING_RADIUS = 70;       //Arrive distance
-    float SEPARATION_RADIUS = 50;     //How far they should detect neighbors
-    float MAX_SEPARATION = 20;        //How far they should move away from neighbors
+    float SLOWING_RADIUS = 20;       //Arrive distance
+    float SEPARATION_RADIUS = 30;     //How far they should detect neighbors
+    float MAX_SEPARATION = 40;        //How far they should move away from neighbors
 
     VectorUtil* util = new VectorUtil();
      //Some Arbitrary value
     float maxSpeed = enemy.getMaxSpeed();
+
     sf::Vector2f velocity = enemy.getVelocity();
     sf::Vector2f position = enemy.getPosition();
     sf::Vector2f tv = leader.getVelocity();
@@ -77,10 +78,11 @@ sf::Vector2f FollowTheLeader::doAction(FollowEnemy& enemy, LeaderEnemy& leader, 
 
 
 //Separation
-    /*sf::Vector2f force;
+
+    sf::Vector2f force;
     int neighborCount = 0;
 
-    for(auto currentEnemy = world.getEnemies().begin(); currentEnemy != world.getEnemies().end(); ++currentEnemy){ //doStuff}
+    for(auto currentEnemy = world.getFollowEnemies().begin(); currentEnemy != world.getFollowEnemies().end(); ++currentEnemy){ //doStuff}
 
             if ((*currentEnemy != &enemy) && (util->distance((**currentEnemy).getPosition(), position) <= SEPARATION_RADIUS))
             {
@@ -99,7 +101,9 @@ sf::Vector2f FollowTheLeader::doAction(FollowEnemy& enemy, LeaderEnemy& leader, 
     }
 
     force = util->normalize(force);
-    force *= MAX_SEPARATION;*/
+    force *= MAX_SEPARATION;
+
+    velocity = util->truncate(velocity + force, maxSpeed);
 
 
     return velocity;

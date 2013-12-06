@@ -12,32 +12,32 @@
 #include <iostream>
 
 World::World(sf::RenderWindow& window)
-: mWindow(window)
-, mWorldView(window.getDefaultView())
-, mTextures()
-, mSceneGraph()
-, mSceneLayers()
-, mWorldBounds(0.f, 0.f, mWorldView.getSize().x, mWorldView.getSize().y)
-, mSpawnPosition(mWorldView.getSize().x / 2.f, mWorldView.getSize().y / 2.f)
-, mPlayer(nullptr)
-, livesText()
-, scoreText()
-, score()
-, lives()
-, mFonts()
+    : mWindow(window)
+    , mWorldView(window.getDefaultView())
+    , mTextures()
+    , mSceneGraph()
+    , mSceneLayers()
+    , mWorldBounds(0.f, 0.f, mWorldView.getSize().x, mWorldView.getSize().y)
+    , mSpawnPosition(mWorldView.getSize().x / 2.f, mWorldView.getSize().y / 2.f)
+    , mPlayer(nullptr)
+    , livesText()
+    , scoreText()
+    , score()
+    , lives()
+    , mFonts()
 
 {
-        loadFonts();
-        loadTextures();
-        buildScene();
-        score = 0;
-        lives = 3;
+    loadFonts();
+    loadTextures();
+    buildScene();
+    score = 0;
+    lives = 3;
 
-        scoreText.setFont(mFonts.get(Fonts::Main));
-        livesText.setFont(mFonts.get(Fonts::Main));
+    scoreText.setFont(mFonts.get(Fonts::Main));
+    livesText.setFont(mFonts.get(Fonts::Main));
 
-        // Prepare the view
-        mWorldView.setCenter(mSpawnPosition);
+    // Prepare the view
+    mWorldView.setCenter(mSpawnPosition);
 }
 
 
@@ -45,9 +45,10 @@ void World::update(sf::Time dt)
 {
     mPlayer->setVelocity(0.1f, 0.1f);
 
-    while (!mCommandQueue.isEmpty()){
-                Command cmd = mCommandQueue.pop();
-                cmd.action(cmd.node, dt);
+    while (!mCommandQueue.isEmpty())
+    {
+        Command cmd = mCommandQueue.pop();
+        cmd.action(cmd.node, dt);
     }
     mSceneGraph.update(dt);
     handleCollisions();
@@ -68,16 +69,16 @@ void World::update(sf::Time dt)
 
 void World::draw()
 {
-        mWindow.setView(mWorldView);
-        mWindow.draw(mSceneGraph);
-        mWindow.draw(livesText);
-        mWindow.draw(scoreText);
+    mWindow.setView(mWorldView);
+    mWindow.draw(mSceneGraph);
+    mWindow.draw(livesText);
+    mWindow.draw(scoreText);
 }
 
 CommandQueue& World::getCommandQueue()
 
 {
-        return mCommandQueue;
+    return mCommandQueue;
 }
 TextureHolder& World::getTextures()
 {
@@ -105,60 +106,55 @@ void World::loadFonts()
 
 void World::buildScene()
 {
-        // Initialize the different layers
-        for (std::size_t i = 0; i < LayerCount; ++i)
-        {
-            SceneNode* layer(new SceneNode());
-            mSceneLayers[i] = layer;
-            mSceneGraph.attachChild( layer );
-        }
+    // Initialize the different layers
+    for (std::size_t i = 0; i < LayerCount; ++i)
+    {
+        SceneNode* layer(new SceneNode());
+        mSceneLayers[i] = layer;
+        mSceneGraph.attachChild( layer );
+    }
 
-        //prepare background sprite
-        sf::Texture& texture = mTextures.get(Textures::Background);
+    //prepare background sprite
+    sf::Texture& texture = mTextures.get(Textures::Background);
 
-        sf::IntRect backTextureRect(mWorldBounds);
-        sf::Sprite spr(mTextures.get(Textures::Background));
-        mSprite = spr;
-        // Add Background
-        SpriteNode* backgroundSprite(new SpriteNode(texture, backTextureRect));
-        backgroundSprite->setPosition(mWorldBounds.left, mWorldBounds.top);
-        mSceneLayers[Background]->attachChild( backgroundSprite );
+    sf::IntRect backTextureRect(mWorldBounds);
+    sf::Sprite spr(mTextures.get(Textures::Background));
+    mSprite = spr;
+    // Add Background
+    SpriteNode* backgroundSprite(new SpriteNode(texture, backTextureRect));
+    backgroundSprite->setPosition(mWorldBounds.left, mWorldBounds.top);
+    mSceneLayers[Background]->attachChild( backgroundSprite );
 
-        // Add player
-        SpaceCraft* player(new SpaceCraft(mTextures, (*this)));
-        mPlayer = player;
-        mPlayer->setPosition(mSpawnPosition);
-        mPlayer->setVelocity(0.f, 0.f);
-        mSceneLayers[Air]->attachChild(player);
-
-        //Test Enemy
-        spawnEnemy(mWorldView.getSize().x / 2 +20, (mWorldView.getSize().y ) - 600);
-        spawnLeaderEnemy(mWorldView.getSize().x / 2, (mWorldView.getSize().y ) - 600);
-        spawnFollowEnemy(mWorldView.getSize().x / 2 - 20, (mWorldView.getSize().y  -600));
+    // Add player
+    SpaceCraft* player(new SpaceCraft(mTextures, (*this)));
+    mPlayer = player;
+    mPlayer->setPosition(mSpawnPosition);
+    mPlayer->setVelocity(0.f, 0.f);
+    mSceneLayers[Air]->attachChild(player);
 
 }
 
 void World::adaptPlayerPosition()
 {
-        // Keep player's position inside the screen bounds, at least borderDistance units from the border
-        sf::FloatRect viewBounds(mWorldView.getCenter() - mWorldView.getSize() / 2.f, mWorldView.getSize());
-        const float borderDistance = 40.f;
+    // Keep player's position inside the screen bounds, at least borderDistance units from the border
+    sf::FloatRect viewBounds(mWorldView.getCenter() - mWorldView.getSize() / 2.f, mWorldView.getSize());
+    const float borderDistance = 40.f;
 
-        sf::Vector2f position = mPlayer->getPosition();
-        position.x = std::max(position.x, viewBounds.left + borderDistance);
-        position.x = std::min(position.x, viewBounds.left + viewBounds.width - borderDistance);
-        position.y = std::max(position.y, viewBounds.top + borderDistance);
-        position.y = std::min(position.y, viewBounds.top + viewBounds.height - borderDistance);
-        mPlayer->setPosition(position);
+    sf::Vector2f position = mPlayer->getPosition();
+    position.x = std::max(position.x, viewBounds.left + borderDistance);
+    position.x = std::min(position.x, viewBounds.left + viewBounds.width - borderDistance);
+    position.y = std::max(position.y, viewBounds.top + borderDistance);
+    position.y = std::min(position.y, viewBounds.top + viewBounds.height - borderDistance);
+    mPlayer->setPosition(position);
 }
 
 void World::adaptPlayerVelocity()
 {
-        sf::Vector2f velocity = mPlayer->getVelocity();
+    sf::Vector2f velocity = mPlayer->getVelocity();
 
-        // If moving diagonally, reduce velocity (to have always same velocity)
-        if (velocity.x != 0.f && velocity.y != 0.f)
-                mPlayer->setVelocity(velocity / std::sqrt(2.f));
+    // If moving diagonally, reduce velocity (to have always same velocity)
+    if (velocity.x != 0.f && velocity.y != 0.f)
+        mPlayer->setVelocity(velocity / std::sqrt(2.f));
 }
 
 sf::Vector2f World::getPlayerPosition()
@@ -173,28 +169,28 @@ SpaceCraft* World::getPlayer()
 
 void World::spawnEnemy(float x, float y)
 {
-        Enemy* enemy(new Enemy(mTextures, (*this)));
-        enemy->setPosition(x, y);
-        enemy->setVelocity(0.f, 100.f);
-        mEnemies.push_back( enemy );
-        mSceneLayers[Air]->attachChild( enemy );
+    Enemy* enemy(new Enemy(mTextures, (*this)));
+    enemy->setPosition(x, y);
+    enemy->setVelocity(0.f, 100.f);
+    mEnemies.push_back( enemy );
+    mSceneLayers[Air]->attachChild( enemy );
 }
 
 void World::spawnLeaderEnemy(float x, float y)
 {
-        LeaderEnemy* enemy(new LeaderEnemy(mTextures));
-        enemy->setPosition(x, y);
-        enemy->setVelocity(0.f, 100.f);
-        mLeaderEnemies.push_back( enemy );
-        mSceneLayers[Air]->attachChild( enemy );
+    LeaderEnemy* enemy(new LeaderEnemy(mTextures));
+    enemy->setPosition(x, y);
+    enemy->setVelocity(0.f, 100.f);
+    mLeaderEnemies.push_back( enemy );
+    mSceneLayers[Air]->attachChild( enemy );
 }
 void World::spawnFollowEnemy(float x, float y)
 {
-        FollowEnemy* enemy(new FollowEnemy(mTextures));
-        enemy->setPosition(x, y);
-        enemy->setVelocity(0.f, 100.f);
-        mFollowEnemies.push_back( enemy );
-        mSceneLayers[Air]->attachChild( enemy );
+    FollowEnemy* enemy(new FollowEnemy(mTextures));
+    enemy->setPosition(x, y);
+    enemy->setVelocity(0.f, 100.f);
+    mFollowEnemies.push_back( enemy );
+    mSceneLayers[Air]->attachChild( enemy );
 }
 
 
@@ -206,7 +202,7 @@ void World::isEnemiesEmpty()
         std::cout << "mEnemies has something in it";
 }
 bool matchesCategories(SceneNode::Pair& colliders,
-                      int type1, int type2)
+                       int type1, int type2)
 {
     int category1 = colliders.first->getID();
     int category2 = colliders.second->getID();
@@ -221,7 +217,7 @@ bool matchesCategories(SceneNode::Pair& colliders,
     }
     else
     {
-    return false;
+        return false;
     }
 }
 void World::handleCollisions()
@@ -233,13 +229,14 @@ void World::handleCollisions()
         SceneNode::Pair thing = i;
         if (matchesCategories(thing, 1, 2))
         {
-            if(!thing.second->getEnemyRemoval()){
-            thing.first->markForRemoval();
-            thing.second->enemyDestroy();
-            listUpdate();
-            score += 10;
+            if(!thing.second->getEnemyRemoval())
+            {
+                thing.first->markForRemoval();
+                thing.second->enemyDestroy();
+                listUpdate();
+                score += 10;
 
-            //thing.second->markForRemoval();
+                //thing.second->markForRemoval();
             }
 
 
@@ -251,28 +248,31 @@ void World::handleCollisions()
         {
             lives--;
 
-        //    thing.first->markForRemoval();
-          //  thing.second->markForRemoval();
+            //    thing.first->markForRemoval();
+            //  thing.second->markForRemoval();
 
             thing.first->enemyDestroy();
             listUpdate();
             //thing.second->markForRemoval();
 
-           // std::cout<<"DEMO VERSION, ship would take damage \n";
+            // std::cout<<"DEMO VERSION, ship would take damage \n";
         }
     }
 }
 
 
-std::vector<Enemy*>  World::getEnemies(){
- return mEnemies;
+std::vector<Enemy*>  World::getEnemies()
+{
+    return mEnemies;
 }
 
-std::vector<LeaderEnemy*>  World::getLeaderEnemies(){
- return mLeaderEnemies;
+std::vector<LeaderEnemy*>  World::getLeaderEnemies()
+{
+    return mLeaderEnemies;
 }
-std::vector<FollowEnemy*>  World::getFollowEnemies(){
- return mFollowEnemies;
+std::vector<FollowEnemy*>  World::getFollowEnemies()
+{
+    return mFollowEnemies;
 }
 void World::listUpdate()
 {
@@ -280,9 +280,10 @@ void World::listUpdate()
     for(auto & i : mEnemies)
     {
 
-        if((*i).listRemoval && !mEnemies.empty()){
+        if((*i).listRemoval && !mEnemies.empty())
+        {
             auto k = mEnemies.begin();
-            std::cout<<"YOLOSWAG";
+            mSceneLayers[Air]->detachChild(**(k+h));
             mEnemies.erase(k + h);
 
         }

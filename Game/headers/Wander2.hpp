@@ -10,5 +10,5 @@ class Wander2: public IAction
 public:
                                            Wander2();
     virtual                             ~Wander2();
-    sf::Vector2f                    doAction(Enemy& enemy);
+    sf::Vector2f                    doAction(LeaderEnemy& enemy);
 };
