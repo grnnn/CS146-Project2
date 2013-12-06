@@ -3,6 +3,7 @@
 #include "../headers/Enemy.hpp"
 #include "../headers/Player.hpp"
 #include "../headers/GameState.hpp"
+
 #include "../../engine/headers/SpriteNode.hpp"
 #include "../../engine/headers/SceneNode.hpp"
 #include "../../engine/headers/CommandQueue.hpp"
@@ -25,7 +26,6 @@ World::World(sf::RenderWindow& window)
 , lives()
 , mFonts()
 
-
 {
         loadFonts();
         loadTextures();
@@ -33,17 +33,12 @@ World::World(sf::RenderWindow& window)
         score = 0;
         lives = 3;
 
-
         scoreText.setFont(mFonts.get(Fonts::Main));
         livesText.setFont(mFonts.get(Fonts::Main));
-
 
         // Prepare the view
         mWorldView.setCenter(mSpawnPosition);
 }
-
-
-
 
 
 void World::update(sf::Time dt)
@@ -79,7 +74,6 @@ void World::draw()
         mWindow.draw(scoreText);
 }
 
-
 CommandQueue& World::getCommandQueue()
 
 {
@@ -97,30 +91,26 @@ SceneNode* World::getAirLayer()
 
 void World::loadTextures()
 {
-        mTextures.load(Textures::SpaceCraft, "Media/Player.png");
-        mTextures.load(Textures::Enemy, "Media/Enemy.png");
-        mTextures.load(Textures::Background, "Media/background.png");
-         mTextures.load(Textures::Projectile, "Media/Projectile.png");
-
-
+    mTextures.load(Textures::SpaceCraft, "Media/Player.png");
+    mTextures.load(Textures::Enemy, "Media/Enemy.png");
+    mTextures.load(Textures::Background, "Media/background.png");
+    mTextures.load(Textures::Projectile, "Media/Projectile.png");
+    mTextures.load(Textures::LeaderEnemy, "Media/LeaderEnemy.png");
+    mTextures.load(Textures::FollowEnemy, "Media/FollowEnemy.png");
 }
 void World::loadFonts()
 {
     mFonts.load(Fonts::Main, "Media/LinLibertine.ttf");
-
-
 }
-
 
 void World::buildScene()
 {
         // Initialize the different layers
         for (std::size_t i = 0; i < LayerCount; ++i)
         {
-                SceneNode* layer(new SceneNode());
-                mSceneLayers[i] = layer;
-
-                mSceneGraph.attachChild( layer );
+            SceneNode* layer(new SceneNode());
+            mSceneLayers[i] = layer;
+            mSceneGraph.attachChild( layer );
         }
 
         //prepare background sprite
@@ -142,9 +132,9 @@ void World::buildScene()
         mSceneLayers[Air]->attachChild(player);
 
         //Test Enemy
-        spawnEnemy(mWorldView.getSize().x / 2 +20, (mWorldView.getSize().y ) - 20);
-        spawnEnemy(mWorldView.getSize().x / 2, (mWorldView.getSize().y ) - 90);
-        spawnEnemy(mWorldView.getSize().x / 2 - 20, (mWorldView.getSize().y / 2) - 190);
+        spawnEnemy(mWorldView.getSize().x / 2 +20, (mWorldView.getSize().y ) - 600);
+        spawnLeaderEnemy(mWorldView.getSize().x / 2, (mWorldView.getSize().y ) - 600);
+        spawnFollowEnemy(mWorldView.getSize().x / 2 - 20, (mWorldView.getSize().y  -600));
 
 }
 
@@ -190,6 +180,24 @@ void World::spawnEnemy(float x, float y)
         mSceneLayers[Air]->attachChild( enemy );
 }
 
+void World::spawnLeaderEnemy(float x, float y)
+{
+        LeaderEnemy* enemy(new LeaderEnemy(mTextures));
+        enemy->setPosition(x, y);
+        enemy->setVelocity(0.f, 100.f);
+        mLeaderEnemies.push_back( enemy );
+        mSceneLayers[Air]->attachChild( enemy );
+}
+void World::spawnFollowEnemy(float x, float y)
+{
+        FollowEnemy* enemy(new FollowEnemy(mTextures));
+        enemy->setPosition(x, y);
+        enemy->setVelocity(0.f, 100.f);
+        mFollowEnemies.push_back( enemy );
+        mSceneLayers[Air]->attachChild( enemy );
+}
+
+
 void World::isEnemiesEmpty()
 {
     if (mEnemies.empty())
@@ -222,22 +230,18 @@ void World::handleCollisions()
     mSceneGraph.checkSceneCollision(mSceneGraph, collisionPairs);
     for(auto & i : collisionPairs)
     {
-
         SceneNode::Pair thing = i;
         if (matchesCategories(thing, 1, 2))
         {
             thing.first->markForRemoval();
             thing.second->markForRemoval();
             score += 10;
-
-
-
         }
         else if(matchesCategories(thing, 2, 100))
         {
             lives--;
-            thing.first->markForRemoval();
-            thing.second->markForRemoval();
+        //    thing.first->markForRemoval();
+          //  thing.second->markForRemoval();
            // std::cout<<"DEMO VERSION, ship would take damage \n";
         }
     }
@@ -246,5 +250,11 @@ void World::handleCollisions()
 
 std::vector<Enemy*>  World::getEnemies(){
  return mEnemies;
+}
+std::vector<LeaderEnemy*>  World::getLeaderEnemies(){
+ return mLeaderEnemies;
+}
+std::vector<FollowEnemy*>  World::getFollowEnemies(){
+ return mFollowEnemies;
 }
 

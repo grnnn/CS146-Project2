@@ -20,10 +20,13 @@ class GameState : public State
                 virtual bool                handleEvent(const sf::Event& event);
 
 
+
         private:
+
                 World                       mWorld;
                 Player                      mPlayer;
                 EnemyController             mEnemyController;
+
 };
 
 #endif // GAMESTATE_HPP_INCLUDED

@@ -7,6 +7,8 @@
 
 #include "../../engine/headers/CommandQueue.hpp"
 #include "Enemy.hpp"
+#include "LeaderEnemy.hpp"
+#include "FollowEnemy.hpp"
 
 #include <SFML/System/NonCopyable.hpp>
 #include <SFML/Graphics/View.hpp>
@@ -36,8 +38,12 @@ class World : private sf::NonCopyable
                 void                                      loadTextures();
                 void                                      loadFonts();
                 std::vector<Enemy*>                       getEnemies();
+                std::vector<FollowEnemy*>                 getFollowEnemies();
+                std::vector<LeaderEnemy*>                 getLeaderEnemies();
 
                 void                                      spawnEnemy(float x, float y);
+                void                                      spawnLeaderEnemy(float x, float y);
+                void                                      spawnFollowEnemy(float x, float y);
                 void                                      handleCollisions();
                 void                                      destroyEntitiesOutsideView();
 
@@ -70,6 +76,8 @@ class World : private sf::NonCopyable
                 sf::Vector2f                              mSpawnPosition;
                 SpaceCraft*                               mPlayer;
                 std::vector<Enemy*>                       mEnemies;
+                std::vector<FollowEnemy*>                 mFollowEnemies;
+                std::vector<LeaderEnemy*>                 mLeaderEnemies;
                 sf::Sprite                                mSprite;
                 sf::Text                                  scoreText;
                 sf::Text                                  livesText;
