@@ -183,7 +183,7 @@ SpaceCraft* World::getPlayer()
 
 void World::spawnEnemy(float x, float y)
 {
-        Enemy* enemy(new Enemy(mTextures));
+        Enemy* enemy(new Enemy(mTextures, (*this)));
         enemy->setPosition(x, y);
         enemy->setVelocity(0.f, 100.f);
         mEnemies.push_back( enemy );
@@ -226,9 +226,14 @@ void World::handleCollisions()
         SceneNode::Pair thing = i;
         if (matchesCategories(thing, 1, 2))
         {
+            if(!thing.second->getEnemyRemoval()){
             thing.first->markForRemoval();
-            thing.second->markForRemoval();
+            thing.second->enemyDestroy();
+            listUpdate();
             score += 10;
+            //thing.second->markForRemoval();
+            }
+
 
 
 
@@ -236,8 +241,9 @@ void World::handleCollisions()
         else if(matchesCategories(thing, 2, 100))
         {
             lives--;
-            thing.first->markForRemoval();
-            thing.second->markForRemoval();
+            thing.first->enemyDestroy();
+            listUpdate();
+            //thing.second->markForRemoval();
            // std::cout<<"DEMO VERSION, ship would take damage \n";
         }
     }
@@ -246,5 +252,25 @@ void World::handleCollisions()
 
 std::vector<Enemy*>  World::getEnemies(){
  return mEnemies;
+}
+void World::listUpdate()
+{
+    int h = 0;
+    for(auto & i : mEnemies)
+    {
+
+        if((*i).listRemoval && !mEnemies.empty()){
+            auto k = mEnemies.begin();
+
+            std::cout<<"YOLOSWAG";
+
+            mEnemies.erase(k + h);
+
+
+
+
+        }
+        h++;
+    }
 }
 

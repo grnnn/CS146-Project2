@@ -6,6 +6,7 @@
 #include <SFML/Graphics/Transformable.hpp>
 #include <SFML/Graphics/Drawable.hpp>
 #include <SFML/Graphics/Sprite.hpp>
+
 #include <iostream>
 #include <vector>
 #include <memory>
@@ -37,9 +38,14 @@ class SceneNode : public sf::Transformable, public sf::Drawable, private sf::Non
         void                                markForRemoval();
         void                                removeWrecks();
         void                                destroyOutsideWorld();
+        void                                removeFromList();
+        void                                enemyDestroy();
+        bool                                getEnemyRemoval();
+
     public:
         bool                                mIsDestroyed;
         bool                                mMarkedForRemoval;
+        bool                                enemyRemoval;
 
     private:
         sf::Sprite                          mSprite;
@@ -47,6 +53,7 @@ class SceneNode : public sf::Transformable, public sf::Drawable, private sf::Non
         SceneNode*                          mParent;
 
         int                                 mID;
+
     private:
         virtual void                        draw(sf::RenderTarget& target,sf::RenderStates states) const;
         virtual void                        drawCurrent(sf::RenderTarget& target,sf::RenderStates states) const;

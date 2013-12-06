@@ -13,6 +13,7 @@ SceneNode::SceneNode()
 , mParent(nullptr)
 , mIsDestroyed(false)
 , mMarkedForRemoval(false)
+, enemyRemoval(false)
 {
 }
 
@@ -149,10 +150,19 @@ bool SceneNode::isMarkedForRemoval()
 }
 void SceneNode::removeWrecks()
 {
+
     auto wreckfieldBegin = std::remove_if(mChildren.begin(),
     mChildren.end(), std::mem_fn(&SceneNode::isMarkedForRemoval));
     mChildren.erase(wreckfieldBegin, mChildren.end());
 
     std::for_each(mChildren.begin(), mChildren.end(),
     std::mem_fn(&SceneNode::removeWrecks));
+}
+void SceneNode::enemyDestroy()
+{
+    enemyRemoval = true;
+}
+bool SceneNode::getEnemyRemoval()
+{
+    return enemyRemoval;
 }
