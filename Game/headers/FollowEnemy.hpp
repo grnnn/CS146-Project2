@@ -10,6 +10,7 @@
 class FollowEnemy : public Entity
 {
     public:
+           bool                        listRemoval;
         FollowEnemy(const TextureHolder& textures);
 
         void                        processEvents();
@@ -21,6 +22,7 @@ class FollowEnemy : public Entity
         LeaderEnemy*                getLeader();
 
     private:
+        virtual void                updateCurrent(sf::Time dt);
         float maxForce;
         float maxSpeed;
         LeaderEnemy* leader;

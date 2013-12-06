@@ -5,33 +5,52 @@
 #include "../headers/Seek.hpp"
 
 LeaderEnemy::LeaderEnemy(const TextureHolder& textures)
-:maxSpeed(500)
-,maxForce(10)
-,health(5)
+    :maxSpeed(500)
+    ,maxForce(10)
+    ,health(6)
+    ,listRemoval(false)
 {
     sf::Sprite spr(textures.get(Textures::LeaderEnemy));
     centerOrigin(spr);
     setSprite(spr);
-    setID(2);
+    setID(500);
 }
 
 void LeaderEnemy::drawCurrent(sf::RenderTarget& target, sf::RenderStates states) const
 {
-    target.draw(getSprite(), states);
+    if(!listRemoval)
+        target.draw(getSprite(), states);
 
 }
 
-float LeaderEnemy::getMaxSpeed(){
+float LeaderEnemy::getMaxSpeed()
+{
     return maxSpeed;
 }
 
-float LeaderEnemy::getMaxForce(){
+float LeaderEnemy::getMaxForce()
+{
     return maxForce;
 }
 
-int LeaderEnemy::getHealth(){
+int LeaderEnemy::getHealth()
+{
     return health;
 }
-void LeaderEnemy::damage(){
+
+void LeaderEnemy::damage()
+{
     health--;
+}
+
+
+
+
+void LeaderEnemy::updateCurrent(sf::Time dt)
+{
+    if(getEnemyRemoval())
+    {
+        listRemoval = true;
+    }
+    move(getVelocity() * dt.asSeconds());
 }

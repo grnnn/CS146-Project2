@@ -34,9 +34,10 @@ public:
     void                                         handleEvent(const sf::Event& event, CommandQueue& commands);
     void                                         update(CommandQueue& commands);
     void                                         spawnEnemy(float x, float y);
-    void                                         spawnGroup(float x, float y, int dir);
+    void                                         spawnGroup(float x, float y);
     //void                                        initializeStates();
 public:
+    void                                            killLeader();
     sf::Vector2f                                lastVelocity;
 private:
     static bool                                  isAction(Action action);

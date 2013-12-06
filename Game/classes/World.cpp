@@ -25,13 +25,14 @@ World::World(sf::RenderWindow& window)
     , score()
     , lives()
     , mFonts()
+    , invT(0)
 
 {
     loadFonts();
     loadTextures();
     buildScene();
     score = 0;
-    lives = 3;
+    lives = 30;
 
     scoreText.setFont(mFonts.get(Fonts::Main));
     livesText.setFont(mFonts.get(Fonts::Main));
@@ -42,8 +43,13 @@ World::World(sf::RenderWindow& window)
 
 
 void World::update(sf::Time dt)
+
 {
+    invT++;
     mPlayer->setVelocity(0.1f, 0.1f);
+    if(lives == 0){
+        getPlayer()->markForRemoval();
+    }
 
     while (!mCommandQueue.isEmpty())
     {
@@ -59,7 +65,7 @@ void World::update(sf::Time dt)
 
     //Text
     char buffer [33];
-    sprintf (buffer, "Lives: %d", lives);
+    sprintf (buffer, "Shield: %d", lives);
     livesText.setString(buffer);
     sprintf(buffer, "Score: %d", score);
     scoreText.setString(buffer);
@@ -206,11 +212,11 @@ bool matchesCategories(SceneNode::Pair& colliders,
 {
     int category1 = colliders.first->getID();
     int category2 = colliders.second->getID();
-    if (type1 & category1 && type2 & category2)
+    if (type1 == category1 && type2 == category2)
     {
         return true;
     }
-    else if (type1 & category2 && type2 & category1)
+    else if (type1 == category2 && type2 == category1)
     {
         std::swap(colliders.first, colliders.second);
         return true;
@@ -233,29 +239,72 @@ void World::handleCollisions()
             {
                 thing.first->markForRemoval();
                 thing.second->enemyDestroy();
-                listUpdate();
+                listUpdate(1);
                 score += 10;
 
                 //thing.second->markForRemoval();
             }
-
-
-
-
-
         }
-        else if(matchesCategories(thing, 2, 100))
+        else if(matchesCategories(thing, 1, 500))
         {
-            lives--;
+
+            if(!thing.second->getEnemyRemoval())
+            {
+
+                thing.first->markForRemoval();
+                thing.second->damage();
+                score += 10;
+                if((thing.second->getLives()<=0))
+                {
+                    thing.second->enemyDestroy();
+                    listUpdate(3);
+                }
+
+
+            }
+        }
+        else if (matchesCategories(thing, 1, 100))
+        {
+            if(!thing.second->getEnemyRemoval())
+            {
+
+                thing.first->markForRemoval();
+                thing.second->enemyDestroy();
+                listUpdate(2);
+                score += 10;
+            }
+        }
+        else if(matchesCategories(thing, 2, 300))
+        {
+            lives --;
+            thing.first->enemyDestroy();
+            listUpdate(1);
+        }
+        else if(matchesCategories(thing, 100, 300))
+        {
+            if(invT>180)
+            {
+                invT = 0;
+                lives--;
+            }
 
             //    thing.first->markForRemoval();
             //  thing.second->markForRemoval();
 
-            thing.first->enemyDestroy();
-            listUpdate();
+
             //thing.second->markForRemoval();
 
             // std::cout<<"DEMO VERSION, ship would take damage \n";
+        }
+        else if(matchesCategories(thing, 500, 300))
+        {
+            if(invT>180)
+            {
+                invT = 0;
+                lives--;
+            }
+
+
         }
     }
 }
@@ -274,22 +323,59 @@ std::vector<FollowEnemy*>  World::getFollowEnemies()
 {
     return mFollowEnemies;
 }
-void World::listUpdate()
+void World::listUpdate(int ty)
 {
-    int h = 0;
-    for(auto & i : mEnemies)
+    if(ty == 1)
     {
-
-        if((*i).listRemoval && !mEnemies.empty())
+        int h = 0;
+        for(auto & i : mEnemies)
         {
-            auto k = mEnemies.begin();
-            mSceneLayers[Air]->detachChild(**(k+h));
-            mEnemies.erase(k + h);
 
+            if((*i).listRemoval && !mEnemies.empty())
+            {
+                auto k = mEnemies.begin();
+                mSceneLayers[Air]->detachChild(**(k+h));
+                mEnemies.erase(k + h);
+
+            }
+            h++;
         }
-        h++;
-    }
 
+    }
+    else if (ty==2)
+    {
+        int h = 0;
+        for(auto & i : mFollowEnemies)
+        {
+            if((*i).listRemoval && !mFollowEnemies.empty())
+            {
+                auto k = mFollowEnemies.begin();
+                mSceneLayers[Air]->detachChild(**(k+h));
+                mFollowEnemies.erase(k + h);
+            }
+            h++;
+        }
+    }
+    else if (ty==3)
+    {
+        int h = 0;
+        for(auto & i : mLeaderEnemies)
+        {
+            if((*i).listRemoval && !mLeaderEnemies.empty())
+            {
+                auto k = mLeaderEnemies.begin();
+                mSceneLayers[Air]->detachChild(**(k+h));
+                mLeaderEnemies.erase(k + h);
+            }
+            h++;
+        }
+    }
 }
+
+int World::getLives(){
+    return lives;
+}
+
+
 
 

@@ -69,10 +69,10 @@
 		<Unit filename="Game/classes/Projectile.cpp" />
 		<Unit filename="Game/classes/Scatter.cpp" />
 		<Unit filename="Game/classes/Seek.cpp" />
+		<Unit filename="Game/classes/Snake.cpp" />
 		<Unit filename="Game/classes/SpaceCraft.cpp" />
 		<Unit filename="Game/classes/TitleState.cpp" />
 		<Unit filename="Game/classes/VectorUtil.cpp" />
-		<Unit filename="Game/classes/Wander.cpp" />
 		<Unit filename="Game/classes/Wander2.cpp" />
 		<Unit filename="Game/classes/World.cpp" />
 		<Unit filename="Game/headers/Enemy.hpp" />
@@ -87,11 +87,11 @@
 		<Unit filename="Game/headers/Projectile.hpp" />
 		<Unit filename="Game/headers/Scatter.hpp" />
 		<Unit filename="Game/headers/Seek.hpp" />
+		<Unit filename="Game/headers/Snake.hpp" />
 		<Unit filename="Game/headers/SpaceCraft.hpp" />
 		<Unit filename="Game/headers/SpaceCraftActions.hpp" />
 		<Unit filename="Game/headers/TitleState.hpp" />
 		<Unit filename="Game/headers/VectorUtil.hpp" />
-		<Unit filename="Game/headers/Wander.hpp" />
 		<Unit filename="Game/headers/Wander2.hpp" />
 		<Unit filename="Game/headers/World.hpp" />
 		<Unit filename="engine/classes/Command.cpp" />

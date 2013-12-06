@@ -14,6 +14,7 @@ SceneNode::SceneNode()
 , mIsDestroyed(false)
 , mMarkedForRemoval(false)
 , enemyRemoval(false)
+, lives(10)
 {
 }
 
@@ -165,4 +166,12 @@ void SceneNode::enemyDestroy()
 bool SceneNode::getEnemyRemoval()
 {
     return enemyRemoval;
+}
+
+
+int SceneNode::getLives(){
+return lives;
+}
+void SceneNode::damage(){
+lives--;
 }

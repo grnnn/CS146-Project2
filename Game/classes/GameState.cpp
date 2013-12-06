@@ -26,6 +26,8 @@ bool GameState::update(sf::Time dt)
 {
         mWorld.update(dt);
 
+//        if(mWorld->getLives() == 0)stack
+
         CommandQueue& commands = mWorld.getCommandQueue();
         mPlayer.handleRealtimeInput(commands);
         mEnemyController.update(commands);

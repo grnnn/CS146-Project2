@@ -8,24 +8,26 @@
 
 class LeaderEnemy : public Entity
 {
-    public:
-        LeaderEnemy(const TextureHolder& textures);
+public:
+    LeaderEnemy(const TextureHolder& textures);
 
-        void                        processEvents();
-        void                        update(sf::Time dt);
+    void                        processEvents();
+    void                        update(sf::Time dt);
 
-        float                       getMaxSpeed();
-        float                       getMaxForce();
-        void                        damage();
-        int                         getHealth();
+    float                       getMaxSpeed();
+    float                       getMaxForce();
+    void                        damage();
+    int                         getHealth();
+ bool listRemoval;
 
+private:
+    virtual void                updateCurrent(sf::Time dt);
 
-    private:
-        int health;
-        float maxForce;
-        float maxSpeed;
+    int health;
+    float maxForce;
+    float maxSpeed;
 
-        virtual void                drawCurrent(sf::RenderTarget& target, sf::RenderStates states) const;
+    virtual void                drawCurrent(sf::RenderTarget& target, sf::RenderStates states) const;
 
 };
 

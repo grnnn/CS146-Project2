@@ -10,5 +10,5 @@ class Scatter: public IAction
 public:
                                            Scatter();
     virtual                             ~Scatter();
-    sf::Vector2f                    doAction(Enemy& enemy);
+    sf::Vector2f                    doAction(FollowEnemy& enemy);
 };

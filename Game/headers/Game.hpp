@@ -21,10 +21,7 @@ class Game : private sf::NonCopyable
         void                    draw();
         void                    processEvents();
         void                    registerStates();
-        int                     getLives();
-        int                     getScore();
-        void                    setLives(int i);
-        void                    setScore(int i);
+
     private:
         static const sf::Time   TimePerFrame;
 

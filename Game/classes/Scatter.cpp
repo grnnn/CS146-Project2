@@ -11,20 +11,20 @@ Scatter::~Scatter() {}
 Scatter::Scatter()
 {
 }
-sf::Vector2f Scatter::doAction(Enemy& enemy)
+sf::Vector2f Scatter::doAction(FollowEnemy& enemy)
 {
     VectorUtil* util = new VectorUtil();
 
-    float CIRCLE_DISTANCE = 10;
-    float CIRCLE_RADIUS = 20;
+  float CIRCLE_DISTANCE = 100;
+    float CIRCLE_RADIUS = 90;
     float ANGLE_CHANGE = 50;
     float wanderAngle = 0;
 
     //Set values
-     sf::Vector2f velocity = enemy.getVelocity();
+    sf::Vector2f velocity = enemy.getVelocity();
 
-    float max_speed = 260;
-    float max_force = 30;
+    float max_speed = 90;
+    float max_force = 10;
 
 
    sf::Vector2f circleCenter = velocity;
@@ -39,7 +39,7 @@ sf::Vector2f Scatter::doAction(Enemy& enemy)
 
    displacement.x =cos(wanderAngle) * len;
    displacement.y = sin(wanderAngle) * len;
-//std::cout<<"Displacement.x: "<<displacement.x<< ",Displacement.y: "<<displacement.y<<"\n";
+
    // Wander force
    sf::Vector2f wanderForce = circleCenter + (displacement);
 

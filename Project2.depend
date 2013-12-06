@@ -1292,23 +1292,23 @@
 	"../../engine/headers/CommandQueue.hpp"
 	<iostream>
 
-1386025559 source:c:\users\tyler\documents\github\cs146-project2\engine\classes\command.cpp
+1386294237 source:c:\users\tyler\documents\github\cs146-project2\engine\classes\command.cpp
 	"../headers/Command.hpp"
 
-1386025559 c:\users\tyler\documents\github\cs146-project2\engine\headers\command.hpp
+1386294237 c:\users\tyler\documents\github\cs146-project2\engine\headers\command.hpp
 	<SFML/System/Time.hpp>
 	<functional>
 	<cassert>
 
-1386025559 source:c:\users\tyler\documents\github\cs146-project2\engine\classes\commandqueue.cpp
+1386294237 source:c:\users\tyler\documents\github\cs146-project2\engine\classes\commandqueue.cpp
 	"../headers/CommandQueue.hpp"
 	"../headers/SceneNode.hpp"
 
-1386025559 c:\users\tyler\documents\github\cs146-project2\engine\headers\commandqueue.hpp
+1386294237 c:\users\tyler\documents\github\cs146-project2\engine\headers\commandqueue.hpp
 	"Command.hpp"
 	<queue>
 
-1386052322 c:\users\tyler\documents\github\cs146-project2\engine\headers\scenenode.hpp
+1386327828 c:\users\tyler\documents\github\cs146-project2\engine\headers\scenenode.hpp
 	<SFML/System/NonCopyable.hpp>
 	<SFML/System/Time.hpp>
 	<SFML/Graphics/Transformable.hpp>
@@ -1319,15 +1319,15 @@
 	<memory>
 	<set>
 
-1386025559 source:c:\users\tyler\documents\github\cs146-project2\engine\classes\entity.cpp
+1386294237 source:c:\users\tyler\documents\github\cs146-project2\engine\classes\entity.cpp
 	"..\headers\Entity.hpp"
 	<iostream>
 
-1386025559 c:\users\tyler\documents\github\cs146-project2\engine\headers\entity.hpp
+1386294237 c:\users\tyler\documents\github\cs146-project2\engine\headers\entity.hpp
 	<SFML/Graphics.hpp>
 	"SceneNode.hpp"
 
-1386052322 source:c:\users\tyler\documents\github\cs146-project2\engine\classes\scenenode.cpp
+1386327814 source:c:\users\tyler\documents\github\cs146-project2\engine\classes\scenenode.cpp
 	<SFML/Graphics/RenderTarget.hpp>
 	<SFML/System/Time.hpp>
 	"../headers/SceneNode.hpp"
@@ -1337,30 +1337,30 @@
 	<cassert>
 	<iostream>
 
-1386055971 source:c:\users\tyler\documents\github\cs146-project2\engine\classes\spritenode.cpp
+1386294237 source:c:\users\tyler\documents\github\cs146-project2\engine\classes\spritenode.cpp
 	"..\headers\SpriteNode.hpp"
 	<SFML/Graphics/RenderTarget.hpp>
 
-1386025560 c:\users\tyler\documents\github\cs146-project2\engine\headers\spritenode.hpp
+1386294237 c:\users\tyler\documents\github\cs146-project2\engine\headers\spritenode.hpp
 	"SceneNode.hpp"
 	<SFML/Graphics/Sprite.hpp>
 
-1386025559 source:c:\users\tyler\documents\github\cs146-project2\engine\classes\state.cpp
+1386294237 source:c:\users\tyler\documents\github\cs146-project2\engine\classes\state.cpp
 	"..\headers\State.hpp"
 	"..\headers\StateStack.hpp"
 
-1386025560 c:\users\tyler\documents\github\cs146-project2\engine\headers\state.hpp
+1386294237 c:\users\tyler\documents\github\cs146-project2\engine\headers\state.hpp
 	"StateIdentifiers.hpp"
 	"ResourceIdentifier.hpp"
 	<SFML/System/Time.hpp>
 	<SFML/Window/Event.hpp>
 	<memory>
 
-1386025560 c:\users\tyler\documents\github\cs146-project2\engine\headers\stateidentifiers.hpp
+1386294237 c:\users\tyler\documents\github\cs146-project2\engine\headers\stateidentifiers.hpp
 
-1386109835 c:\users\tyler\documents\github\cs146-project2\engine\headers\resourceidentifier.hpp
+1386307435 c:\users\tyler\documents\github\cs146-project2\engine\headers\resourceidentifier.hpp
 
-1386025560 c:\users\tyler\documents\github\cs146-project2\engine\headers\statestack.hpp
+1386294237 c:\users\tyler\documents\github\cs146-project2\engine\headers\statestack.hpp
 	"State.hpp"
 	"StateIdentifiers.hpp"
 	"ResourceIdentifier.hpp"
@@ -1371,34 +1371,37 @@
 	<functional>
 	<map>
 
-1386025559 source:c:\users\tyler\documents\github\cs146-project2\engine\classes\statestack.cpp
+1386294237 source:c:\users\tyler\documents\github\cs146-project2\engine\classes\statestack.cpp
 	"..\headers\StateStack.hpp"
 	<cassert>
 	<iostream>
 
-1386025559 source:c:\users\tyler\documents\github\cs146-project2\engine\classes\utility.cpp
+1386294237 source:c:\users\tyler\documents\github\cs146-project2\engine\classes\utility.cpp
 	"..\headers\Utility.hpp"
 	<SFML/Graphics/Sprite.hpp>
 	<SFML/Graphics/Text.hpp>
 
-1386025560 c:\users\tyler\documents\github\cs146-project2\engine\headers\utility.hpp
+1386294237 c:\users\tyler\documents\github\cs146-project2\engine\headers\utility.hpp
 	<sstream>
 	"Utility.inl"
 
-1386025560 c:\users\tyler\documents\github\cs146-project2\engine\headers\utility.inl
+1386294237 c:\users\tyler\documents\github\cs146-project2\engine\headers\utility.inl
 
-1386052322 source:c:\users\tyler\documents\github\cs146-project2\game\classes\enemy.cpp
+1386309820 source:c:\users\tyler\documents\github\cs146-project2\game\classes\enemy.cpp
 	"../headers/Enemy.hpp"
 	"../../engine/headers/ResourceHolder.hpp"
 	"../../engine/headers/Utility.hpp"
 	<iostream>
+	<vector>
+	"../headers/Seek.hpp"
 
-1386052322 c:\users\tyler\documents\github\cs146-project2\game\headers\enemy.hpp
+1386309820 c:\users\tyler\documents\github\cs146-project2\game\headers\enemy.hpp
 	<SFML/Graphics/Sprite.hpp>
 	"../../engine/headers/Entity.hpp"
 	"../../engine/headers/ResourceIdentifier.hpp"
+	"World.hpp"
 
-1386025559 c:\users\tyler\documents\github\cs146-project2\engine\headers\resourceholder.hpp
+1386294237 c:\users\tyler\documents\github\cs146-project2\engine\headers\resourceholder.hpp
 	<map>
 	<string>
 	<memory>
@@ -1406,13 +1409,19 @@
 	<cassert>
 	"..\resources\ResourceHolder.inl"
 
-1386025560 c:\users\tyler\documents\github\cs146-project2\engine\resources\resourceholder.inl
+1386294237 c:\users\tyler\documents\github\cs146-project2\engine\resources\resourceholder.inl
 
-1386025559 source:c:\users\tyler\documents\github\cs146-project2\game\classes\enemycontroller.cpp
+1386330021 source:c:\users\tyler\documents\github\cs146-project2\game\classes\enemycontroller.cpp
 	"../headers/EnemyController.hpp"
+	"../headers/Seek.hpp"
+	"../headers/FollowTheLeader.hpp"
+	"../headers/Wander2.hpp"
+	"../headers/Snake.hpp"
+	"../headers/Scatter.hpp"
+	<math.h>
 	<iostream>
 
-1386025559 c:\users\tyler\documents\github\cs146-project2\game\headers\enemycontroller.hpp
+1386329630 c:\users\tyler\documents\github\cs146-project2\game\headers\enemycontroller.hpp
 	"../../engine/headers/Command.hpp"
 	"World.hpp"
 	"Enemy.hpp"
@@ -1420,18 +1429,20 @@
 	<SFML/System/NonCopyable.hpp>
 	<map>
 
-1386052322 c:\users\tyler\documents\github\cs146-project2\game\headers\world.hpp
+1386330188 c:\users\tyler\documents\github\cs146-project2\game\headers\world.hpp
 	"../../engine/headers/ResourceHolder.hpp"
 	"../../engine/headers/ResourceIdentifier.hpp"
 	"../../engine/headers/SceneNode.hpp"
 	"../../engine/headers/CommandQueue.hpp"
 	"Enemy.hpp"
+	"LeaderEnemy.hpp"
+	"FollowEnemy.hpp"
 	<SFML/System/NonCopyable.hpp>
 	<SFML/Graphics/View.hpp>
 	<SFML/Graphics/Texture.hpp>
 	<array>
 
-1386025559 source:c:\users\tyler\documents\github\cs146-project2\game\classes\game.cpp
+1386301548 source:c:\users\tyler\documents\github\cs146-project2\game\classes\game.cpp
 	"..\headers\Game.hpp"
 	"..\headers\TitleState.hpp"
 	"..\headers\GameState.hpp"
@@ -1440,7 +1451,7 @@
 	<SFML/Graphics.hpp>
 	<iostream>
 
-1386025559 c:\users\tyler\documents\github\cs146-project2\game\headers\game.hpp
+1386330224 c:\users\tyler\documents\github\cs146-project2\game\headers\game.hpp
 	"..\..\engine\headers\ResourceHolder.hpp"
 	"..\..\engine\headers\ResourceIdentifier.hpp"
 	"..\..\engine\headers\StateStack.hpp"
@@ -1449,14 +1460,14 @@
 	<SFML/Graphics.hpp>
 	<SFML/System/Time.hpp>
 
-1386052322 c:\users\tyler\documents\github\cs146-project2\game\headers\player.hpp
+1386294237 c:\users\tyler\documents\github\cs146-project2\game\headers\player.hpp
 	"../../engine/headers/Command.hpp"
 	"World.hpp"
 	<SFML/Window/Event.hpp>
 	<SFML/System/NonCopyable.hpp>
 	<map>
 
-1386052322 c:\users\tyler\documents\github\cs146-project2\game\headers\spacecraft.hpp
+1386294237 c:\users\tyler\documents\github\cs146-project2\game\headers\spacecraft.hpp
 	<SFML/Graphics/Sprite.hpp>
 	"../../engine/headers/Entity.hpp"
 	"Projectile.hpp"
@@ -1465,7 +1476,7 @@
 	"Player.hpp"
 	<iostream>
 
-1386052322 c:\users\tyler\documents\github\cs146-project2\game\headers\projectile.hpp
+1386294237 c:\users\tyler\documents\github\cs146-project2\game\headers\projectile.hpp
 	<SFML/Graphics/Sprite.hpp>
 	"../../engine/headers/Entity.hpp"
 	"../../engine/headers/ResourceIdentifier.hpp"
@@ -1474,12 +1485,12 @@
 	"../../engine/headers/CommandQueue.hpp"
 	<iostream>
 
-1386025559 c:\users\tyler\documents\github\cs146-project2\game\headers\titlestate.hpp
+1386294237 c:\users\tyler\documents\github\cs146-project2\game\headers\titlestate.hpp
 	"..\..\engine\headers\State.hpp"
 	<SFML/Graphics/Sprite.hpp>
 	<SFML/Graphics/Text.hpp>
 
-1386025559 c:\users\tyler\documents\github\cs146-project2\game\headers\gamestate.hpp
+1386300415 c:\users\tyler\documents\github\cs146-project2\game\headers\gamestate.hpp
 	"../../engine/headers/State.hpp"
 	"World.hpp"
 	"Player.hpp"
@@ -1487,19 +1498,19 @@
 	<SFML/Graphics/Sprite.hpp>
 	<SFML/Graphics/Text.hpp>
 
-1386025560 c:\users\tyler\documents\github\cs146-project2\engine\headers\stringhelpers.hpp
+1386294237 c:\users\tyler\documents\github\cs146-project2\engine\headers\stringhelpers.hpp
 	<sstream>
 	"..\resources\StringHelpers.inl"
 
-1386025560 c:\users\tyler\documents\github\cs146-project2\engine\resources\stringhelpers.inl
+1386294237 c:\users\tyler\documents\github\cs146-project2\engine\resources\stringhelpers.inl
 
-1386025559 source:c:\users\tyler\documents\github\cs146-project2\game\classes\gamestate.cpp
+1386330485 source:c:\users\tyler\documents\github\cs146-project2\game\classes\gamestate.cpp
 	"../headers/GameState.hpp"
 	"../headers/World.hpp"
 	"../../engine/headers/Command.hpp"
 	"../../engine/headers/CommandQueue.hpp"
 
-1386052322 source:c:\users\tyler\documents\github\cs146-project2\game\classes\player.cpp
+1386294237 source:c:\users\tyler\documents\github\cs146-project2\game\classes\player.cpp
 	"../headers/Player.hpp"
 	"../../engine/headers/CommandQueue.hpp"
 	"../headers/SpaceCraft.hpp"
@@ -1510,11 +1521,11 @@
 	<algorithm>
 	<iostream>
 
-1386025559 c:\users\tyler\documents\github\cs146-project2\game\headers\spacecraftactions.hpp
+1386294237 c:\users\tyler\documents\github\cs146-project2\game\headers\spacecraftactions.hpp
 	"../headers/SpaceCraft.hpp"
 	<iostream>
 
-1386109835 source:c:\users\tyler\documents\github\cs146-project2\game\classes\projectile.cpp
+1386295443 source:c:\users\tyler\documents\github\cs146-project2\game\classes\projectile.cpp
 	"..\headers\Projectile.hpp"
 	<SFML/Graphics/Sprite.hpp>
 	"../../engine/headers/Entity.hpp"
@@ -1524,7 +1535,7 @@
 	"../../engine/headers/CommandQueue.hpp"
 	<iostream>
 
-1386052322 source:c:\users\tyler\documents\github\cs146-project2\game\classes\spacecraft.cpp
+1386321049 source:c:\users\tyler\documents\github\cs146-project2\game\classes\spacecraft.cpp
 	"../headers/SpaceCraft.hpp"
 	"../../engine/headers/ResourceHolder.hpp"
 	"../../engine/headers/Utility.hpp"
@@ -1533,58 +1544,59 @@
 	<iostream>
 	<math.h>
 
-1386025559 source:c:\users\tyler\documents\github\cs146-project2\game\classes\titlestate.cpp
+1386321828 source:c:\users\tyler\documents\github\cs146-project2\game\classes\titlestate.cpp
 	"..\headers\TitleState.hpp"
 	"..\..\engine\headers\Utility.hpp"
 	"..\..\engine\headers\ResourceHolder.hpp"
 	<iostream>
 	<SFML/Graphics/RenderWindow.hpp>
 
-1386109901 source:c:\users\tyler\documents\github\cs146-project2\game\classes\world.cpp
+1386329446 source:c:\users\tyler\documents\github\cs146-project2\game\classes\world.cpp
 	"../headers/World.hpp"
 	"../headers/SpaceCraft.hpp"
 	"../headers/Enemy.hpp"
 	"../headers/Player.hpp"
+	"../headers/GameState.hpp"
 	"../../engine/headers/SpriteNode.hpp"
 	"../../engine/headers/SceneNode.hpp"
 	"../../engine/headers/CommandQueue.hpp"
 	<SFML/Graphics/RenderWindow.hpp>
 	<iostream>
 
-1386053119 source:c:\users\tyler\documents\github\cs146-project2\game\fsm\fstate.cpp
+1386294237 source:c:\users\tyler\documents\github\cs146-project2\game\fsm\fstate.cpp
 	"FState.hpp"
 
-1386053119 c:\users\tyler\documents\github\cs146-project2\game\fsm\fstate.hpp
+1386294237 c:\users\tyler\documents\github\cs146-project2\game\fsm\fstate.hpp
 	<vector>
 	"IAction.hpp"
 	"ICondition.hpp"
 
-1386025559 c:\users\tyler\documents\github\cs146-project2\game\fsm\iaction.hpp
+1386294237 c:\users\tyler\documents\github\cs146-project2\game\fsm\iaction.hpp
 
-1386053119 c:\users\tyler\documents\github\cs146-project2\game\fsm\icondition.hpp
+1386294237 c:\users\tyler\documents\github\cs146-project2\game\fsm\icondition.hpp
 	"..\headers\World.hpp"
 	"IAction.hpp"
 
-1386053119 source:c:\users\tyler\documents\github\cs146-project2\game\fsm\iaction.cpp
+1386294237 source:c:\users\tyler\documents\github\cs146-project2\game\fsm\iaction.cpp
 	"IAction.hpp"
 
-1386053119 source:c:\users\tyler\documents\github\cs146-project2\game\fsm\icondition.cpp
+1386294237 source:c:\users\tyler\documents\github\cs146-project2\game\fsm\icondition.cpp
 	"ICondition.hpp"
 
-1386053119 source:c:\users\tyler\documents\github\cs146-project2\game\fsm\statemachine.cpp
+1386294237 source:c:\users\tyler\documents\github\cs146-project2\game\fsm\statemachine.cpp
 	"StateMachine.hpp"
 	"ICondition.hpp"
 	"FState.hpp"
 	"..\headers\World.hpp"
 
-1386053119 c:\users\tyler\documents\github\cs146-project2\game\fsm\statemachine.hpp
+1386294237 c:\users\tyler\documents\github\cs146-project2\game\fsm\statemachine.hpp
 	<vector>
 	"IAction.hpp"
 	"ICondition.hpp"
 	"FState.hpp"
 	"..\headers\World.hpp"
 
-1386025560 source:c:\users\tyler\documents\github\cs146-project2\main.cpp
+1386294237 source:c:\users\tyler\documents\github\cs146-project2\main.cpp
 	<iostream>
 	"Game/headers/Game.hpp"
 
@@ -2216,4 +2228,106 @@
 	"ICondition.hpp"
 	"FState.hpp"
 	"..\headers\World.hpp"
+
+1386294237 c:\users\tyler\documents\github\cs146-project2\game\headers\seek.hpp
+	"../FSM/IAction.hpp"
+	"World.hpp"
+	<SFML/System.hpp>
+
+1386312434 c:\users\tyler\documents\github\cs146-project2\game\headers\followtheleader.hpp
+	"../FSM/IAction.hpp"
+	"World.hpp"
+	<SFML/System.hpp>
+
+1386319702 source:c:\users\tyler\documents\github\cs146-project2\game\classes\followtheleader.cpp
+	"../headers/VectorUtil.hpp"
+	"../headers/SpaceCraft.hpp"
+	"../headers/FollowTheLeader.hpp"
+	"../headers/LeaderEnemy.hpp"
+	"../headers/FollowEnemy.hpp"
+	<SFML/System/Vector2.hpp>
+
+1386294237 c:\users\tyler\documents\github\cs146-project2\game\headers\vectorutil.hpp
+	<SFML/System.hpp>
+
+1386329161 source:c:\users\tyler\documents\github\cs146-project2\game\classes\seek.cpp
+	"../headers/VectorUtil.hpp"
+	"../headers/Enemy.hpp"
+	"../headers/Seek.hpp"
+	<SFML/System/Vector2.hpp>
+
+1386294237 source:c:\users\tyler\documents\github\cs146-project2\game\classes\vectorutil.cpp
+	"../headers/VectorUtil.hpp"
+
+1386294237 source:c:\users\tyler\documents\github\cs146-project2\game\classes\wander.cpp
+	"../headers/VectorUtil.hpp"
+	"../headers/Enemy.hpp"
+	"../headers/Wander.hpp"
+	<SFML/System/Vector2.hpp>
+	<math.h>
+
+1386294237 c:\users\tyler\documents\github\cs146-project2\game\headers\wander.hpp
+	"../FSM/IAction.hpp"
+	"World.hpp"
+	<SFML/System.hpp>
+
+1386330015 source:c:\users\tyler\documents\github\cs146-project2\game\classes\scatter.cpp
+	"../headers/VectorUtil.hpp"
+	"../headers/Enemy.hpp"
+	"../headers/Scatter.hpp"
+	<SFML/System/Vector2.hpp>
+
+1386329161 c:\users\tyler\documents\github\cs146-project2\game\headers\scatter.hpp
+	"../FSM/IAction.hpp"
+	"World.hpp"
+	<SFML/System.hpp>
+
+1386319542 source:c:\users\tyler\documents\github\cs146-project2\game\classes\wander2.cpp
+	"../headers/VectorUtil.hpp"
+	"../headers/Enemy.hpp"
+	"../headers/Wander2.hpp"
+	<SFML/System/Vector2.hpp>
+
+1386316921 c:\users\tyler\documents\github\cs146-project2\game\headers\wander2.hpp
+	"../FSM/IAction.hpp"
+	"World.hpp"
+	<SFML/System.hpp>
+
+1386329918 source:c:\users\tyler\documents\github\cs146-project2\game\classes\leaderenemy.cpp
+	"../headers/LeaderEnemy.hpp"
+	"../../engine/headers/ResourceHolder.hpp"
+	"../../engine/headers/Utility.hpp"
+	<iostream>
+	"../headers/Seek.hpp"
+
+1386328447 c:\users\tyler\documents\github\cs146-project2\game\headers\leaderenemy.hpp
+	<SFML/Graphics/Sprite.hpp>
+	"../../engine/headers/Entity.hpp"
+	"../../engine/headers/ResourceIdentifier.hpp"
+
+1386327425 c:\users\tyler\documents\github\cs146-project2\game\headers\followenemy.hpp
+	<SFML/Graphics/Sprite.hpp>
+	"../../engine/headers/Entity.hpp"
+	"../../engine/headers/ResourceIdentifier.hpp"
+	"LeaderEnemy.hpp"
+
+1386327340 source:c:\users\tyler\documents\github\cs146-project2\game\classes\followenemy.cpp
+	"../headers/FollowEnemy.hpp"
+	"../../engine/headers/ResourceHolder.hpp"
+	"../../engine/headers/Utility.hpp"
+	<iostream>
+	"../headers/Seek.hpp"
+
+1386318897 source:c:\users\tyler\documents\github\cs146-project2\game\classes\snake.cpp
+	"../headers/VectorUtil.hpp"
+	"../headers/SpaceCraft.hpp"
+	"../headers/Snake.hpp"
+	"../headers/LeaderEnemy.hpp"
+	"../headers/FollowEnemy.hpp"
+	<SFML/System/Vector2.hpp>
+
+1386312732 c:\users\tyler\documents\github\cs146-project2\game\headers\snake.hpp
+	"../FSM/IAction.hpp"
+	"World.hpp"
+	<SFML/System.hpp>
 
